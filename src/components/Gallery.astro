@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import gallery01 from '../images/gallery-01.png';
+import gallery02 from '../images/gallery-02.png';
+import gallery03 from '../images/gallery-03.png';
+import gallery04 from '../images/gallery-04.png';
+import gallery05 from '../images/gallery-05.png';
+import gallery06 from '../images/gallery-06.png';
+
+const images = [
+  { src: gallery01, alt: 'ガラスコーティング施工後のポルシェ', span: 'lg:col-span-2 lg:row-span-2' },
+  { src: gallery02, alt: 'セラミックコーティングのディテール', span: 'lg:col-span-1' },
+  { src: gallery03, alt: '施工後のメルセデスAMG', span: 'lg:col-span-1' },
+  { src: gallery04, alt: '水滴が輝くコーティング表面', span: 'lg:col-span-1' },
+  { src: gallery05, alt: '施工スタジオでのアウディ', span: 'lg:col-span-1 lg:row-span-2' },
+  { src: gallery06, alt: '撥水効果のクローズアップ', span: 'lg:col-span-1' },
+];
+---
+
+<section id="gallery" class="relative py-24 md:py-36 lg:py-44 overflow-hidden bg-warm-black">
+  <!-- Top Ornamental Border -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+  <div class="px-6 md:px-12 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 md:mb-24">
+        <div>
+          <div class="gallery-reveal flex items-center gap-3 mb-5">
+            <span class="w-10 md:w-14 h-px bg-gold/50"></span>
+            <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
+              Gallery
+            </span>
+          </div>
+          <h2 class="gallery-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
+            施工実績
+          </h2>
+        </div>
+
+        <!-- Classic decorative element -->
+        <div class="gallery-reveal hidden md:flex items-center gap-3 mt-6 md:mt-0">
+          <span class="w-16 h-px bg-gold/15"></span>
+          <span class="font-display text-[10px] tracking-[0.25em] text-gold/25 italic">Selected Works</span>
+        </div>
+      </div>
+
+      <!-- Masonry-style Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 auto-rows-[280px] md:auto-rows-[320px]">
+        {images.map((image, index) => (
+          <div
+            class:list={[
+              'gallery-item group relative overflow-hidden cursor-pointer',
+              image.span,
+            ]}
+            data-gallery-index={index}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+              widths={[400, 640, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              quality={80}
+              loading="lazy"
+            />
+
+            <!-- Hover Overlay -->
+            <div class="absolute inset-0 bg-dark/0 group-hover:bg-dark/40 transition-all duration-500"></div>
+
+            <!-- Corner Ornaments (visible on hover) -->
+            <div class="absolute top-4 left-4 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span class="absolute top-0 left-0 w-full h-px bg-gold/40"></span>
+              <span class="absolute top-0 left-0 h-full w-px bg-gold/40"></span>
+            </div>
+            <div class="absolute bottom-4 right-4 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span class="absolute bottom-0 right-0 w-full h-px bg-gold/40"></span>
+              <span class="absolute bottom-0 right-0 h-full w-px bg-gold/40"></span>
+            </div>
+
+            <!-- Caption -->
+            <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <span class="font-display text-xs tracking-[0.15em] text-off-white/70">
+                {image.alt}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Ornamental Border -->
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray<HTMLElement>('.gallery-reveal').forEach((el) => {
+    gsap.fromTo(el, { opacity: 0, y: 30 }, {
+      opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+    });
+  });
+
+  gsap.utils.toArray<HTMLElement>('.gallery-item').forEach((el, i) => {
+    gsap.fromTo(el, { opacity: 0, y: 50 }, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.1,
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+    });
+  });
+</script>

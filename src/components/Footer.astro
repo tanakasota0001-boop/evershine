@@ -1,0 +1,87 @@
+---
+---
+
+<footer class="relative overflow-hidden">
+  <!-- CTA Section -->
+  <section id="cta" class="relative py-24 md:py-36 lg:py-44">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+    <div class="px-6 md:px-12 lg:px-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Classic Ornament -->
+        <div class="cta-reveal flex items-center justify-center gap-4 mb-10">
+          <span class="w-12 h-px bg-gold/20"></span>
+          <span class="font-display text-[10px] text-gold/30">✦</span>
+          <span class="w-12 h-px bg-gold/20"></span>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="cta-reveal font-display text-[clamp(1.5rem,3vw,2.5rem)] font-light tracking-[0.04em] text-off-white leading-[1.4] mb-4">
+          まずはお気軽にご相談ください
+        </h2>
+        <p class="cta-reveal font-sans text-xs md:text-sm font-light tracking-[0.05em] text-off-white/35 mb-12">
+          お電話でのお問い合わせを承っております
+        </p>
+
+        <!-- Phone Number - Large & Prominent -->
+        <div class="cta-reveal">
+          <a
+            href="tel:0263532276"
+            class="group inline-flex flex-col items-center"
+          >
+            <span class="font-display text-[10px] tracking-[0.3em] text-gold/30 uppercase mb-3">Telephone</span>
+            <span class="font-display text-[clamp(2rem,6vw,4.5rem)] font-light tracking-[0.08em] text-off-white group-hover:text-gold transition-colors duration-500 leading-none">
+              0263-53-2276
+            </span>
+            <span class="w-0 group-hover:w-full h-px bg-gold/30 transition-all duration-500 mt-4"></span>
+          </a>
+        </div>
+
+        <!-- Hours -->
+        <div class="cta-reveal mt-8 flex items-center justify-center gap-3">
+          <span class="font-sans text-xs font-light tracking-[0.05em] text-off-white/25">
+            8:00 〜 18:00（日曜定休）
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Bar -->
+  <div class="relative border-t border-gold/[0.07] py-8 md:py-10">
+    <div class="px-6 md:px-12 lg:px-20">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <!-- Logo -->
+        <a href="#" class="font-display text-sm tracking-[0.25em] text-off-white/30 font-light uppercase">
+          Evershine
+        </a>
+
+        <!-- Classic footer ornament -->
+        <div class="hidden md:flex items-center gap-3">
+          <span class="w-6 h-px bg-gold/10"></span>
+          <span class="font-display text-[8px] text-gold/15">✦</span>
+          <span class="w-6 h-px bg-gold/10"></span>
+        </div>
+
+        <!-- Copyright -->
+        <p class="font-display text-[10px] tracking-[0.15em] text-off-white/15">
+          &copy; {new Date().getFullYear()} EVERSHINE. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray<HTMLElement>('.cta-reveal').forEach((el, i) => {
+    gsap.fromTo(el, { opacity: 0, y: 25 }, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: i * 0.1,
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    });
+  });
+</script>
