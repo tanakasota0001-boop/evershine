@@ -58,7 +58,7 @@ export const siteSettings = {
     holiday: "日曜定休",
 
     /** 会社名 */
-    companyName: "EVERSHINE（エバーシャイン）",
+    companyName: "EVERSHINE",
 
     /** 設立年 */
     estYear: "Est. 1990",
@@ -119,7 +119,7 @@ export const siteSettings = {
       /** コンテンツの配置 (text-left: 左寄せ, text-center: 中央寄せ, text-right: 右寄せ) */
       textAlign: "text-left",
       /** 下部の余白調整 (Tailwindクラス) */
-      paddingBottom: "pb-20 md:pb-28 lg:pb-32",
+      paddingBottom: "pb-14 md:pb-28 lg:pb-32",
       /** 最大幅 (Tailwindクラス。コンテンツの広がり具合を調整) */
       maxWidth: "max-w-5xl",
       /** 1行目の文字サイズ (Tailwindクラス) */
@@ -426,15 +426,13 @@ export const siteSettings = {
       /** セクションラベル（英語） */
       sectionLabel: "Access",
       /** セクションラベル（日本語） */
-      sectionLabelJa: "店舗情報・アクセス",
+      sectionLabelJa: "店舗情報",
       /** Googleマップの埋め込み用URL (iframeのsrc属性の部分です) */
       googleMapsUrl: "https://maps.app.goo.gl/EYMv7pefjSoiW3ko9",
       /** 地図のタイトルタグ（アクセシビリティ用） */
       mapTitle: "EVERSHINEの所在地",
       /** 店舗写真 */
       shopImage: shopExterior,
-      /** 店舗写真の代替テキスト */
-      shopImageAlt: "EVERSHINE 外観",
 
     },
     style: {
