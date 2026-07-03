@@ -48,7 +48,7 @@ const { content, style } = gallery;
             <Image
               src={image.src}
               alt={image.alt}
-              class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+              class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-[.touched]:scale-110"
               widths={[400, 640, 800, 1200]}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               quality={80}
@@ -56,20 +56,20 @@ const { content, style } = gallery;
             />
 
             <!-- Hover Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/10 to-transparent md:from-dark/0 md:via-transparent md:to-transparent md:group-hover:from-dark/55 md:group-hover:via-dark/20 transition-all duration-500"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/10 to-transparent md:from-dark/0 md:via-transparent md:to-transparent md:group-hover:from-dark/55 md:group-hover:via-dark/20 group-[.touched]:from-dark/70 group-[.touched]:via-dark/20 transition-all duration-500"></div>
 
-            <!-- Corner Ornaments (visible on hover on desktop) -->
-            <div class="absolute top-4 left-4 w-6 h-6 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+            <!-- Corner Ornaments (visible on hover on desktop, or touch on mobile) -->
+            <div class="absolute top-4 left-4 w-6 h-6 opacity-0 md:group-hover:opacity-100 group-[.touched]:opacity-100 transition-opacity duration-500">
               <span class="absolute top-0 left-0 w-full h-px bg-gold/40"></span>
               <span class="absolute top-0 left-0 h-full w-px bg-gold/40"></span>
             </div>
-            <div class="absolute bottom-4 right-4 w-6 h-6 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 right-4 w-6 h-6 opacity-0 md:group-hover:opacity-100 group-[.touched]:opacity-100 transition-opacity duration-500">
               <span class="absolute bottom-0 right-0 w-full h-px bg-gold/40"></span>
               <span class="absolute bottom-0 right-0 h-full w-px bg-gold/40"></span>
             </div>
 
             <!-- Caption -->
-            <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 md:group-[.touched]:translate-y-0 transition-transform duration-500 ease-out">
               <span class="font-display text-xs tracking-[0.15em] text-off-white/70">
                 {image.alt}
               </span>
@@ -102,5 +102,21 @@ const { content, style } = gallery;
       opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.1,
       scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
     });
+  });
+
+  // Touch interactions for mobile devices
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach((item) => {
+    item.addEventListener('touchstart', () => {
+      item.classList.add('touched');
+    }, { passive: true });
+    item.addEventListener('touchend', () => {
+      setTimeout(() => {
+        item.classList.remove('touched');
+      }, 250);
+    }, { passive: true });
+    item.addEventListener('touchcancel', () => {
+      item.classList.remove('touched');
+    }, { passive: true });
   });
 </script>

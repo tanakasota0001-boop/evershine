@@ -42,53 +42,55 @@ const { content, style } = services;
             data-service-index={index}
           >
             <!-- Image Background -->
-            <div class="relative aspect-[4/3] md:aspect-[3/2] overflow-hidden">
+            <div class="relative aspect-[5/4] md:aspect-[3/2] overflow-hidden">
               <Image
                 src={service.image}
                 alt={service.titleJp}
-                class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110 group-[.touched]:scale-110"
                 widths={[400, 640, 800]}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 quality={80}
                 loading="lazy"
               />
               <!-- Overlay Gradient -->
-              <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-700"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/65 to-transparent opacity-80 group-hover:opacity-95 group-[.touched]:opacity-95 transition-opacity duration-700"></div>
 
               <!-- Shine Effect -->
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.5s] ease-out"></div>
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-[.touched]:opacity-100 transition-opacity duration-700">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.04] to-transparent -translate-x-full group-hover:translate-x-full group-[.touched]:translate-x-full transition-transform duration-[1.5s] ease-out"></div>
               </div>
             </div>
 
             <!-- Content Overlay -->
-            <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 lg:p-10">
+            <div class="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8 lg:p-10">
               <!-- Number -->
-              <span class="font-display text-xs md:text-sm tracking-[0.3em] text-gold/75 mb-3 block transition-colors duration-500 group-hover:text-gold-light">
+              <span class="font-display text-xs md:text-sm tracking-[0.3em] text-gold mb-1.5 block transition-colors duration-500 group-hover:text-gold-light group-[.touched]:text-gold-light">
                 {service.number}
               </span>
 
               <!-- Title English -->
-              <h3 class={`font-display ${style.cardTitleSize} font-light tracking-[0.08em] text-off-white mb-1.5 transition-all duration-500 group-hover:text-gold-light group-hover:-translate-y-1`}>
+              <h3 class={`font-display ${style.cardTitleSize} font-medium tracking-[0.08em] text-off-white mb-0.5 transition-all duration-500 group-hover:text-gold-light group-hover:-translate-y-1 group-[.touched]:text-gold-light group-[.touched]:-translate-y-1`}>
                 {service.title}
               </h3>
 
               <!-- Title Japanese -->
-              <span class="font-sans text-xs md:text-[13px] font-medium tracking-[0.12em] text-warm-gray mb-0 transition-colors duration-500 group-hover:text-off-white">
+              <span class="font-sans text-xs md:text-[13px] font-medium tracking-[0.12em] text-warm-gray mb-0 transition-colors duration-500 group-hover:text-off-white group-[.touched]:text-off-white">
                 {service.titleJp}
               </span>
 
-              <!-- Divider Line (Responsive: always visible on mobile, grows on hover) -->
-              <span class="w-8 h-px bg-gold/45 my-3 block transition-all duration-500 origin-left group-hover:w-16"></span>
+              <!-- Divider Line (Responsive: always visible on mobile, grows on hover/touch) -->
+              <span class="w-8 h-[2px] bg-gold my-2.5 block transition-all duration-500 origin-left group-hover:w-16 group-[.touched]:w-16"></span>
 
-              <!-- Description (always visible on mobile, hover-revealed on desktop) -->
-              <p class="font-sans text-xs md:text-sm font-light leading-relaxed text-off-white/60 md:text-off-white/0 max-w-xs mt-0 max-h-24 md:max-h-0 overflow-hidden transition-all duration-700 ease-out md:group-hover:text-off-white/60 md:group-hover:max-h-24">
-                {service.description}
-              </p>
+              <!-- Description Block (glassmorphic, high-contrast box always visible on mobile, hover/touch-revealed on desktop) -->
+              <div class="service-desc-container overflow-hidden max-w-xs">
+                <p class="font-sans text-[11px] sm:text-xs md:text-sm font-light leading-relaxed text-off-white/90 whitespace-pre-line">
+                  {service.description}
+                </p>
+              </div>
             </div>
 
             <!-- Bottom Border Accent -->
-            <div class="absolute bottom-0 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-700 ease-out"></div>
+            <div class="absolute bottom-0 left-0 w-0 h-px bg-gold group-hover:w-full group-[.touched]:w-full transition-all duration-700 ease-out"></div>
           </article>
         ))}
       </div>
@@ -98,6 +100,45 @@ const { content, style } = services;
   <!-- Decorative Line -->
   <div class="absolute top-0 left-6 md:left-12 lg:left-20 w-px h-full bg-gold/[0.04]"></div>
 </section>
+
+<style>
+  /* Mobile layout: always visible, styled box with gold border and dark backing */
+  .service-desc-container {
+    max-height: 120px;
+    opacity: 1;
+    margin-top: 0.5rem;
+    padding: 0.375rem 0.5rem 0.375rem 0.875rem;
+    border-left: 2px solid rgba(204, 166, 98, 0.5); /* gold/50 */
+    background-color: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(4px);
+    transition: all 0.5s ease-out;
+  }
+
+  /* Desktop layout: hidden initially, slides open on hover/touch */
+  @media (min-width: 768px) {
+    .service-desc-container {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      border-left-width: 0;
+      background-color: transparent;
+      backdrop-filter: none;
+    }
+
+    .service-card:hover .service-desc-container,
+    .service-card.touched .service-desc-container {
+      max-height: 120px;
+      opacity: 1;
+      margin-top: 0.75rem;
+      padding: 0.375rem 0.5rem 0.375rem 0.875rem;
+      border-left: 2px solid var(--color-gold);
+      background-color: rgba(10, 10, 10, 0.45);
+      backdrop-filter: blur(4px);
+    }
+  }
+</style>
 
 <script>
   import { gsap } from 'gsap';
@@ -146,5 +187,20 @@ const { content, style } = services;
         },
       }
     );
+  });
+
+  // Touch interactions for mobile devices
+  cards.forEach((card) => {
+    card.addEventListener('touchstart', () => {
+      card.classList.add('touched');
+    }, { passive: true });
+    card.addEventListener('touchend', () => {
+      setTimeout(() => {
+        card.classList.remove('touched');
+      }, 250);
+    }, { passive: true });
+    card.addEventListener('touchcancel', () => {
+      card.classList.remove('touched');
+    }, { passive: true });
   });
 </script>
