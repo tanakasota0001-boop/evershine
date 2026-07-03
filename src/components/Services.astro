@@ -81,9 +81,9 @@ const { content, style } = services;
               <!-- Divider Line (Responsive: always visible on mobile, grows on hover/touch) -->
               <span class="w-8 h-[2px] bg-gold my-2.5 block transition-all duration-500 origin-left group-hover:w-16 group-[.touched]:w-16"></span>
 
-              <!-- Description Block (glassmorphic, high-contrast box always visible on mobile, hover/touch-revealed on desktop) -->
+              <!-- Description Block (always visible on mobile, hover/touch-revealed on desktop) -->
               <div class="service-desc-container overflow-hidden max-w-xs">
-                <p class="font-sans text-[11px] sm:text-xs md:text-sm font-light leading-relaxed text-off-white/90 whitespace-pre-line">
+                <p class="font-sans text-[11px] sm:text-xs md:text-sm font-light leading-relaxed text-off-white/70 transition-colors duration-500 group-hover:text-off-white/95 group-[.touched]:text-off-white/95 whitespace-pre-line">
                   {service.description}
                 </p>
               </div>
@@ -102,15 +102,11 @@ const { content, style } = services;
 </section>
 
 <style>
-  /* Mobile layout: always visible, styled box with gold border and dark backing */
+  /* Mobile layout: always visible, clean text block */
   .service-desc-container {
     max-height: 120px;
     opacity: 1;
     margin-top: 0.5rem;
-    padding: 0.375rem 0.5rem 0.375rem 0.875rem;
-    border-left: 2px solid rgba(204, 166, 98, 0.5); /* gold/50 */
-    background-color: rgba(10, 10, 10, 0.45);
-    backdrop-filter: blur(4px);
     transition: all 0.5s ease-out;
   }
 
@@ -120,11 +116,6 @@ const { content, style } = services;
       max-height: 0;
       opacity: 0;
       margin-top: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      border-left-width: 0;
-      background-color: transparent;
-      backdrop-filter: none;
     }
 
     .service-card:hover .service-desc-container,
@@ -132,10 +123,6 @@ const { content, style } = services;
       max-height: 120px;
       opacity: 1;
       margin-top: 0.75rem;
-      padding: 0.375rem 0.5rem 0.375rem 0.875rem;
-      border-left: 2px solid var(--color-gold);
-      background-color: rgba(10, 10, 10, 0.45);
-      backdrop-filter: blur(4px);
     }
   }
 </style>
