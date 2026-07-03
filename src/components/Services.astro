@@ -78,8 +78,8 @@ const { content, style } = services;
                 {service.titleJp}
               </span>
 
-              <!-- Description (revealed on hover) -->
-              <p class="font-sans text-xs md:text-sm font-light leading-relaxed text-off-white/0 max-w-xs mt-0 max-h-0 overflow-hidden transition-all duration-700 ease-out group-hover:text-off-white/70 group-hover:mt-4 group-hover:max-h-24">
+              <!-- Description (always visible on mobile, hover-revealed on desktop) -->
+              <p class="font-sans text-xs md:text-sm font-light leading-relaxed text-off-white/75 md:text-off-white/0 max-w-xs mt-3 md:mt-0 max-h-24 md:max-h-0 overflow-hidden transition-all duration-700 ease-out md:group-hover:text-off-white/75 md:group-hover:mt-4 md:group-hover:max-h-24">
                 {service.description}
               </p>
             </div>
