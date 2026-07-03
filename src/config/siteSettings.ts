@@ -119,7 +119,7 @@ export const siteSettings = {
       /** コンテンツの配置 (text-left: 左寄せ, text-center: 中央寄せ, text-right: 右寄せ) */
       textAlign: "text-left",
       /** 下部の余白調整 (Tailwindクラス) */
-      paddingBottom: "pb-12 md:pb-28 lg:pb-32",
+      paddingBottom: "pb-0 md:pb-28 lg:pb-32",
       /** 最大幅 (Tailwindクラス。コンテンツの広がり具合を調整) */
       maxWidth: "max-w-5xl",
       /** 1行目の文字サイズ (Tailwindクラス) */
