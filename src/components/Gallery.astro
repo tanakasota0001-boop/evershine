@@ -40,7 +40,7 @@ const { content, style } = gallery;
         {content.images.map((image, index) => (
           <div
             class:list={[
-              'gallery-item group relative overflow-hidden cursor-pointer',
+              'gallery-item group relative overflow-hidden cursor-pointer transition-all duration-300 active:scale-[0.98] active:brightness-95',
               image.span,
             ]}
             data-gallery-index={index}

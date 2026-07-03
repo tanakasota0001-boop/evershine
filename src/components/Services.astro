@@ -38,7 +38,7 @@ const { content, style } = services;
       <div class={`grid ${style.gridCols} gap-[1px] bg-off-white/[0.03]`}>
         {content.items.map((service, index) => (
           <article
-            class="service-card group relative overflow-hidden bg-dark cursor-pointer"
+            class="service-card group relative overflow-hidden bg-dark cursor-pointer transition-all duration-300 active:scale-[0.98] active:brightness-95"
             data-service-index={index}
           >
             <!-- Image Background -->
@@ -78,8 +78,11 @@ const { content, style } = services;
                 {service.titleJp}
               </span>
 
+              <!-- Divider Line (Responsive: always visible on mobile, grows on hover) -->
+              <span class="w-8 h-px bg-gold/45 my-3 block transition-all duration-500 origin-left group-hover:w-16"></span>
+
               <!-- Description (always visible on mobile, hover-revealed on desktop) -->
-              <p class="font-sans text-xs md:text-sm font-light leading-relaxed text-off-white/75 md:text-off-white/0 max-w-xs mt-3 md:mt-0 max-h-24 md:max-h-0 overflow-hidden transition-all duration-700 ease-out md:group-hover:text-off-white/75 md:group-hover:mt-4 md:group-hover:max-h-24">
+              <p class="font-sans text-xs md:text-sm font-light leading-relaxed text-off-white/60 md:text-off-white/0 max-w-xs mt-0 max-h-24 md:max-h-0 overflow-hidden transition-all duration-700 ease-out md:group-hover:text-off-white/60 md:group-hover:max-h-24">
                 {service.description}
               </p>
             </div>
