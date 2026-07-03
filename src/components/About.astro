@@ -1,15 +1,19 @@
 ---
+import { siteSettings } from '../config/siteSettings';
+
+const { about } = siteSettings;
+const { content, style } = about;
 ---
 
-<section id="about" class="relative py-28 md:py-40 lg:py-52 overflow-hidden">
+<section id="about" class={`relative ${style.paddingY} overflow-hidden`}>
   <!-- Background Ornamental Elements -->
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 
   <!-- Large Background "Since" Text -->
   <div class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-[10%] select-none pointer-events-none">
-    <span class="font-display text-[clamp(8rem,22vw,20rem)] font-light text-off-white/[0.02] leading-none tracking-[0.05em] italic">
-      1990
+    <span class={`${style.bgYearStyle} leading-none tracking-[0.05em] italic`}>
+      {content.backgroundYear}
     </span>
   </div>
 
@@ -19,16 +23,18 @@
       <div class="about-reveal flex items-center gap-3 mb-16 md:mb-24">
         <span class="w-10 md:w-14 h-px bg-gold/50"></span>
         <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-          About Us
+          {content.sectionLabel}
         </span>
       </div>
 
       <!-- Main Editorial Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class={`grid ${style.gridCols} gap-12 lg:gap-20`}>
         <!-- Left Column: Main Heading -->
-        <div class="lg:col-span-5">
-          <h2 class="about-reveal font-display text-[clamp(1.6rem,3.5vw,3rem)] font-light leading-[1.25] tracking-[0.02em] text-off-white">
-            永く選ばれ続ける<br/>施工品質
+        <div class={style.leftColSpan}>
+          <h2 class={`about-reveal font-display ${style.headingSize} font-light leading-[1.25] tracking-[0.02em] text-off-white`}>
+            {content.heading.split('\n').map((line, idx) => (
+              idx > 0 ? <><br />{line}</> : line
+            ))}
           </h2>
 
           <!-- Classic Ornamental Divider -->
@@ -40,40 +46,33 @@
 
           <!-- Since Badge -->
           <div class="about-reveal">
-            <span class="font-display text-xs tracking-[0.3em] text-gold/40 uppercase block mb-1">Established</span>
+            <span class="font-display text-xs tracking-[0.3em] text-gold/40 uppercase block mb-1">{content.sinceLabel}</span>
             <span class="font-display text-[clamp(2.5rem,5vw,4rem)] font-light text-off-white/15 italic leading-none tracking-[0.05em]">
-              since 1990
+              {content.sinceYear}
             </span>
           </div>
         </div>
 
         <!-- Right Column: Body Text -->
-        <div class="lg:col-span-7 lg:pt-4">
-          <div class="about-reveal">
-            <p class="font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] text-off-white/55">
-              EVERSHINEは30年以上にわたり、ガラスコーティング・セラミックコーティングを中心に、
-              数多くの車両へ施工を行ってきました。
-            </p>
-          </div>
-
-          <div class="about-reveal mt-6 md:mt-8">
-            <p class="font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] text-off-white/55">
-              ポルシェやアウディをはじめとしたメーカーとの取引実績もあり、輸入車・国産車を問わず、
-              幅広い車種に対応しています。
-            </p>
-          </div>
-
-          <div class="about-reveal mt-6 md:mt-8">
-            <p class="font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] text-off-white/70">
-              一台一台丁寧に仕上げること。<br/>
-              それが私たちの変わらないこだわりです。
-            </p>
-          </div>
+        <div class={`${style.rightColSpan} lg:pt-4`}>
+          {content.paragraphs.map((p, index) => {
+            const isLast = index === content.paragraphs.length - 1;
+            const pClass = isLast ? style.highlightTextColor : style.textColor;
+            return (
+              <div class="about-reveal mt-6 first:mt-0 md:mt-8 md:first:mt-0">
+                <p class={`font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] ${pClass}`}>
+                  {p.split('\n').map((line, i) => (
+                    i > 0 ? <><br />{line}</> : line
+                  ))}
+                </p>
+              </div>
+            );
+          })}
 
           <!-- Signature-style ending -->
           <div class="about-reveal mt-12 md:mt-16 flex items-center gap-4">
             <span class="w-12 h-px bg-gold/20"></span>
-            <span class="font-display text-xs tracking-[0.2em] text-gold/35 italic">EVERSHINE</span>
+            <span class="font-display text-xs tracking-[0.2em] text-gold/35 italic">{content.signature}</span>
           </div>
         </div>
       </div>

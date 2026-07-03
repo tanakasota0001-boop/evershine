@@ -1,50 +1,32 @@
 ---
-const faqs = [
-  {
-    question: 'コーティングの施工期間はどれくらいですか？',
-    answer: 'お車の状態やコーティングの種類によりますが、通常2〜5日間のお預かりとなります。セラミックコーティングの場合は、硬化時間を含め5〜7日間をいただく場合がございます。',
-  },
-  {
-    question: '施工後のメンテナンスは必要ですか？',
-    answer: '定期的な洗車と、年に1〜2回のメンテナンスをお勧めしています。メンテナンスサービスもご用意しておりますので、お気軽にご相談ください。コーティングの効果を長期間維持するために重要です。',
-  },
-  {
-    question: '新車でもコーティングは必要ですか？',
-    answer: 'はい、新車の状態が最もコーティングに適しています。納車直後に施工することで、塗装面を最高の状態で保護できます。新車割引もご用意しておりますので、ぜひご検討ください。',
-  },
-  {
-    question: '輸入車にも対応していますか？',
-    answer: 'はい、ポルシェ・アウディ・BMWなど各メーカーとの取引実績がございます。輸入車特有の塗装特性を理解した上で、最適な施工方法をご提案いたします。',
-  },
-  {
-    question: '代車の用意はありますか？',
-    answer: 'はい、施工期間中の代車をご用意しております。ご予約時にお申し付けください。台数に限りがございますので、早めのご予約をお勧めいたします。',
-  },
-];
+import { siteSettings } from '../config/siteSettings';
+
+const { faq } = siteSettings;
+const { content, style } = faq;
 ---
 
-<section id="faq" class="relative py-28 md:py-40 lg:py-48 overflow-hidden">
+<section id="faq" class={`relative ${style.paddingY} overflow-hidden`}>
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 
   <div class="px-6 md:px-12 lg:px-20">
-    <div class="max-w-4xl mx-auto">
+    <div class={`${style.maxWidth} mx-auto`}>
       <!-- Section Header -->
       <div class="text-center mb-16 md:mb-24">
         <div class="faq-reveal flex items-center justify-center gap-3 mb-5">
           <span class="w-10 md:w-14 h-px bg-gold/50"></span>
           <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-            FAQ
+            {content.sectionLabel}
           </span>
           <span class="w-10 md:w-14 h-px bg-gold/50"></span>
         </div>
         <h2 class="faq-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-          よくあるご質問
+          {content.heading}
         </h2>
       </div>
 
       <!-- FAQ Accordion -->
       <div class="faq-list space-y-0">
-        {faqs.map((faq, index) => (
+        {content.items.map((item, index) => (
           <div class="faq-item group border-t border-gold/10 last:border-b" data-faq-index={index}>
             <button
               class="faq-trigger w-full flex items-start justify-between py-6 md:py-8 text-left cursor-pointer"
@@ -57,7 +39,7 @@ const faqs = [
                 </span>
                 {/* Question */}
                 <span class="font-sans text-sm md:text-[15px] font-light tracking-[0.03em] text-off-white/75 leading-[1.7]">
-                  {faq.question}
+                  {item.question}
                 </span>
               </div>
               {/* Toggle Icon */}
@@ -71,7 +53,7 @@ const faqs = [
             <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-out">
               <div class="pb-6 md:pb-8 pl-8 md:pl-14">
                 <p class="font-sans text-xs md:text-sm font-light leading-[2] tracking-[0.03em] text-off-white/40 max-w-2xl">
-                  {faq.answer}
+                  {item.answer}
                 </p>
               </div>
             </div>

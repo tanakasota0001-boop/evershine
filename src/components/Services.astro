@@ -1,62 +1,27 @@
 ---
 import { Image } from 'astro:assets';
-import glassCoatingImg from '../images/service-glass-coating.png';
-import ceramicImg from '../images/service-ceramic.png';
-import ppfImg from '../images/service-ppf.png';
-import privacyImg from '../images/service-privacy.png';
+import { siteSettings } from '../config/siteSettings';
 
-const services = [
-  {
-    id: 'glass-coating',
-    number: '01',
-    title: 'Glass Coating',
-    titleJp: 'ガラスコーティング',
-    description: '無機質ガラス被膜が、深い艶と強固な保護層を形成。紫外線・酸性雨から愛車を守ります。',
-    image: glassCoatingImg,
-  },
-  {
-    id: 'ceramic-coating',
-    number: '02',
-    title: 'Ceramic Coating',
-    titleJp: 'セラミックコーティング',
-    description: '最高硬度のセラミック被膜が、圧倒的な耐久性と美しい光沢を長期間維持します。',
-    image: ceramicImg,
-  },
-  {
-    id: 'protection-film',
-    number: '03',
-    title: 'Protection Film',
-    titleJp: 'プロテクションフィルム',
-    description: '透明フィルムが飛び石・擦り傷から塗装を物理的にガード。自己修復機能付き。',
-    image: ppfImg,
-  },
-  {
-    id: 'privacy-glass',
-    number: '04',
-    title: 'Privacy Glass',
-    titleJp: 'プライバシーガラス',
-    description: 'プロ仕様のウィンドウフィルムで、プライバシー保護と紫外線カットを両立します。',
-    image: privacyImg,
-  },
-];
+const { services } = siteSettings;
+const { content, style } = services;
 ---
 
-<section id="services" class="relative py-24 md:py-36 lg:py-44 overflow-hidden">
+<section id="services" class={`relative ${style.paddingY} overflow-hidden`}>
   <!-- Section Header -->
   <div class="px-6 md:px-12 lg:px-20 mb-16 md:mb-24 lg:mb-32">
     <div class="max-w-7xl mx-auto">
       <div class="service-reveal flex items-center gap-3 mb-5">
         <span class="w-10 md:w-14 h-px bg-gold/50"></span>
         <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-          Our Services
+          {content.sectionLabel}
         </span>
       </div>
       <h2 class="service-reveal">
-        <span class="block font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-          最高品質の施工で、
+        <span class={`block font-display ${style.headingSize} font-light tracking-[0.02em] text-off-white leading-[1.15]`}>
+          {content.headingLine1}
         </span>
-        <span class="block font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white/60 leading-[1.15] mt-1">
-          愛車を美しく守る。
+        <span class={`block font-display ${style.headingSize} font-light tracking-[0.02em] text-off-white/60 leading-[1.15] mt-1`}>
+          {content.headingLine2}
         </span>
       </h2>
     </div>
@@ -65,8 +30,8 @@ const services = [
   <!-- Services Grid -->
   <div class="px-6 md:px-12 lg:px-20">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-off-white/[0.03]">
-        {services.map((service, index) => (
+      <div class={`grid ${style.gridCols} gap-[1px] bg-off-white/[0.03]`}>
+        {content.items.map((service, index) => (
           <article
             class="service-card group relative overflow-hidden bg-dark cursor-pointer"
             data-service-index={index}
@@ -99,7 +64,7 @@ const services = [
               </span>
 
               <!-- Title English -->
-              <h3 class="font-display text-xl md:text-2xl lg:text-3xl font-light tracking-[0.05em] text-off-white mb-1 transition-transform duration-500 group-hover:-translate-y-1">
+              <h3 class={`font-display ${style.cardTitleSize} font-light tracking-[0.05em] text-off-white mb-1 transition-transform duration-500 group-hover:-translate-y-1`}>
                 {service.title}
               </h3>
 

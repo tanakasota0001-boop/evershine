@@ -1,23 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import gallery01 from '../images/gallery-01.png';
-import gallery02 from '../images/gallery-02.png';
-import gallery03 from '../images/gallery-03.png';
-import gallery04 from '../images/gallery-04.png';
-import gallery05 from '../images/gallery-05.png';
-import gallery06 from '../images/gallery-06.png';
+import { siteSettings } from '../config/siteSettings';
 
-const images = [
-  { src: gallery01, alt: 'ガラスコーティング施工後のポルシェ', span: 'lg:col-span-2 lg:row-span-2' },
-  { src: gallery02, alt: 'セラミックコーティングのディテール', span: 'lg:col-span-1' },
-  { src: gallery03, alt: '施工後のメルセデスAMG', span: 'lg:col-span-1' },
-  { src: gallery04, alt: '水滴が輝くコーティング表面', span: 'lg:col-span-1' },
-  { src: gallery05, alt: '施工スタジオでのアウディ', span: 'lg:col-span-1 lg:row-span-2' },
-  { src: gallery06, alt: '撥水効果のクローズアップ', span: 'lg:col-span-1' },
-];
+const { gallery } = siteSettings;
+const { content, style } = gallery;
 ---
 
-<section id="gallery" class="relative py-24 md:py-36 lg:py-44 overflow-hidden bg-warm-black">
+<section id="gallery" class={`relative ${style.paddingY} overflow-hidden bg-warm-black`}>
   <!-- Top Ornamental Border -->
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 
@@ -29,24 +18,24 @@ const images = [
           <div class="gallery-reveal flex items-center gap-3 mb-5">
             <span class="w-10 md:w-14 h-px bg-gold/50"></span>
             <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-              Gallery
+              {content.sectionLabel}
             </span>
           </div>
           <h2 class="gallery-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-            施工実績
+            {content.heading}
           </h2>
         </div>
 
         <!-- Classic decorative element -->
         <div class="gallery-reveal hidden md:flex items-center gap-3 mt-6 md:mt-0">
           <span class="w-16 h-px bg-gold/15"></span>
-          <span class="font-display text-[10px] tracking-[0.25em] text-gold/25 italic">Selected Works</span>
+          <span class="font-display text-[10px] tracking-[0.25em] text-gold/25 italic">{content.sideLabel}</span>
         </div>
       </div>
 
       <!-- Masonry-style Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 auto-rows-[280px] md:auto-rows-[320px]">
-        {images.map((image, index) => (
+      <div class={`grid ${style.gridCols} gap-3 md:gap-4 ${style.rowHeight}`}>
+        {content.images.map((image, index) => (
           <div
             class:list={[
               'gallery-item group relative overflow-hidden cursor-pointer',

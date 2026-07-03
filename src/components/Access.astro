@@ -1,9 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import shopExterior from '../images/shop-exterior.png';
+import { siteSettings } from '../config/siteSettings';
+
+const { access, general } = siteSettings;
+const { content, style } = access;
 ---
 
-<section id="access" class="relative py-28 md:py-40 lg:py-48 overflow-hidden bg-warm-black">
+<section id="access" class={`relative ${style.paddingY} overflow-hidden bg-warm-black`}>
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 
   <div class="px-6 md:px-12 lg:px-20">
@@ -13,23 +16,23 @@ import shopExterior from '../images/shop-exterior.png';
         <div class="access-reveal flex items-center justify-center gap-3 mb-5">
           <span class="w-10 md:w-14 h-px bg-gold/50"></span>
           <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-            Access
+            {content.sectionLabel}
           </span>
           <span class="w-10 md:w-14 h-px bg-gold/50"></span>
         </div>
         <h2 class="access-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-          アクセス
+          {content.heading}
         </h2>
       </div>
 
       <!-- Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <div class={`grid ${style.gridCols} gap-12 lg:gap-16`}>
         <!-- Left: Map + Photo -->
         <div class="access-reveal space-y-4">
           <!-- Google Map -->
-          <div class="relative aspect-[4/3] overflow-hidden">
+          <div class={`relative ${style.mapAspect} overflow-hidden`}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.1!2d137.94!3d36.12!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5aGp5bC7!5e0!3m2!1sja!2sjp!4v1234567890"
+              src={content.googleMapsUrl}
               width="100%"
               height="100%"
               style="border:0;"
@@ -37,7 +40,7 @@ import shopExterior from '../images/shop-exterior.png';
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               class="absolute inset-0 w-full h-full grayscale-[30%] contrast-[1.1]"
-              title="EVERSHINEの所在地"
+              title={content.mapTitle}
             ></iframe>
             {/* Corner ornaments */}
             <div class="absolute top-3 left-3 w-5 h-5 pointer-events-none">
@@ -51,10 +54,10 @@ import shopExterior from '../images/shop-exterior.png';
           </div>
 
           <!-- Shop Exterior Photo -->
-          <div class="relative aspect-[16/9] overflow-hidden">
+          <div class={`relative ${style.shopPhotoAspect} overflow-hidden`}>
             <Image
-              src={shopExterior}
-              alt="EVERSHINE 外観"
+              src={content.shopImage}
+              alt={content.shopImageAlt}
               class="w-full h-full object-cover"
               widths={[400, 640, 800]}
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -70,11 +73,11 @@ import shopExterior from '../images/shop-exterior.png';
           <!-- Company Name -->
           <div class="mb-10">
             <span class="font-display text-2xl md:text-3xl tracking-[0.15em] text-off-white font-light">
-              EVERSHINE
+              {general.companyName}
             </span>
             <div class="flex items-center gap-3 mt-3">
               <span class="w-8 h-px bg-gold/25"></span>
-              <span class="font-display text-[9px] tracking-[0.25em] text-gold/30 italic">Est. 1990</span>
+              <span class="font-display text-[9px] tracking-[0.25em] text-gold/30 italic">{general.estYear}</span>
             </div>
           </div>
 
@@ -87,8 +90,8 @@ import shopExterior from '../images/shop-exterior.png';
               </span>
               <div>
                 <p class="font-sans text-sm font-light tracking-[0.03em] text-off-white/60 leading-[1.8]">
-                  〒399-0705<br/>
-                  長野県塩尻市広丘堅石2146-161
+                  {general.zipCode}<br/>
+                  {general.address}
                 </p>
               </div>
             </div>
@@ -103,10 +106,10 @@ import shopExterior from '../images/shop-exterior.png';
               </span>
               <div>
                 <a
-                  href="tel:0263532276"
+                  href={general.phoneNumberRaw}
                   class="font-display text-lg md:text-xl tracking-[0.1em] text-off-white/70 hover:text-off-white transition-colors duration-300"
                 >
-                  0263-53-2276
+                  {general.phoneNumber}
                 </a>
               </div>
             </div>
@@ -121,10 +124,10 @@ import shopExterior from '../images/shop-exterior.png';
               </span>
               <div>
                 <p class="font-sans text-sm font-light tracking-[0.03em] text-off-white/60">
-                  8:00 〜 18:00
+                  {general.hours}
                 </p>
                 <p class="font-sans text-xs font-light tracking-[0.03em] text-off-white/30 mt-1">
-                  日曜定休
+                  {general.holiday}
                 </p>
               </div>
             </div>
@@ -136,14 +139,14 @@ import shopExterior from '../images/shop-exterior.png';
           <!-- Classic Badge -->
           <div class="mt-12 flex items-center gap-4">
             <div class="w-12 h-12 border border-gold/15 rounded-full flex items-center justify-center">
-              <span class="font-display text-[10px] tracking-[0.15em] text-gold/35">ES</span>
+              <span class="font-display text-[10px] tracking-[0.15em] text-gold/35">{content.badgeInitials}</span>
             </div>
             <div>
               <span class="block font-display text-xs tracking-[0.15em] text-off-white/30">
-                Glass Coating Specialist
+                {content.badgeLabel1}
               </span>
               <span class="block font-display text-[10px] tracking-[0.1em] text-gold/25 italic mt-0.5">
-                Shiojiri, Nagano — Japan
+                {content.badgeLabel2}
               </span>
             </div>
           </div>
