@@ -34,47 +34,46 @@ const { content, style } = hero;
 
   <!-- Content -->
   <div
-    class={`relative z-10 h-full flex flex-col justify-end ${style.paddingBottom} px-6 md:px-12 lg:px-20 ${style.textAlign === 'text-center' ? 'items-center' : style.textAlign === 'text-right' ? 'items-end' : ''}`}
+    class={`relative z-10 h-full flex flex-col justify-end ${style.paddingBottom} px-6 md:px-12 lg:px-20 ${style.textAlign === "text-center" ? "items-center" : style.textAlign === "text-right" ? "items-end" : ""}`}
   >
-    <!-- Vertical Side Label -->
-    <div
-      class="hidden lg:flex absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-4"
-    >
-      <span
-        class="font-display text-[10px] tracking-[0.3em] text-gold/25 uppercase writing-vertical"
-      >
-        {content.sideLabel}
-      </span>
-      <span class="w-px h-16 bg-gold/15"></span>
-    </div>
+
 
     <!-- Main Content: Asymmetric Left-Aligned -->
-    <div class={`${style.maxWidth} ${style.textAlign}`}>
-      <!-- Main Heading -->
-      <h1 class="mb-6 md:mb-8">
-        <span
-          id="hero-line-1"
-          class={`block font-display ${style.titleLine1Size} font-light leading-[1.1] tracking-[0.02em] ${style.titleColor} opacity-0`}
-        >
-          {content.line1}
-        </span>
-        <span
-          id="hero-line-2"
-          class={`block font-display ${style.titleLine2Size} font-light leading-[1.05] tracking-[0.02em] ${style.titleColor} mt-1 md:mt-2 opacity-0`}
-          data-highlight={content.highlightText}
-          data-highlight-class={style.highlightColor}
-        >
-          {content.line2}
-        </span>
-      </h1>
+    <div class={`${style.maxWidth} ${style.textAlign} flex items-stretch gap-6 md:gap-8`}>
+      <!-- Gold Vertical Accent Line -->
+      <div
+        id="hero-line-accent"
+        class="w-px bg-gradient-to-b from-gold via-gold/40 to-transparent opacity-0 origin-top shrink-0"
+        style="transform: scaleY(0);"
+      ></div>
 
-      <!-- Sub Heading -->
-      <p
-        id="hero-sub"
-        class={`font-sans ${style.subtitleSize} font-light tracking-[0.08em] ${style.subtitleColor} max-w-md opacity-0 ${style.textAlign === 'text-center' ? 'mx-auto' : style.textAlign === 'text-right' ? 'ml-auto' : ''}`}
-      >
-        {content.subtitle}
-      </p>
+      <div>
+        <!-- Main Heading -->
+        <h1 class="mb-6 md:mb-8">
+          <span
+            id="hero-line-1"
+            class={`block font-display ${style.titleLine1Size} font-light leading-[1.1] tracking-[0.02em] ${style.titleColor} opacity-0`}
+          >
+            {content.line1}
+          </span>
+          <span
+            id="hero-line-2"
+            class={`block font-display ${style.titleLine2Size} font-light leading-[1.05] tracking-[0.02em] ${style.titleColor} mt-1 md:mt-2 opacity-0`}
+            data-highlight={content.highlightText}
+            data-highlight-class={style.highlightColor}
+          >
+            {content.line2}
+          </span>
+        </h1>
+
+        <!-- Sub Heading -->
+        <p
+          id="hero-sub"
+          class={`font-sans ${style.subtitleSize} font-light tracking-[0.08em] ${style.subtitleColor} max-w-lg opacity-0 ${style.textAlign === "text-center" ? "mx-auto" : style.textAlign === "text-right" ? "ml-auto" : ""}`}
+        >
+          {content.subtitle}
+        </p>
+      </div>
     </div>
   </div>
 
@@ -84,7 +83,7 @@ const { content, style } = hero;
     class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
   >
     <span
-      class="font-display text-[9px] tracking-[0.3em] text-gold/30 uppercase"
+      class="font-display text-[9px] tracking-[0.3em] text-gold/70 uppercase"
       >{content.scrollText}</span
     >
     <div class="w-px h-10 relative overflow-hidden">
@@ -152,15 +151,18 @@ const { content, style } = hero;
       const text1 = line1.textContent || "";
       line1.innerHTML = "";
       line1.style.opacity = "1";
-      text1.trim().split("").forEach((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.style.display = "inline-block";
-        span.style.opacity = "0";
-        span.style.transform = "translateY(40px)";
-        if (char === " ") span.style.width = "0.3em";
-        line1.appendChild(span);
-      });
+      text1
+        .trim()
+        .split("")
+        .forEach((char) => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.display = "inline-block";
+          span.style.opacity = "0";
+          span.style.transform = "translateY(40px)";
+          if (char === " ") span.style.width = "0.3em";
+          line1.appendChild(span);
+        });
 
       tl.to(
         line1.children,
@@ -180,23 +182,27 @@ const { content, style } = hero;
     if (line2) {
       const text2 = line2.textContent || "";
       const highlight = line2.getAttribute("data-highlight") || "";
-      const highlightClass = line2.getAttribute("data-highlight-class") || "text-off-white/90";
+      const highlightClass =
+        line2.getAttribute("data-highlight-class") || "text-off-white/90";
       line2.innerHTML = "";
       line2.style.opacity = "1";
-      text2.trim().split("").forEach((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.style.display = "inline-block";
-        span.style.opacity = "0";
-        span.style.transform = "translateY(40px)";
-        if (char === " ") span.style.width = "0.3em";
-        if (highlight && highlight.includes(char)) {
-          highlightClass.split(" ").forEach((cls) => {
-            if (cls) span.classList.add(cls);
-          });
-        }
-        line2.appendChild(span);
-      });
+      text2
+        .trim()
+        .split("")
+        .forEach((char) => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.display = "inline-block";
+          span.style.opacity = "0";
+          span.style.transform = "translateY(40px)";
+          if (char === " ") span.style.width = "0.3em";
+          if (highlight && highlight.includes(char)) {
+            highlightClass.split(" ").forEach((cls) => {
+              if (cls) span.classList.add(cls);
+            });
+          }
+          line2.appendChild(span);
+        });
 
       tl.to(
         line2.children,
@@ -210,6 +216,18 @@ const { content, style } = hero;
         1.0,
       );
     }
+
+    // Gold Vertical Accent Line
+    tl.to(
+      "#hero-line-accent",
+      {
+        opacity: 1,
+        scaleY: 1,
+        duration: 1.2,
+        ease: "power3.out",
+      },
+      0.5
+    );
 
     // Sub heading
     tl.to(

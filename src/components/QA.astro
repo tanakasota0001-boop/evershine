@@ -12,16 +12,18 @@ const { content, style } = faq;
     <div class={`${style.maxWidth} mx-auto`}>
       <!-- Section Header -->
       <div class="text-center mb-16 md:mb-24">
-        <div class="faq-reveal flex items-center justify-center gap-3 mb-5">
-          <span class="w-10 md:w-14 h-px bg-gold/50"></span>
-          <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-            {content.sectionLabel}
-          </span>
-          <span class="w-10 md:w-14 h-px bg-gold/50"></span>
+        <div class="faq-reveal flex items-center justify-center gap-6">
+          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
+          <div class="flex flex-col items-center gap-1.5">
+            <span class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.05em] text-off-white leading-tight">
+              {content.sectionLabelJa}
+            </span>
+            <span class="font-display text-[10px] md:text-xs tracking-[0.35em] text-off-white/40 uppercase leading-none">
+              {content.sectionLabel}
+            </span>
+          </div>
+          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
         </div>
-        <h2 class="faq-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-          {content.heading}
-        </h2>
       </div>
 
       <!-- FAQ Accordion -->
@@ -34,25 +36,25 @@ const { content, style } = faq;
             >
               <div class="flex items-start gap-4 md:gap-6 pr-4">
                 {/* Number */}
-                <span class="font-display text-[11px] tracking-[0.2em] text-gold/30 mt-0.5 shrink-0">
+                <span class="font-display text-sm md:text-base tracking-[0.2em] text-gold/70 mt-0.5 shrink-0">
                   Q.{String(index + 1).padStart(2, '0')}
                 </span>
                 {/* Question */}
-                <span class="font-sans text-sm md:text-[15px] font-light tracking-[0.03em] text-off-white/75 leading-[1.7]">
+                <span class="font-sans text-sm md:text-[15px] font-light tracking-[0.03em] text-off-white/85 leading-[1.7]">
                   {item.question}
                 </span>
               </div>
               {/* Toggle Icon */}
-              <span class="faq-icon relative w-5 h-5 shrink-0 mt-1">
-                <span class="absolute top-1/2 left-0 w-full h-px bg-gold/40 -translate-y-1/2 transition-transform duration-300"></span>
-                <span class="absolute top-1/2 left-0 w-full h-px bg-gold/40 -translate-y-1/2 rotate-90 transition-transform duration-300 origin-center"></span>
+              <span class="faq-icon relative w-6 h-6 shrink-0 mt-1">
+                <span class="absolute top-1/2 left-0 w-full h-[2px] bg-gold group-hover:bg-gold-light -translate-y-1/2 transition-all duration-300"></span>
+                <span class="absolute top-1/2 left-0 w-full h-[2px] bg-gold group-hover:bg-gold-light -translate-y-1/2 rotate-90 transition-all duration-300 origin-center"></span>
               </span>
             </button>
 
             {/* Answer */}
             <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-out">
               <div class="pb-6 md:pb-8 pl-8 md:pl-14">
-                <p class="font-sans text-xs md:text-sm font-light leading-[2] tracking-[0.03em] text-off-white/40 max-w-2xl">
+                <p class="font-sans text-xs md:text-sm font-light leading-[2] tracking-[0.03em] text-off-white/70 max-w-2xl">
                   {item.answer}
                 </p>
               </div>

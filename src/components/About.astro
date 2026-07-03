@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { siteSettings } from '../config/siteSettings';
 
 const { about } = siteSettings;
@@ -10,67 +11,207 @@ const { content, style } = about;
   <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
   <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 
-  <!-- Large Background "Since" Text -->
-  <div class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-[10%] select-none pointer-events-none">
-    <span class={`${style.bgYearStyle} leading-none tracking-[0.05em] italic`}>
-      {content.backgroundYear}
-    </span>
+  <!-- Large Background Icon Pattern (Gears) -->
+  <div class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-[15%] select-none pointer-events-none opacity-[0.09] text-gold">
+    <svg width="600" height="600" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.2" class="w-[300px] h-[300px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px]">
+      <!-- Outer Decorative Dial/Ring -->
+      <circle cx="110" cy="110" r="90" stroke-dasharray="1 4" stroke-width="1.0" class="opacity-60" />
+      <circle cx="110" cy="110" r="86" stroke-width="0.8" class="opacity-30" />
+
+      <!-- Large Gear -->
+      <g transform="translate(80, 80)">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0"
+          to="360"
+          dur="140s"
+          repeatCount="indefinite"
+          additive="sum"
+        />
+        <!-- Outer Rim -->
+        <circle cx="0" cy="0" r="37" />
+        <circle cx="0" cy="0" r="34" />
+        <!-- Inner Ring -->
+        <circle cx="0" cy="0" r="18" />
+        <!-- Center Pinion -->
+        <circle cx="0" cy="0" r="7" />
+        <circle cx="0" cy="0" r="3" />
+        
+        {/* Teeth */}
+        {Array.from({ length: 18 }).map((_, i) => {
+          const angle = (i * 360) / 18;
+          return (
+            <path
+              d="M -3.5 -37 L -2 -45 L 2 -45 L 3.5 -37 Z"
+              transform={`rotate(${angle})`}
+            />
+          );
+        })}
+        {/* Decorative rivets/holes inside the inner ring */}
+        {Array.from({ length: 6 }).map((_, i) => {
+          const angle = (i * 360) / 6;
+          return (
+            <circle cx="0" cy="-26" r="1.5" transform={`rotate(${angle})`} />
+          );
+        })}
+        {/* Curved elegant spokes */}
+        {Array.from({ length: 6 }).map((_, i) => {
+          const angle = (i * 360) / 6;
+          return (
+            <path d="M 0 -7 C 8 -15 8 -25 0 -34" transform={`rotate(${angle})`} />
+          );
+        })}
+      </g>
+      
+      <!-- Medium Interlocking Gear -->
+      <g transform="translate(144, 128)">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0"
+          to="-360"
+          dur="85s"
+          repeatCount="indefinite"
+          additive="sum"
+        />
+        <!-- Outer Rim -->
+        <circle cx="0" cy="0" r="25" />
+        <circle cx="0" cy="0" r="22" />
+        <!-- Center Pinion -->
+        <circle cx="0" cy="0" r="6" />
+        
+        {/* Teeth */}
+        {Array.from({ length: 12 }).map((_, i) => {
+          const angle = (i * 360) / 12 + 15; // offset
+          return (
+            <path
+              d="M -3 -25 L -2 -32 L 2 -32 L 3 -25 Z"
+              transform={`rotate(${angle})`}
+            />
+          );
+        })}
+        {/* Decorative holes */}
+        {Array.from({ length: 4 }).map((_, i) => {
+          const angle = (i * 360) / 4;
+          return (
+            <circle cx="0" cy="-14" r="1.2" transform={`rotate(${angle})`} />
+          );
+        })}
+        {/* Spokes */}
+        {Array.from({ length: 4 }).map((_, i) => {
+          const angle = (i * 360) / 4;
+          return (
+            <line x1="0" y1="-6" x2="0" y2="-22" transform={`rotate(${angle})`} />
+          );
+        })}
+      </g>
+
+      <!-- Smallest Third Gear -->
+      <g transform="translate(92, 142)">
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0"
+          to="360"
+          dur="50s"
+          repeatCount="indefinite"
+          additive="sum"
+        />
+        <!-- Outer Rim -->
+        <circle cx="0" cy="0" r="16" />
+        <circle cx="0" cy="0" r="14" />
+        <!-- Center Pinion -->
+        <circle cx="0" cy="0" r="4" />
+        
+        {/* Teeth */}
+        {Array.from({ length: 8 }).map((_, i) => {
+          const angle = (i * 360) / 8 + 22.5;
+          return (
+            <path
+              d="M -2.5 -16 L -1.5 -21 L 1.5 -21 L 2.5 -16 Z"
+              transform={`rotate(${angle})`}
+            />
+          );
+        })}
+        {/* Spokes */}
+        {Array.from({ length: 3 }).map((_, i) => {
+          const angle = (i * 360) / 3;
+          return (
+            <line x1="0" y1="-4" x2="0" y2="-14" transform={`rotate(${angle})`} />
+          );
+        })}
+      </g>
+    </svg>
   </div>
 
   <div class="px-6 md:px-12 lg:px-20">
     <div class="max-w-6xl mx-auto">
-      <!-- Section Label -->
-      <div class="about-reveal flex items-center gap-3 mb-16 md:mb-24">
-        <span class="w-10 md:w-14 h-px bg-gold/50"></span>
-        <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-          {content.sectionLabel}
-        </span>
+      <!-- Left-aligned Section Header -->
+      <div class="about-reveal flex items-center gap-4 mb-12 md:mb-16">
+        <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
+        <div class="flex flex-col gap-1.5">
+          <span class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.05em] text-off-white leading-tight">
+            {content.sectionLabelJa}
+          </span>
+          <span class="font-display text-[10px] md:text-xs tracking-[0.35em] text-off-white/40 uppercase leading-none">
+            {content.sectionLabel}
+          </span>
+        </div>
       </div>
 
       <!-- Main Editorial Layout -->
-      <div class={`grid ${style.gridCols} gap-12 lg:gap-20`}>
-        <!-- Left Column: Main Heading -->
-        <div class={style.leftColSpan}>
-          <h2 class={`about-reveal font-display ${style.headingSize} font-light leading-[1.25] tracking-[0.02em] text-off-white`}>
-            {content.heading.split('\n').map((line, idx) => (
-              idx > 0 ? <><br />{line}</> : line
-            ))}
-          </h2>
-
-          <!-- Classic Ornamental Divider -->
-          <div class="about-reveal flex items-center gap-4 my-8 md:my-12">
-            <span class="w-8 h-px bg-gold/30"></span>
-            <span class="font-display text-[10px] tracking-[0.3em] text-gold/30 italic">✦</span>
-            <span class="w-8 h-px bg-gold/30"></span>
-          </div>
-
-          <!-- Since Badge -->
-          <div class="about-reveal">
-            <span class="font-display text-xs tracking-[0.3em] text-gold/40 uppercase block mb-1">{content.sinceLabel}</span>
-            <span class="font-display text-[clamp(2.5rem,5vw,4rem)] font-light text-off-white/15 italic leading-none tracking-[0.05em]">
-              {content.sinceYear}
-            </span>
+      <div class={`grid ${style.gridCols} gap-12 lg:gap-20 items-center`}>
+        <!-- Left Column: Premium Detailing Studio Image -->
+        <div class={`${style.leftColSpan} about-reveal relative group overflow-hidden rounded-sm border border-gold/10 bg-warm-black/40 p-2 md:p-3`}>
+          <div class="relative overflow-hidden aspect-[4/5] w-full">
+            <Image
+              src={content.image}
+              alt={content.imageAlt}
+              class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+              widths={[400, 640, 800]}
+              sizes="(max-width: 768px) 100vw, 40vw"
+              quality={85}
+            />
+            <!-- Subtle overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent pointer-events-none"></div>
+            
+            <!-- Elegant gold corner ornaments -->
+            <div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold/40 pointer-events-none"></div>
+            <div class="absolute top-2 right-2 w-4 h-4 border-t border-r border-gold/40 pointer-events-none"></div>
+            <div class="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-gold/40 pointer-events-none"></div>
+            <div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold/40 pointer-events-none"></div>
           </div>
         </div>
 
-        <!-- Right Column: Body Text -->
-        <div class={`${style.rightColSpan} lg:pt-4`}>
-          {content.paragraphs.map((p, index) => {
-            const isLast = index === content.paragraphs.length - 1;
-            const pClass = isLast ? style.highlightTextColor : style.textColor;
-            return (
-              <div class="about-reveal mt-6 first:mt-0 md:mt-8 md:first:mt-0">
-                <p class={`font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] ${pClass}`}>
-                  {p.split('\n').map((line, i) => (
-                    i > 0 ? <><br />{line}</> : line
-                  ))}
-                </p>
-              </div>
-            );
-          })}
+        <!-- Right Column: Editorial Text & Headings -->
+        <div class={`${style.rightColSpan} flex flex-col justify-center lg:pt-0`}>
+
+
+          <!-- Main Heading -->
+          <h2 class={`about-reveal font-display ${style.headingSize} font-light leading-[1.3] tracking-[0.02em] text-gold mb-6 whitespace-pre-line`}>
+            {content.heading}
+          </h2>
+
+
+
+          <!-- Paragraphs -->
+          <div class="space-y-6">
+            {content.paragraphs.map((p, index) => {
+              const isLast = index === content.paragraphs.length - 1;
+              const pClass = isLast ? style.highlightTextColor : style.textColor;
+              return (
+                <div class="about-reveal">
+                  <p class={`font-sans text-sm md:text-[15px] font-light leading-[2.2] tracking-[0.04em] ${pClass} whitespace-pre-line`}>
+                    {p}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
 
           <!-- Signature-style ending -->
-          <div class="about-reveal mt-12 md:mt-16 flex items-center gap-4">
+          <div class="about-reveal mt-12 flex items-center gap-4">
             <span class="w-12 h-px bg-gold/20"></span>
             <span class="font-display text-xs tracking-[0.2em] text-gold/35 italic">{content.signature}</span>
           </div>

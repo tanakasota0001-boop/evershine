@@ -13,16 +13,18 @@ const { content, style } = whyUs;
     <div class="max-w-7xl mx-auto">
       <!-- Section Header -->
       <div class="text-center mb-20 md:mb-28">
-        <div class="whyus-reveal flex items-center justify-center gap-3 mb-5">
-          <span class="w-10 md:w-14 h-px bg-gold/50"></span>
-          <span class="font-display text-[10px] md:text-xs tracking-[0.4em] text-gold/40 uppercase">
-            {content.sectionLabel}
-          </span>
-          <span class="w-10 md:w-14 h-px bg-gold/50"></span>
+        <div class="whyus-reveal flex items-center justify-center gap-6">
+          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
+          <div class="flex flex-col items-center gap-1.5">
+            <span class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.05em] text-off-white leading-tight">
+              {content.sectionLabelJa}
+            </span>
+            <span class="font-display text-[10px] md:text-xs tracking-[0.35em] text-off-white/40 uppercase leading-none">
+              {content.sectionLabel}
+            </span>
+          </div>
+          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
         </div>
-        <h2 class="whyus-reveal font-display text-[clamp(1.8rem,4vw,3.5rem)] font-light tracking-[0.02em] text-off-white leading-[1.15]">
-          {content.heading}
-        </h2>
       </div>
 
       <!-- Strengths Grid -->
@@ -38,31 +40,47 @@ const { content, style } = whyUs;
             {index > 0 && (
               <div class="md:hidden absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent"></div>
             )}
+            {/* Icon */}
+            <div class="whyus-icon mb-4 flex justify-center text-gold/85">
+              {index === 0 && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 group-hover:scale-110 transition-transform duration-500">
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.47 13.5L19 21l-7-3-7 3 3.53-7.5" />
+                </svg>
+              )}
+              {index === 1 && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 group-hover:scale-110 transition-transform duration-500">
+                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 12 10s-6.7.6-8.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2" />
+                  <circle cx="7" cy="17" r="2" />
+                  <circle cx="17" cy="17" r="2" />
+                  <path d="M5 10l1.5-4.5C6.8 4.6 7.7 4 8.7 4h6.6c1 0 1.9.6 2.2 1.5L19 10" />
+                </svg>
+              )}
+              {index === 2 && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 group-hover:scale-110 transition-transform duration-500">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 11l2 2 4-4" />
+                </svg>
+              )}
+            </div>
 
-            {/* Large Number */}
-            <div class="mb-6">
-              <span class={`whyus-number font-display ${style.numberSize} font-light text-off-white/90 leading-none tracking-[0.02em]`}>
+            {/* Typographic Header: Large Number & Unit */}
+            <div class="mb-8 flex flex-col items-center">
+              <span class="whyus-number font-display text-[clamp(3.5rem,8vw,5.5rem)] font-light text-gold leading-none tracking-normal">
                 {item.number}
               </span>
-              <span class="block font-display text-[10px] tracking-[0.3em] text-gold/40 uppercase mt-2">
+              <span class="font-sans text-[9px] md:text-[10px] tracking-[0.4em] text-off-white/40 uppercase mt-2.5 block leading-none">
                 {item.unit}
               </span>
             </div>
 
-            {/* Classic Ornament */}
-            <div class="flex items-center justify-center gap-3 my-5">
-              <span class="w-6 h-px bg-gold/20"></span>
-              <span class="font-display text-[8px] text-gold/25">✦</span>
-              <span class="w-6 h-px bg-gold/20"></span>
-            </div>
-
-            {/* Title */}
-            <h3 class="font-display text-lg md:text-xl tracking-[0.08em] text-off-white mb-3">
+            {/* Title (Japanese) */}
+            <h3 class="font-sans text-sm md:text-[15px] font-medium tracking-[0.12em] text-off-white mb-4">
               {item.title}
             </h3>
 
             {/* Description */}
-            <p class="font-sans text-xs md:text-sm font-light leading-[1.9] tracking-[0.03em] text-off-white/40 max-w-[280px] mx-auto">
+            <p class="font-sans text-xs md:text-sm font-light leading-[2] tracking-[0.04em] text-off-white/65 max-w-[280px] mx-auto whitespace-pre-line">
               {item.description}
             </p>
           </div>

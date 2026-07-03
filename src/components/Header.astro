@@ -2,7 +2,7 @@
 import { siteSettings } from '../config/siteSettings';
 
 const { header, general } = siteSettings;
-const { logoText, navLinks, contactLabel } = header.content;
+const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
 ---
 
 <header
@@ -21,13 +21,28 @@ const { logoText, navLinks, contactLabel } = header.content;
     <!-- Nav (Desktop) -->
     <nav class="hidden lg:flex items-center gap-10" aria-label="Main navigation">
       {navLinks.map((link) => (
-        <a href={link.href} class="nav-link">{link.label}</a>
+        <a href={link.href} class="nav-link">
+          <span class="text-[13px] font-sans tracking-wider text-off-white font-light">
+            {link.labelJa}
+          </span>
+          <span class="text-[10px] font-display tracking-[0.15em] text-off-white/65 uppercase mt-0.5">
+            {link.label}
+          </span>
+        </a>
       ))}
       <a
         href={general.phoneNumberRaw}
-        class="ml-4 border border-gold/25 px-5 py-2 text-xs tracking-[0.2em] uppercase text-off-white hover:bg-gold hover:text-dark hover:border-gold transition-all duration-500"
+        class="ml-4 relative overflow-hidden bg-gradient-to-r from-gold-dark via-gold to-gold-light px-5 py-1.5 flex flex-col items-center group hover:-translate-y-[1px] hover:shadow-md hover:shadow-gold/15 active:translate-y-0 transition-all duration-300 rounded-[2px]"
       >
-        {contactLabel}
+        <!-- Metallic Shine Sweep -->
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+        
+        <span class="relative z-10 text-[8px] font-sans font-bold tracking-widest text-dark/80 uppercase">
+          {contactLabelJa}
+        </span>
+        <span class="relative z-10 text-[11px] md:text-xs font-sans font-bold tracking-wide text-dark mt-0.5">
+          {general.phoneNumber}
+        </span>
       </a>
     </nav>
 
@@ -46,16 +61,23 @@ const { logoText, navLinks, contactLabel } = header.content;
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-500 lg:hidden"
+    class="fixed inset-0 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-500 lg:hidden"
   >
     {navLinks.map((link) => (
-      <a href={link.href} class="mobile-nav-link">{link.label}</a>
+      <a href={link.href} class="mobile-nav-link">
+        <span class="text-2xl font-sans font-light tracking-wide text-off-white">{link.labelJa}</span>
+        <span class="text-[11px] font-display tracking-[0.2em] text-off-white/65 uppercase">{link.label}</span>
+      </a>
     ))}
     <a
       href={general.phoneNumberRaw}
-      class="mt-4 border border-off-white/20 px-8 py-3 text-sm tracking-[0.2em] uppercase text-off-white hover:bg-off-white hover:text-dark transition-all duration-500"
+      class="mt-6 relative overflow-hidden bg-gradient-to-r from-gold-dark via-gold to-gold-light px-7 py-2.5 flex flex-col items-center gap-0.5 text-dark hover:-translate-y-[1px] hover:shadow-md hover:shadow-gold/15 transition-all duration-300 rounded-[2px] group"
     >
-      {contactLabel}
+      <!-- Metallic Shine Sweep -->
+      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+      
+      <span class="relative z-10 text-[9px] font-sans font-bold tracking-widest text-dark/70">{contactLabelJa}</span>
+      <span class="relative z-10 text-sm font-sans font-bold tracking-wider text-dark">{general.phoneNumber}</span>
     </a>
   </div>
 </header>
@@ -63,10 +85,9 @@ const { logoText, navLinks, contactLabel } = header.content;
 <style>
   .nav-link {
     position: relative;
-    font-family: var(--font-serif);
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--color-off-white);
     opacity: 0.7;
     transition: opacity 0.3s ease;
@@ -79,8 +100,8 @@ const { logoText, navLinks, contactLabel } = header.content;
   .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
+    bottom: -6px;
+    left: 10%;
     width: 0;
     height: 1px;
     background: var(--color-gold);
@@ -88,14 +109,13 @@ const { logoText, navLinks, contactLabel } = header.content;
   }
 
   .nav-link:hover::after {
-    width: 100%;
+    width: 80%;
   }
 
   .mobile-nav-link {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--color-off-white);
     opacity: 0.8;
     transition: opacity 0.3s ease;
