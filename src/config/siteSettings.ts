@@ -133,7 +133,7 @@ export const siteSettings = {
       /** 強調文字の色 (Tailwindクラス) */
       highlightColor: "text-off-white/95",
       /** サブ見出しの文字色 (Tailwindクラス) */
-      subtitleColor: "text-off-white/70",
+      subtitleColor: "text-off-white/45",
       /** 背景画像にかけるグラデーションオーバーレイの色 (Tailwindクラス) */
       gradientOverlayLeft: "from-dark/90 via-dark/60 to-dark/30",
       gradientOverlayBottom: "from-dark via-transparent to-dark/40",
@@ -403,6 +403,10 @@ export const siteSettings = {
         {
           question: "代車の用意はありますか？",
           answer: "はい、施工期間中の代車をご用意しております。ご予約時にお申し付けください。\n台数に限りがございますので、早めのご予約をお勧めいたします。",
+        },
+        {
+          question: "支払い方法は何がありますか？（クレジットカードやローンは使えますか？）",
+          answer: "各種クレジットカード（Visa, Mastercard, JCB, American Express等）のほか、電子マネー、QRコード決済に対応しております。また、高額な施工プランでもご安心いただけるよう、提携オートローンによる分割払いもご利用いただけます。お気軽にご相談ください。",
         },
       ]
     },
