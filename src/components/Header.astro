@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { siteSettings } from '../config/siteSettings';
+import logoImg from '../images/logo.png';
 
 const { header, general } = siteSettings;
 const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
@@ -9,53 +11,57 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
   id="site-header"
   class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out"
 >
-  <div class="mx-auto flex items-center justify-between px-6 md:px-12 lg:px-20 py-5 md:py-6">
-    <!-- Logo -->
-    <a href="#" class="relative z-10 group" aria-label={`${general.companyName} Home`}>
-      <span class="font-display text-xl md:text-2xl tracking-[0.3em] text-off-white font-light uppercase">
-        {logoText.first}<span class="font-medium">{logoText.second}</span>
-      </span>
-      <span class="block h-px w-0 group-hover:w-full bg-gold/40 transition-all duration-500 mt-0.5"></span>
-    </a>
+  <div class="px-6 md:px-12 lg:px-20">
+    <div class="max-w-[90rem] mx-auto flex items-center justify-between py-5 md:py-6">
+      <!-- Logo -->
+      <a href="#" class="relative z-10 group" aria-label={`${general.companyName} Home`}>
+        <Image
+          src={logoImg}
+          alt={general.companyName}
+          class="h-8 md:h-10 w-auto object-contain"
+          quality={100}
+        />
+      </a>
 
-    <!-- Nav (Desktop) -->
-    <nav class="hidden lg:flex items-center gap-10" aria-label="Main navigation">
-      {navLinks.map((link) => (
-        <a href={link.href} class="nav-link">
-          <span class="text-[13px] font-sans tracking-wider text-off-white font-light">
-            {link.labelJa}
+      <!-- Nav (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-10" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a href={link.href} class="nav-link">
+            <span class="text-[13px] font-sans tracking-wider text-off-white font-light">
+              {link.labelJa}
+            </span>
+            <span class="text-[10px] font-display tracking-[0.15em] text-off-white/65 uppercase mt-0.5">
+              {link.label}
+            </span>
+          </a>
+        ))}
+        <a
+          href={general.phoneNumberRaw}
+          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-5 py-1.5 flex flex-col items-center group hover:-translate-y-[1px] hover:shadow-md hover:shadow-accent-red/20 active:translate-y-0 transition-all duration-300 rounded-[2px]"
+        >
+          <!-- Metallic Shine Sweep -->
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+          
+          <span class="relative z-10 text-[8px] font-sans font-bold tracking-widest text-dark/80 uppercase">
+            {contactLabelJa}
           </span>
-          <span class="text-[10px] font-display tracking-[0.15em] text-off-white/65 uppercase mt-0.5">
-            {link.label}
+          <span class="relative z-10 text-[11px] md:text-xs font-sans font-bold tracking-wide text-dark mt-0.5">
+            {general.phoneNumber}
           </span>
         </a>
-      ))}
-      <a
-        href={general.phoneNumberRaw}
-        class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-5 py-1.5 flex flex-col items-center group hover:-translate-y-[1px] hover:shadow-md hover:shadow-accent-red/20 active:translate-y-0 transition-all duration-300 rounded-[2px]"
-      >
-        <!-- Metallic Shine Sweep -->
-        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
-        
-        <span class="relative z-10 text-[8px] font-sans font-bold tracking-widest text-dark/80 uppercase">
-          {contactLabelJa}
-        </span>
-        <span class="relative z-10 text-[11px] md:text-xs font-sans font-bold tracking-wide text-dark mt-0.5">
-          {general.phoneNumber}
-        </span>
-      </a>
-    </nav>
+      </nav>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="lg:hidden relative z-10 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-    >
-      <span class="menu-line w-6 h-px bg-off-white transition-all duration-300 origin-center"></span>
-      <span class="menu-line w-4 h-px bg-off-white transition-all duration-300 ml-auto"></span>
-    </button>
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden relative z-10 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line w-6 h-px bg-off-white transition-all duration-300 origin-center"></span>
+        <span class="menu-line w-4 h-px bg-off-white transition-all duration-300 ml-auto"></span>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu Overlay -->

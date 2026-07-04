@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { siteSettings } from '../config/siteSettings';
+import logoImg from '../images/logo.png';
 
-const { footer, general } = siteSettings;
+const { footer, general, header } = siteSettings;
 const { content, style } = footer;
 ---
 
@@ -51,27 +53,57 @@ const { content, style } = footer;
     </div>
   </section>
 
-  <!-- Footer Bar -->
-  <div class={`relative border-t border-gold/[0.07] ${style.barPaddingY}`}>
-    <div class="px-6 md:px-12 lg:px-20">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <!-- Logo -->
-        <a href="#" class="font-display text-sm tracking-[0.25em] text-off-white/55 font-light uppercase">
-          {general.companyName}
-        </a>
-
-        <!-- Classic footer ornament -->
-        <div class="hidden md:flex items-center gap-3">
-          <span class="w-6 h-px bg-gold/10"></span>
-          <span class="font-display text-[8px] text-gold/55">{content.ornamentSymbol}</span>
-          <span class="w-6 h-px bg-gold/10"></span>
+  <!-- Footer Info Grid -->
+  <div class="border-t border-gold/[0.07] py-16 px-6 md:px-12 lg:px-20 bg-dark-surface/10">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      
+      <!-- Company/Shop details -->
+      <div class="flex flex-col items-center text-center gap-4">
+        <div class="h-12 flex items-center justify-center">
+          <Image
+            src={logoImg}
+            alt={general.companyName}
+            class="h-10 w-auto object-contain opacity-90"
+            quality={100}
+          />
         </div>
-
-        <!-- Copyright -->
-        <p class="font-display text-[10px] tracking-[0.15em] text-off-white/35">
+        <p class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider mb-2">
+          {general.zipCode}<br />
+          {general.address}
+        </p>
+        <p class="font-display text-[9px] tracking-[0.15em] text-off-white/35">
           &copy; {new Date().getFullYear()} {content.copyright}
         </p>
       </div>
+
+      <!-- Contact details -->
+      <div class="flex flex-col items-center text-center gap-4">
+        <h4 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-center">
+          Contact
+        </h4>
+        <p class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider">
+          TEL: <a href={general.phoneNumberRaw} class="hover:text-gold transition-colors duration-300 font-sans">{general.phoneNumber}</a><br />
+          営業時間: {general.hours}<br />
+          定休日: {general.holiday}
+        </p>
+      </div>
+
+      <!-- Menu links -->
+      <div class="flex flex-col items-center text-center gap-4">
+        <h4 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-center">
+          Navigation
+        </h4>
+        <ul class="flex flex-col items-center gap-3">
+          {header.content.navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="font-sans text-xs font-light text-off-white/60 hover:text-gold transition-colors duration-300">
+                {link.labelJa} <span class="text-[9px] font-display tracking-widest text-off-white/30 uppercase ml-1">{link.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   </div>
 </footer>

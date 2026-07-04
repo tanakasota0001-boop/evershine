@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
-/* ===== Custom Theme — Retro Classic × Modern ===== */
+/* ===== Custom Theme — Sporty Motorsport × Modern Luxury ===== */
 @theme {
   /* Core Palette */
-  --color-deep-blue: #0a1628;
-  --color-deep-blue-light: #162a4a;
-  --color-accent-blue: #1e3a5f;
-  --color-brand-blue: #3b82f6;
-  --color-brand-blue-light: #60a5fa;
-  --color-accent-red: #e63946;
-  --color-accent-red-light: #ff4d6d;
-  --color-off-white: #f5f5f0;
-  --color-warm-gray: #9a9a8e;
-  --color-light-gray: #e8e8e3;
-  --color-dark: #0a0a0a;
-  --color-dark-surface: #111111;
-  --color-dark-card: #1a1a1a;
+  --color-deep-blue: #050b14;
+  --color-deep-blue-light: #0d1b2e;
+  --color-accent-blue: #003399;
+  --color-brand-blue: #0045cc;
+  --color-brand-blue-light: #3377ff;
+  --color-accent-red: #e61a1a;
+  --color-accent-red-light: #ff3333;
+  --color-off-white: #f5f6f8;
+  --color-warm-gray: #8a94a6;
+  --color-light-gray: #e2e8f0;
+  --color-dark: #070708;
+  --color-dark-surface: #0f1013;
+  --color-dark-card: #17181c;
 
-  /* Retro-Classic Accents */
+  /* Accent Mapping (Restored Gold/Yellow) */
   --color-gold: #cca662;
   --color-gold-light: #e0be80;
   --color-gold-dark: #9e7b3c;
-  --color-cream: #f0ead6;
-  --color-parchment: #e8dcc8;
-  --color-charcoal: #2a2a28;
-  --color-warm-black: #121210;
+  --color-cream: #f8fafc;
+  --color-parchment: #e2e8f0;
+  --color-charcoal: #1e293b;
+  --color-warm-black: #0b0f19;
 
-  /* Typography */
+  /* Typography (Restored Serif Fonts) */
   --font-serif: "Playfair Display", "Georgia", serif;
   --font-sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   --font-display: "Cormorant Garamond", "Playfair Display", serif;
