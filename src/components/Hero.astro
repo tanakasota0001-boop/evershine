@@ -43,7 +43,7 @@ const { content, style } = hero;
       <div>
         <!-- Pre-label / Badge (①) -->
         {content.preLabel && (
-          <div id="hero-badge" class={`flex items-center gap-3 -mt-4 md:mt-0 mb-8 md:mb-9 lg:mb-11 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
+          <div id="hero-badge" class={`flex items-center gap-3 -mt-10 md:mt-0 mb-14 md:mb-9 lg:mb-11 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
             <span class="w-6 md:w-8 h-px bg-gold/70"></span>
             <span class="font-display text-[10px] md:text-xs tracking-[0.3em] text-gold uppercase font-light">
               {content.preLabel}
