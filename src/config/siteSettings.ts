@@ -10,23 +10,20 @@
 // =========================================================================
 
 // --- 1. 画像アセットのインポート ---
-import heroCar from "../images/hero-car.png";
+import heroCar from "../images/hero_car.png";
 import shopExterior from "../images/shop-exterior.png";
 import aboutImg from "../images/about-detailing.png";
 
 // サービス画像
-import glassCoatingImg from "../images/service-glass-coating.png";
-import ceramicImg from "../images/service-ceramic.png";
+import bodyCoatingImg from "../images/service-body-coating.png";
 import ppfImg from "../images/service-ppf.png";
-import privacyImg from "../images/service-privacy.png";
+import windowFilmImg from "../images/service-window-film.png";
 
 // ギャラリー画像
 import gallery01 from "../images/gallery-01.png";
 import gallery02 from "../images/gallery-02.png";
 import gallery03 from "../images/gallery-03.png";
 import gallery04 from "../images/gallery-04.png";
-import gallery05 from "../images/gallery-05.png";
-import gallery06 from "../images/gallery-06.png";
 
 export const siteSettings = {
   // =========================================================================
@@ -37,7 +34,7 @@ export const siteSettings = {
     siteTitle: "EVERSHINE — カーコーティング専門店",
 
     /** サイトの説明文 (SEO / 検索結果に表示されます) */
-    siteDescription: "長野県塩尻市のガラスコーティング/セラミックコーティング専門店EVERSHINE。30年以上の実績で、大切な愛車に最高の輝きを。ポルシェ・アウディ等の輸入車にも対応。",
+    siteDescription: "長野県塩尻市のガラスコーティング/セラミックコーティング専門店EVERSHINE。50年以上の実績で、大切な愛車に最高の輝きを。スーパーカーから輸入車・国産車まで幅広く対応。",
 
     /** 電話番号 (ハイフンあり、表示用) */
     phoneNumber: "0263-53-2276",
@@ -55,13 +52,10 @@ export const siteSettings = {
     hours: "8:00 〜 18:00",
 
     /** 定休日 */
-    holiday: "日曜定休",
+    holiday: "日曜・祝日定休",
 
     /** 会社名 */
-    companyName: "EVERSHINE",
-
-    /** 設立年 */
-    estYear: "Est. 1990",
+    companyName: "株式会社エバーシャイン",
   },
 
   // =========================================================================
@@ -78,7 +72,7 @@ export const siteSettings = {
       navLinks: [
         { label: "Services", labelJa: "施工メニュー", href: "#services" },
         { label: "About", labelJa: "私たちについて", href: "#about" },
-        { label: "Gallery", labelJa: "ギャラリー", href: "#gallery" },
+        // { label: "Gallery", labelJa: "ギャラリー", href: "#gallery" }, // 復元時はコメント解除
         { label: "Access", labelJa: "店舗情報", href: "#access" },
       ],
       /** お問い合わせボタンのテキスト */
@@ -98,16 +92,21 @@ export const siteSettings = {
   // =========================================================================
   hero: {
     content: {
+      /** プレ見出し (キャッチコピー上の英語ラベル) */
+      preLabel: "The Art of Automotive Protection",
       /** キャッチコピー 1行目 */
-      line1: "大切な愛車に、",
+      line1: "貴方の愛車に",
       /** キャッチコピー 2行目 */
-      line2: "最高の輝きを。",
-      /** 2行目のうち、強調したい文字（斜体にする箇所など） */
-      highlightText: "輝き",
+      line2: "重厚な艶と深い輝きを",
       /** サブ見出し */
-      subtitle: "塩尻市のガラスコーティング/セラミックコーティング専門店",
+      subtitle: "塩尻市のカーコーティング専門店",
       /** 縦書きのサイドテキスト */
       sideLabel: "Glass Coating Specialist",
+      /** 実績ミニバッジ */
+      stats: [
+        { number: "50+", unit: "Years", label: "Years of Experience" },
+        { number: "15,000+", unit: "Cars", label: "Vehicles Detailed" },
+      ],
       /** メイン背景画像 */
       image: heroCar,
       /** 画像の代替テキスト */
@@ -119,24 +118,28 @@ export const siteSettings = {
       /** コンテンツの配置 (text-left: 左寄せ, text-center: 中央寄せ, text-right: 右寄せ) */
       textAlign: "text-left",
       /** 下部の余白調整 (Tailwindクラス) */
-      paddingBottom: "pb-0 md:pb-28 lg:pb-32",
+      paddingBottom: "pb-12 md:pb-44 lg:pb-52",
       /** 最大幅 (Tailwindクラス。コンテンツの広がり具合を調整) */
       maxWidth: "max-w-5xl",
       /** 1行目の文字サイズ (Tailwindクラス) */
       titleLine1Size: "text-[clamp(2.2rem,6vw,5.5rem)]",
       /** 2行目の文字サイズ (Tailwindクラス) */
-      titleLine2Size: "text-[clamp(2.5rem,7vw,6.5rem)]",
+      titleLine2Size: "text-[clamp(2.2rem,6vw,5.5rem)]",
       /** サブ見出しの文字サイズ (Tailwindクラス) */
-      subtitleSize: "text-sm lg:text-base",
+      subtitleSize: "text-base md:text-lg lg:text-xl",
       /** メイン文字色 (Tailwindクラス) */
-      titleColor: "text-off-white",
+      titleColor: "text-gold",
       /** 強調文字の色 (Tailwindクラス) */
-      highlightColor: "text-off-white/95",
+      highlightColor: "text-gold-light",
       /** サブ見出しの文字色 (Tailwindクラス) */
-      subtitleColor: "text-off-white/45",
+      subtitleColor: "text-off-white/85",
       /** 背景画像にかけるグラデーションオーバーレイの色 (Tailwindクラス) */
-      gradientOverlayLeft: "from-dark/90 via-dark/60 to-dark/30",
-      gradientOverlayBottom: "from-dark via-transparent to-dark/40",
+      gradientOverlayLeft: "from-dark/65 via-dark/35 to-transparent",
+      gradientOverlayBottom: "from-dark/70 via-transparent to-transparent",
+      /** 背景画像の明るさ・トーン調整 (Tailwindクラス) */
+      imageFilter: "brightness-125 contrast-105 saturate-[0.80]",
+      /** シルバー調の輝き・金属感オーバーレイ (Tailwindクラス) */
+      silverOverlay: "from-slate-200/25 via-slate-400/10 to-transparent",
     }
   },
 
@@ -152,16 +155,16 @@ export const siteSettings = {
       /** セクションラベル（日本語） */
       sectionLabelJa: "私たちについて",
       /** メイン見出し（改行は \n を入れます） */
-      heading: "永く選ばれ続ける\n施工品質",
+      heading: "創業50年以上の\n確かな経験と実績",
       /** 画像 */
       image: aboutImg,
       /** 画像の代替テキスト */
       imageAlt: "EVERSHINE プロフェッショナルカーコーティング施工スタジオ",
       /** 本文テキスト（段落ごとに配列にします） */
       paragraphs: [
-        "EVERSHINEは30年以上にわたり、ガラスコーティング・セラミックコーティングを中心に、数多くの車両へ施工を行ってきました。",
-        "ポルシェやアウディをはじめとしたメーカーとの取引実績もあり、\n輸入車・国産車を問わず、幅広い車種に対応しています。",
-        "一台一台丁寧に仕上げること。\nそれが私たちの変わらないこだわりです。"
+        "EVERSHINEは1974年の創業以来、50年以上にわたり、ガラスコーティング・セラミックコーティングの専門店として、数多くの車両へ施工を重ねてまいりました。",
+        "輸入車メーカーを中心に培ってきた豊富な取引実績と確かな技術力により、スーパーカーをはじめ輸入車・国産車を問わず、あらゆる車種の特性に応じた最適な施工をご提供いたします。",
+        "塗装の本質を見極め、一台一台丁寧に仕上げること。\nそれが創業以来変わらない、私たちの誇りとこだわりです。"
       ],
     },
     style: {
@@ -194,46 +197,48 @@ export const siteSettings = {
       /** セクションラベル（日本語） */
       sectionLabelJa: "施工メニュー",
       /** メイン見出しの1行目 */
-      headingLine1: "最高品質の施工で、",
+      headingLine1: "熟練の技術とこだわりで、",
       /** メイン見出しの2行目 */
       headingLine2: "愛車を美しく守る。",
+      /** 見出し下の説明文 */
+      description: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
       /** 各サービスカードの情報リスト */
       items: [
         {
-          id: "glass-coating",
-          title: "Glass Coating",
-          titleJp: "ガラスコーティング",
-          description: "無機質ガラス被膜が、深い艶と強固な保護層を形成。\n紫外線・酸性雨から愛車を守ります。",
-          image: glassCoatingImg,
-        },
-        {
-          id: "ceramic-coating",
-          title: "Ceramic Coating",
-          titleJp: "セラミックコーティング",
-          description: "最高硬度のセラミック被膜が、\n圧倒的な耐久性と美しい光沢を長期間維持します。",
-          image: ceramicImg,
+          id: "body-coating",
+          title: "Body Coating",
+          titleJp: "ボディーコーティング",
+          description: "ガラスコーティングやセラミックプロテクションなど、\n深い艶と強固な保護被膜で愛車を長期間美しく守ります。",
+          image: bodyCoatingImg,
         },
         {
           id: "protection-film",
           title: "Protection Film",
           titleJp: "プロテクションフィルム",
-          description: "透明フィルムが飛び石・擦り傷から塗装を\n物理的にガード。自己修復機能付き。",
+          description: "高透明な特殊フィルムが、飛び石や擦り傷などの外的ダメージを遮断。\n塗装面を物理的に守り、愛車の美しさと価値を保ちます。",
           image: ppfImg,
         },
         {
-          id: "privacy-glass",
-          title: "Privacy Glass",
-          titleJp: "プライバシーガラス",
-          description: "プロ仕様のウィンドウフィルムで、\nプライバシー保護と紫外線カットを両立します。",
-          image: privacyImg,
+          id: "window-film",
+          title: "Window Film",
+          titleJp: "ウィンドウフィルム",
+          description: "高い遮熱性能とUVカットで、車内空間を快適かつ上質に。\n紫外線による内装の劣化を防ぎ、プライバシーとクリアな視界を両立します。",
+          image: windowFilmImg,
         },
-      ]
+      ],
+      /** 施工メニュー下部の問い合わせ案内 */
+      contactPrompt: {
+        heading: "施工内容の詳細・料金について",
+        description: "お車の車種・サイズや現在の塗装状態により、最適な施工プランおよび料金が異なります。\nお見積もりやご相談は無料ですので、まずはお気軽にお問い合わせください。",
+        buttonLabel: "お問い合わせ",
+        subLabel: "お電話にて承ります",
+      },
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-24 md:py-36 lg:py-44",
-      /** グリッド列数（標準は2列表示） (Tailwindクラス) */
-      gridCols: "grid-cols-1 md:grid-cols-2",
+      /** グリッド列数（3列表示） (Tailwindクラス) */
+      gridCols: "grid-cols-1 md:grid-cols-3",
       /** メイン見出しのサイズ (Tailwindクラス) */
       headingSize: "text-[clamp(1.8rem,4vw,3.5rem)]",
       /** カード内の英語タイトルの文字サイズ (Tailwindクラス) */
@@ -292,30 +297,24 @@ export const siteSettings = {
       /** 強みの情報リスト */
       strengths: [
         {
-          number: "30+",
-          unit: "Years",
+          number: "50+",
+          unit: "Years of Craftsmanship",
           title: "施工実績",
-          description: "1990年の創業以来、\n30年以上にわたり蓄積した技術と経験。\n確かな品質をお約束します。",
+          description: "1974年の創業以来、\n50年以上にわたり蓄積した技術と経験。\n確かな品質をお約束します。",
         },
         {
-          number: "3,000",
-          unit: "Cars",
+          number: "15,000+",
+          unit: "Vehicles Detailed",
           title: "施工台数",
-          description: "国産車から輸入車まで、\n累計3,000台以上の施工実績。\nあらゆる車種に対応いたします。",
-        },
-        {
-          number: "100%",
-          unit: "Quality",
-          title: "品質保証",
-          description: "一台一台手作業で丁寧に仕上げ。\n施工後のアフターケアまで\n責任を持って対応いたします。",
+          description: "国産車から輸入車まで、\n累計15,000台以上の施工実績。\nあらゆる車種に対応いたします。",
         },
       ]
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-28 md:py-40 lg:py-48",
-      /** グリッド列数（標準は3列） (Tailwindクラス) */
-      gridCols: "grid-cols-1 md:grid-cols-3",
+      /** グリッド列数（2項目に合わせた2列表示） (Tailwindクラス) */
+      gridCols: "grid-cols-1 md:grid-cols-2",
       /** 数字部分の大きさ調整 (Tailwindクラス) */
       numberSize: "text-[clamp(3rem,6vw,5rem)]",
     }
@@ -335,33 +334,33 @@ export const siteSettings = {
         {
           number: "01",
           title: "お問い合わせ",
-          description: "お電話またはメールにて\nお気軽にご連絡ください。",
+          description: "お電話にて\nお気軽にご連絡ください。",
           /** 表示するアイコンのSVGコード。コーディングが苦手な場合は、形を変えずにそのままにするか、一般的なSVGタグを貼り付けます */
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="w-7 h-7"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>`,
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-6 h-6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>`,
         },
         {
           number: "02",
           title: "ご相談",
           description: "お車の状態を確認し、\n最適なプランをご提案いたします。",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="w-7 h-7"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-6 h-6"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
         },
         {
           number: "03",
           title: "お預かり",
-          description: "施工日にお車をお預かりいたします。代車のご用意も可能です。",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="w-7 h-7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+          description: "施工日にお車をお預かりいたします。\n代車のご用意も可能です。",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-6 h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
         },
         {
           number: "04",
           title: "施工",
-          description: "熟練の技術者が一台一台丁寧にコーティングを施します。",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="w-7 h-7"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+          description: "熟練の技術者が一台一台\n丁寧に施工します。",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-6 h-6"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
         },
         {
           number: "05",
           title: "ご納車",
-          description: "仕上がりをご確認いただき、\n メンテナンス方法をご説明します。",
-          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="w-7 h-7"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+          description: "仕上がりをご確認いただき、\nメンテナンス方法をご説明します。",
+          icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-6 h-6"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
         },
       ]
     },
@@ -386,27 +385,27 @@ export const siteSettings = {
       items: [
         {
           question: "コーティングの施工期間はどれくらいですか？",
-          answer: "お車の状態やコーティングの種類によりますが、通常2〜5日間のお預かりとなります。\nセラミックコーティングの場合は、硬化時間を含め5〜7日間をいただく場合がございます。",
+          answer: "新車の場合は3〜5日程度、お車の状態や下地処理の程度によっては5日〜1週間程度のお預かりとなります。塗装の状態を見極め、丁寧に下地処理と硬化を行うため日数をいただいております。",
         },
         {
           question: "施工後のメンテナンスは必要ですか？",
-          answer: "定期的な洗車と、年に1〜2回のメンテナンスをお勧めしています。\nメンテナンスサービスもご用意しておりますので、お気軽にご相談ください。コーティングの効果を長期間維持するために重要です。",
+          answer: "普段のお手入れは基本的に水洗いのみで問題ございません。洗車機をご利用される場合は、コーティング車専用の水洗いコースを推奨しております。",
         },
         {
           question: "新車でもコーティングは必要ですか？",
-          answer: "はい、新車の状態が最もコーティングに適しています。\n納車直後に施工することで、塗装面を最高の状態で保護できます。新車割引もご用意しておりますので、ぜひご検討ください。",
+          answer: "はい、新車時の施工を強くおすすめいたします。新車時にコーティングを施すことで、美しいボディ状態を長く維持でき、日頃の洗車やお手入れも格段に容易になります。",
         },
         {
           question: "輸入車にも対応していますか？",
-          answer: "はい、ポルシェ・アウディ・BMWなど各メーカーとの取引実績がございます。\n輸入車特有の塗装特性を理解した上で、最適な施工方法をご提案いたします。",
+          answer: "はい、もちろん対応可能です。当店の施工実績の8割以上が輸入車であり、各メーカー・車種特有の塗装特性を熟知した専門技術者が丁寧に仕上げます。",
         },
         {
           question: "代車の用意はありますか？",
-          answer: "はい、施工期間中の代車をご用意しております。ご予約時にお申し付けください。\n台数に限りがございますので、早めのご予約をお勧めいたします。",
+          answer: "はい、施工期間中の代車をご用意できます。台数に限りがございますので、ご利用をご希望の際はお早めにご相談・ご予約ください。",
         },
         {
-          question: "支払い方法は何がありますか？（クレジットカードやローンは使えますか？）",
-          answer: "各種クレジットカード（Visa, Mastercard, JCB, American Express等）のほか、電子マネー、QRコード決済に対応しております。また、高額な施工プランでもご安心いただけるよう、提携オートローンによる分割払いもご利用いただけます。お気軽にご相談ください。",
+          question: "支払い方法は何がありますか？",
+          answer: "お支払い方法は現金のみとなります。クレジットカードや各種ローン等はご利用いただけませんので、あらかじめご了承ください。",
         },
       ]
     },

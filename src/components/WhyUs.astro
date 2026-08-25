@@ -5,91 +5,125 @@ const { whyUs } = siteSettings;
 const { content, style } = whyUs;
 ---
 
-<section id="why-us" class={`relative ${style.paddingY} overflow-hidden`}>
-  <!-- Background ornamental lines -->
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+<section id="why-us" class={`relative ${style.paddingY} overflow-hidden bg-warm-black`}>
+  <!-- Background Ornamental Top/Bottom Lines -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent"></div>
 
-  <div class="px-6 md:px-12 lg:px-20">
-    <div class="max-w-7xl mx-auto">
+  <!-- Ambient Glow in Background -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gold/[0.02] rounded-full blur-[140px] pointer-events-none"></div>
+
+  <div class="px-6 md:px-12 lg:px-20 relative z-10">
+    <div class="max-w-6xl mx-auto">
+      
       <!-- Section Header -->
-      <div class="text-center mb-20 md:mb-28">
-        <div class="whyus-reveal flex items-center justify-center gap-6">
-          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
+      <div class="text-center mb-16 md:mb-24">
+        <div class="whyus-reveal flex items-center justify-center gap-5 mb-4">
+          <span class="w-10 md:w-16 h-px bg-gold/50 flex-shrink-0"></span>
           <div class="flex flex-col items-center gap-1.5">
-            <span class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.05em] text-off-white leading-tight">
+            <span class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.06em] text-off-white leading-tight">
               {content.sectionLabelJa}
             </span>
             <span class="font-display text-[10px] md:text-xs tracking-[0.35em] text-off-white/40 uppercase leading-none">
               {content.sectionLabel}
             </span>
           </div>
-          <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
+          <span class="w-10 md:w-16 h-px bg-gold/50 flex-shrink-0"></span>
         </div>
       </div>
 
-      <!-- Strengths Grid -->
-      <div class={`grid ${style.gridCols} gap-0`}>
-        {content.strengths.map((item, index) => (
-          <div class="whyus-card group relative text-center py-12 md:py-16 px-6 md:px-8">
-            {/* Vertical Divider (except first) */}
-            {index > 0 && (
-              <div class="hidden md:block absolute top-8 left-0 bottom-8 w-px bg-gradient-to-b from-transparent via-gold/15 to-transparent"></div>
-            )}
-
-            {/* Horizontal Divider (mobile only, except first) */}
-            {index > 0 && (
-              <div class="md:hidden absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-gold/15 to-transparent"></div>
-            )}
-            {/* Icon */}
-            <div class="whyus-icon mb-4 flex justify-center">
-              {index === 0 && (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 text-gold/85 group-hover:scale-110 transition-transform duration-500">
-                  <circle cx="12" cy="8" r="6" />
-                  <path d="M15.47 13.5L19 21l-7-3-7 3 3.53-7.5" />
-                </svg>
-              )}
-              {index === 1 && (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 text-gold/85 group-hover:scale-110 transition-transform duration-500">
-                  <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 12 10s-6.7.6-8.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2" />
-                  <circle cx="7" cy="17" r="2" />
-                  <circle cx="17" cy="17" r="2" />
-                  <path d="M5 10l1.5-4.5C6.8 4.6 7.7 4 8.7 4h6.6c1 0 1.9.6 2.2 1.5L19 10" />
-                </svg>
-              )}
-              {index === 2 && (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 text-gold/85 group-hover:scale-110 transition-transform duration-500">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9 11l2 2 4-4" />
-                </svg>
-              )}
-            </div>
-
-            {/* Typographic Header: Large Number & Unit */}
-            <div class="mb-8 flex flex-col items-center">
-              <span class="whyus-number font-display text-[clamp(3.5rem,8vw,5.5rem)] font-light text-gold leading-none tracking-normal">
-                {item.number}
-              </span>
-              <span class="font-sans text-[9px] md:text-[10px] tracking-[0.4em] text-off-white/40 uppercase mt-2.5 block leading-none">
-                {item.unit}
-              </span>
-            </div>
-
-            {/* Title (Japanese) */}
-            <h3 class="font-sans text-sm md:text-[15px] font-medium tracking-[0.12em] text-off-white mb-4">
-              {item.title}
-            </h3>
-
-            {/* Description */}
-            <p class="font-sans text-xs md:text-sm font-light leading-[2] tracking-[0.04em] text-off-white/65 max-w-[280px] mx-auto whitespace-pre-line">
-              {item.description}
-            </p>
+      <!-- Split Monument Twin Panels -->
+      <div class="relative">
+        <!-- Center Vertical Divider Monument (Desktop Only) -->
+        <div class="hidden md:flex absolute top-4 bottom-4 left-1/2 -translate-x-1/2 flex-col items-center justify-center z-20 pointer-events-none">
+          <div class="whyus-divider-line w-px flex-1 bg-gradient-to-b from-transparent via-gold/30 to-gold/10 origin-top"></div>
+          
+          <!-- Central Medallion / Diamond Accent -->
+          <div class="my-4 w-9 h-9 rounded-full border border-gold/30 bg-dark-surface/90 backdrop-blur-md flex items-center justify-center shadow-lg shadow-black/60 text-gold text-xs">
+            <span class="font-display text-gold/80">✦</span>
           </div>
-        ))}
+          
+          <div class="whyus-divider-line w-px flex-1 bg-gradient-to-b from-gold/10 via-gold/30 to-transparent origin-bottom"></div>
+        </div>
+
+        <!-- 2 Column Split Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 relative">
+          {content.strengths.map((item, index) => {
+            const isFirst = index === 0;
+            const sideClass = isFirst ? "whyus-monument-left md:pr-12 lg:pr-16" : "whyus-monument-right md:pl-12 lg:pl-16";
+
+            return (
+              <div class={`relative group ${sideClass}`}>
+                <!-- Mobile Divider between items -->
+                {index > 0 && (
+                  <div class="md:hidden flex items-center justify-center gap-4 my-8">
+                    <span class="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></span>
+                    <span class="text-gold/60 text-[10px]">✦</span>
+                    <span class="w-16 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></span>
+                  </div>
+                )}
+
+                <!-- Monument Stage Panel -->
+                <div class="relative overflow-hidden rounded-sm border border-gold/10 bg-gradient-to-b from-dark/60 via-dark-surface/40 to-dark/50 p-8 sm:p-10 md:p-12 lg:p-14 text-center transition-all duration-700 hover:border-gold/30 hover:bg-dark/80 group-hover:shadow-2xl group-hover:shadow-gold/[0.03]">
+                  
+                  <!-- Subtle Corner Accents -->
+                  <div class="absolute top-0 left-0 w-3 h-3 border-t border-l border-gold/30 group-hover:border-gold/60 transition-colors duration-500 pointer-events-none"></div>
+                  <div class="absolute top-0 right-0 w-3 h-3 border-t border-r border-gold/30 group-hover:border-gold/60 transition-colors duration-500 pointer-events-none"></div>
+                  <div class="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-gold/30 group-hover:border-gold/60 transition-colors duration-500 pointer-events-none"></div>
+                  <div class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-gold/30 group-hover:border-gold/60 transition-colors duration-500 pointer-events-none"></div>
+
+                  <!-- Large Icon with subtle aura -->
+                  <div class="mb-6 md:mb-8 flex justify-center">
+                    <div class="relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full border border-gold/25 bg-gold/[0.04] flex items-center justify-center text-gold group-hover:border-gold/50 group-hover:bg-gold/[0.08] group-hover:scale-105 transition-all duration-500 shadow-lg shadow-gold/5">
+                      {isFirst ? (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-gold/90 group-hover:text-gold-light transition-colors duration-300">
+                          <circle cx="12" cy="8" r="6" />
+                          <path d="M15.47 13.5L19 21l-7-3-7 3 3.53-7.5" />
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-gold/90 group-hover:text-gold-light transition-colors duration-300">
+                          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 12 10s-6.7.6-8.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2" />
+                          <circle cx="7" cy="17" r="2" />
+                          <circle cx="17" cy="17" r="2" />
+                          <path d="M5 10l1.5-4.5C6.8 4.6 7.7 4 8.7 4h6.6c1 0 1.9.6 2.2 1.5L19 10" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+
+                  <!-- Monumental Display Number -->
+                  <div class="mb-4 flex flex-col items-center">
+                    <span
+                      class="whyus-number font-display text-[clamp(4.2rem,8vw,6.5rem)] font-light text-gold leading-none tracking-tight drop-shadow-[0_2px_15px_rgba(204,166,98,0.15)] group-hover:text-gold-light transition-colors duration-500 tabular-nums"
+                      data-value={item.number}
+                    >
+                      {item.number}
+                    </span>
+                    <span class="font-display text-[11px] md:text-xs tracking-[0.25em] text-off-white/50 uppercase mt-3 block leading-none font-medium">
+                      {item.unit}
+                    </span>
+                  </div>
+
+                  <!-- Gold Horizontal Accent Line -->
+                  <div class="w-10 h-px bg-gold/40 mx-auto my-6 group-hover:w-20 transition-all duration-500 ease-out"></div>
+
+                  <!-- Title (Japanese) -->
+                  <h3 class="font-sans text-lg sm:text-xl md:text-2xl font-medium tracking-[0.08em] text-off-white mb-4 group-hover:text-gold-light transition-colors duration-300">
+                    {item.title}
+                  </h3>
+
+                  <!-- Description -->
+                  <p class="font-sans text-xs md:text-sm font-light leading-[2.1] tracking-[0.04em] text-off-white/70 max-w-sm mx-auto whitespace-pre-line">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
 </section>
 
 <script>
@@ -98,25 +132,131 @@ const { content, style } = whyUs;
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // Header reveal
   gsap.utils.toArray<HTMLElement>('.whyus-reveal').forEach((el) => {
-    gsap.fromTo(el, { opacity: 0, y: 30 }, {
-      opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-    });
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
   });
 
-  gsap.utils.toArray<HTMLElement>('.whyus-card').forEach((el, i) => {
-    gsap.fromTo(el, { opacity: 0, y: 40 }, {
-      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: i * 0.2,
-      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-    });
+  // Left monument entrance
+  const leftMonument = document.querySelector('.whyus-monument-left');
+  if (leftMonument) {
+    gsap.fromTo(
+      leftMonument,
+      { opacity: 0, x: -35 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: leftMonument,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  }
+
+  // Right monument entrance
+  const rightMonument = document.querySelector('.whyus-monument-right');
+  if (rightMonument) {
+    gsap.fromTo(
+      rightMonument,
+      { opacity: 0, x: 35 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: rightMonument,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  }
+
+  // Center vertical line reveal
+  gsap.utils.toArray<HTMLElement>('.whyus-divider-line').forEach((line) => {
+    gsap.fromTo(
+      line,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        duration: 1.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#why-us',
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
   });
 
-  // Counter animation for numbers
-  gsap.utils.toArray<HTMLElement>('.whyus-number').forEach((el) => {
-    gsap.fromTo(el, { opacity: 0, scale: 0.8 }, {
-      opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-    });
+  // Count-up and scale animation for numbers
+  const numberEls = document.querySelectorAll<HTMLElement>('.whyus-number');
+  numberEls.forEach((el) => {
+    const rawValue = el.getAttribute('data-value') || el.innerText.trim();
+    const cleanDigits = rawValue.replace(/[^\d]/g, '');
+    const targetNum = parseInt(cleanDigits, 10);
+    const suffix = rawValue.replace(/[\d,]/g, '');
+    const useComma = rawValue.includes(',');
+
+    if (!isNaN(targetNum)) {
+      const counter = { val: 0 };
+      el.innerText = '0' + suffix;
+
+      gsap.fromTo(
+        el,
+        { opacity: 0, scale: 0.85 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            onEnter: () => {
+              gsap.to(counter, {
+                val: targetNum,
+                duration: 2.0,
+                ease: 'power3.out',
+                onUpdate: () => {
+                  const currentInt = Math.floor(counter.val);
+                  const formatted = useComma
+                    ? currentInt.toLocaleString('en-US')
+                    : currentInt.toString();
+                  el.innerText = formatted + suffix;
+                },
+                onComplete: () => {
+                  const formatted = useComma
+                    ? targetNum.toLocaleString('en-US')
+                    : targetNum.toString();
+                  el.innerText = formatted + suffix;
+                }
+              });
+            }
+          }
+        }
+      );
+    }
   });
 </script>

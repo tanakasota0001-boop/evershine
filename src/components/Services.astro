@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { siteSettings } from '../config/siteSettings';
 
-const { services } = siteSettings;
+const { services, general } = siteSettings;
 const { content, style } = services;
 ---
 
@@ -29,6 +29,11 @@ const { content, style } = services;
           {content.headingLine2}
         </span>
       </h2>
+      {content.description && (
+        <p class="service-reveal font-sans text-sm md:text-base font-light leading-[2.1] md:leading-[2.3] tracking-[0.04em] text-off-white/85 max-w-4xl mt-6 md:mt-8 whitespace-pre-line [word-break:auto-phrase]">
+          {content.description}
+        </p>
+      )}
     </div>
   </div>
 
@@ -42,14 +47,14 @@ const { content, style } = services;
             data-service-index={index}
           >
             <!-- Image Background -->
-            <div class="relative aspect-[5/4] md:aspect-[3/2] overflow-hidden">
+            <div class="relative aspect-square overflow-hidden">
               <Image
                 src={service.image}
                 alt={service.titleJp}
-                class="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110 group-[.touched]:scale-110"
+                class="w-full h-full object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-105 group-[.touched]:scale-105"
                 widths={[400, 640, 800]}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={80}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                quality={85}
                 loading="lazy"
               />
               <!-- Overlay Gradient -->
@@ -96,6 +101,41 @@ const { content, style } = services;
       </div>
     </div>
   </div>
+
+  <!-- Contact / Inquiry Prompt at the end of Services -->
+  {content.contactPrompt && (
+    <div class="px-6 md:px-12 lg:px-20 mt-16 md:mt-24 lg:mt-28">
+      <div class="max-w-2xl mx-auto service-reveal text-center flex flex-col items-center">
+        <!-- Note text -->
+        <p class="font-sans text-xs md:text-sm font-light text-off-white/65 leading-[2] md:leading-[2.2] tracking-wider whitespace-pre-line mb-8 md:mb-10">
+          {content.contactPrompt.description}
+        </p>
+
+        <!-- Compact Pill Button -->
+        <a
+          href={general.phoneNumberRaw}
+          class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gold/35 bg-warm-black/60 hover:bg-gold/10 hover:border-gold text-off-white/90 hover:text-off-white transition-all duration-300 group shadow-sm hover:shadow-gold/10"
+        >
+          <!-- Phone Icon -->
+          <svg class="w-3.5 h-3.5 text-gold flex-shrink-0 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+          </svg>
+          
+          <span class="font-sans text-xs md:text-[13px] font-medium tracking-wider">
+            {content.contactPrompt.buttonLabel}
+          </span>
+          <span class="font-sans text-xs md:text-sm font-bold tracking-wider text-gold group-hover:text-gold-light transition-colors">
+            {general.phoneNumber}
+          </span>
+        </a>
+
+        <!-- Small Hours Note -->
+        <span class="mt-4 md:mt-5 font-sans text-[11px] md:text-xs text-off-white/40 tracking-wider">
+          {content.contactPrompt.subLabel}（受付時間 {general.hours} / {general.holiday}）
+        </span>
+      </div>
+    </div>
+  )}
 
   <!-- Decorative Line -->
   <div class="absolute top-0 left-6 md:left-12 lg:left-20 w-px h-full bg-gold/[0.04]"></div>

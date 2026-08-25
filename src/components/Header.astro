@@ -9,7 +9,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
 
 <header
   id="site-header"
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out bg-gradient-to-b from-dark/80 via-dark/40 to-transparent"
 >
   <div class="px-6 md:px-12 lg:px-20">
     <div class="max-w-[90rem] mx-auto flex items-center justify-between py-5 md:py-6">
@@ -18,7 +18,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
         <Image
           src={logoImg}
           alt={general.companyName}
-          class="h-8 md:h-10 w-auto object-contain"
+          class="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform duration-300 group-hover:opacity-90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           quality={100}
         />
       </a>
@@ -27,25 +27,30 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       <nav class="hidden lg:flex items-center gap-10" aria-label="Main navigation">
         {navLinks.map((link) => (
           <a href={link.href} class="nav-link">
-            <span class="text-[13px] font-sans tracking-wider text-off-white font-light">
+            <span class="text-[15px] font-sans tracking-wider text-off-white font-medium">
               {link.labelJa}
             </span>
-            <span class="text-[10px] font-display tracking-[0.15em] text-off-white/65 uppercase mt-0.5">
+            <span class="text-[10px] font-display tracking-[0.18em] text-off-white/80 uppercase mt-0.5 font-semibold">
               {link.label}
             </span>
           </a>
         ))}
         <a
           href={general.phoneNumberRaw}
-          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-5 py-1.5 flex flex-col items-center group hover:-translate-y-[1px] hover:shadow-md hover:shadow-accent-red/20 active:translate-y-0 transition-all duration-300 rounded-[2px]"
+          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-5 py-2 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
         >
           <!-- Metallic Shine Sweep -->
-          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
           
-          <span class="relative z-10 text-[8px] font-sans font-bold tracking-widest text-dark/80 uppercase">
-            {contactLabelJa}
-          </span>
-          <span class="relative z-10 text-[11px] md:text-xs font-sans font-bold tracking-wide text-dark mt-0.5">
+          <div class="relative z-10 flex items-center gap-1.5 leading-none">
+            <svg class="w-3 h-3 text-dark fill-current" viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+            </svg>
+            <span class="text-[9px] font-sans font-bold tracking-widest text-dark/90 uppercase">
+              {contactLabelJa}
+            </span>
+          </div>
+          <span class="relative z-10 text-xs md:text-sm font-sans font-bold tracking-wide text-dark mt-1 leading-none">
             {general.phoneNumber}
           </span>
         </a>
@@ -54,12 +59,12 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
-        class="lg:hidden relative z-10 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+        class="lg:hidden relative z-10 w-9 h-9 flex flex-col justify-center items-center gap-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <span class="menu-line w-6 h-px bg-off-white transition-all duration-300 origin-center"></span>
-        <span class="menu-line w-4 h-px bg-off-white transition-all duration-300 ml-auto"></span>
+        <span class="menu-line w-6 h-0.5 bg-off-white transition-all duration-300 origin-center"></span>
+        <span class="menu-line w-4 h-0.5 bg-off-white transition-all duration-300 ml-auto"></span>
       </button>
     </div>
   </div>
@@ -72,18 +77,23 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     {navLinks.map((link) => (
       <a href={link.href} class="mobile-nav-link">
         <span class="text-2xl font-sans font-light tracking-wide text-off-white">{link.labelJa}</span>
-        <span class="text-[11px] font-display tracking-[0.2em] text-off-white/65 uppercase">{link.label}</span>
+        <span class="text-[12px] font-display tracking-[0.2em] text-off-white/80 uppercase">{link.label}</span>
       </a>
     ))}
     <a
       href={general.phoneNumberRaw}
-      class="mt-6 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-7 py-2.5 flex flex-col items-center gap-0.5 text-dark hover:-translate-y-[1px] hover:shadow-md hover:shadow-accent-red/20 transition-all duration-300 rounded-[2px] group"
+      class="mt-6 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-8 py-3.5 flex flex-col items-center justify-center gap-1 text-dark hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 transition-all duration-300 rounded-[2px] group"
     >
       <!-- Metallic Shine Sweep -->
-      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
       
-      <span class="relative z-10 text-[9px] font-sans font-bold tracking-widest text-dark/70">{contactLabelJa}</span>
-      <span class="relative z-10 text-sm font-sans font-bold tracking-wider text-dark">{general.phoneNumber}</span>
+      <div class="relative z-10 flex items-center gap-1.5 leading-none">
+        <svg class="w-3.5 h-3.5 text-dark fill-current" viewBox="0 0 24 24">
+          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+        </svg>
+        <span class="text-[10px] font-sans font-bold tracking-widest text-dark/85 uppercase">{contactLabelJa}</span>
+      </div>
+      <span class="relative z-10 text-base font-sans font-bold tracking-wider text-dark mt-0.5">{general.phoneNumber}</span>
     </a>
   </div>
 </header>
@@ -95,12 +105,14 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     flex-direction: column;
     align-items: center;
     color: var(--color-off-white);
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+    opacity: 0.92;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
   }
 
   .nav-link:hover {
     opacity: 1;
+    transform: translateY(-1px);
   }
 
   .nav-link::after {
@@ -109,7 +121,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     bottom: -6px;
     left: 10%;
     width: 0;
-    height: 1px;
+    height: 1.5px;
     background: var(--color-gold);
     transition: width 0.4s ease;
   }
@@ -123,7 +135,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     flex-direction: column;
     align-items: center;
     color: var(--color-off-white);
-    opacity: 0.8;
+    opacity: 0.9;
     transition: opacity 0.3s ease;
   }
 
@@ -133,14 +145,15 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
 
   /* Header scrolled state */
   #site-header.scrolled {
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(10, 10, 10, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(245, 245, 240, 0.05);
+    border-bottom: 1px solid rgba(245, 245, 240, 0.08);
   }
 
   #site-header.scrolled .nav-link {
-    opacity: 0.85;
+    opacity: 0.95;
+    text-shadow: none;
   }
 
   /* Mobile menu open state */
