@@ -37,37 +37,172 @@ const { content, style } = access;
         </div>
       </div>
 
-      <!-- Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <!-- Left: Map (Asymmetric 7 Columns) -->
-        <div class="access-reveal lg:col-span-7 space-y-4">
-          <!-- Google Map -->
-          <div class="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-sm border border-gold/10 bg-dark-surface p-1">
-            <div class="relative w-full h-full overflow-hidden">
-              <iframe
-                src="https://maps.google.com/maps?q=EVERSHINE%20%E9%95%B7%E9%87%8E%E7%9C%8C%E5%A1%A9%E5%B0%BB%E5%B8%82%E5%BA%83%E4%B8%98%E5%A0%85%E7%9F%B32146-161&output=embed"
-                width="100%"
-                height="100%"
-                style="border:0;"
-                allowfullscreen={true}
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="absolute inset-0 w-full h-full grayscale-[25%] contrast-[1.15]"
-                title={content.mapTitle}></iframe>
+      <!-- Layout Container -->
+      <div class="space-y-12 lg:space-y-16">
+        
+        <!-- Top Row: Company Info & Exterior Photo (Balanced 2 Columns) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Left: Company Info (7 Columns) -->
+          <div class="access-reveal lg:col-span-7">
+            <!-- Company Name -->
+            <div class="mb-8 md:mb-10">
+              <span
+                class="font-display text-2xl md:text-3xl lg:text-4xl tracking-[0.12em] text-off-white font-light"
+              >
+                {general.companyName}
+              </span>
             </div>
-            {/* Corner ornaments */}
-            <div class="absolute top-3 left-3 w-5 h-5 pointer-events-none">
-              <span class="absolute top-0 left-0 w-full h-px bg-gold/30"></span>
-              <span class="absolute top-0 left-0 h-full w-px bg-gold/30"></span>
-            </div>
-            <div class="absolute bottom-3 right-3 w-5 h-5 pointer-events-none">
-              <span class="absolute bottom-0 right-0 w-full h-px bg-gold/30"></span>
-              <span class="absolute bottom-0 right-0 h-full w-px bg-gold/30"></span>
+
+            <!-- Info Items -->
+            <div class="space-y-5 md:space-y-6">
+              <!-- Address -->
+              <div class="flex gap-4 items-start py-1">
+                <div class="w-20 md:w-24 shrink-0 flex flex-col">
+                  <span
+                    class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
+                  >
+                    Address
+                  </span>
+                  <span
+                    class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
+                  >
+                    住所
+                  </span>
+                </div>
+                <div>
+                  <p
+                    class="font-sans text-sm font-light leading-[1.8] tracking-[0.04em] text-off-white/80"
+                  >
+                    {general.zipCode}<br />
+                    {general.address}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="w-full h-px bg-gradient-to-r from-gold/10 to-transparent"></div>
+
+              <!-- Phone -->
+              <div class="flex gap-4 items-start py-1">
+                <div class="w-20 md:w-24 shrink-0 flex flex-col">
+                  <span
+                    class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
+                  >
+                    Tel
+                  </span>
+                  <span
+                    class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
+                  >
+                    電話番号
+                  </span>
+                </div>
+                <div>
+                  <a
+                    href={general.phoneNumberRaw}
+                    class="font-sans text-sm font-light tracking-[0.03em] text-off-white/80 hover:text-gold transition-colors duration-300"
+                  >
+                    {general.phoneNumber}
+                  </a>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="w-full h-px bg-gradient-to-r from-gold/10 to-transparent"></div>
+
+              <!-- Hours -->
+              <div class="flex gap-4 items-start py-1">
+                <div class="w-20 md:w-24 shrink-0 flex flex-col">
+                  <span
+                    class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
+                  >
+                    Hours
+                  </span>
+                  <span
+                    class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
+                  >
+                    営業時間
+                  </span>
+                </div>
+                <div>
+                  <p
+                    class="font-sans text-sm font-light tracking-[0.03em] text-off-white/80"
+                  >
+                    {general.hours}
+                  </p>
+                  <p
+                    class="font-sans text-xs font-light tracking-[0.03em] text-off-white/55 mt-1"
+                  >
+                    {general.holiday}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div class="w-full h-px bg-gradient-to-r from-gold/10 to-transparent"></div>
+
+              <!-- Parking / Access Note -->
+              <div class="flex gap-4 items-start py-1">
+                <div class="w-20 md:w-24 shrink-0 flex flex-col">
+                  <span
+                    class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
+                  >
+                    Parking
+                  </span>
+                  <span
+                    class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
+                  >
+                    駐車場
+                  </span>
+                </div>
+                <div>
+                  <p
+                    class="font-sans text-sm font-light tracking-[0.03em] text-off-white/80"
+                  >
+                    専用駐車スペース完備
+                  </p>
+                  <p
+                    class="font-sans text-xs font-light tracking-[0.03em] text-off-white/55 mt-1"
+                  >
+                    お車でお越しの際はそのまま店舗前へお進みください。
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
+          <!-- Right: Shop Exterior Photo (5 Columns) -->
+          <div class="access-reveal lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md aspect-square overflow-hidden rounded-sm bg-dark shadow-xl shadow-black/30">
+              <Image
+                src={content.shopImage}
+                alt="EVERSHINE 店舗外観"
+                width={800}
+                height={800}
+                class="w-full h-full object-cover object-[center_50%] contrast-[1.04] brightness-[0.97] saturate-[0.92]"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Sleek Wide Google Map -->
+        <div class="access-reveal space-y-3">
+          <div class="relative w-full h-[280px] sm:h-[340px] md:h-[380px] overflow-hidden rounded-sm bg-dark shadow-xl shadow-black/30">
+            <iframe
+              src="https://maps.google.com/maps?q=EVERSHINE%20%E9%95%B7%E9%87%8E%E7%9C%8C%E5%A1%A9%E5%B0%BB%E5%B8%82%E5%BA%83%E4%B8%98%E5%A0%85%E7%9F%B32146-161&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen={true}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0 w-full h-full grayscale-[25%] contrast-[1.15]"
+              title={content.mapTitle}></iframe>
+          </div>
+
           <!-- Google Maps Link Button -->
-          <div class="pt-1 pl-1">
+          <div class="flex justify-end pt-1">
             <a
               href={content.googleMapsUrl}
               target="_blank"
@@ -90,108 +225,6 @@ const { content, style } = access;
           </div>
         </div>
 
-        <!-- Right: Company Info (Asymmetric 5 Columns) -->
-        <div class="access-reveal lg:col-span-5 lg:pl-4">
-          <!-- Company Name -->
-          <div class="mb-10">
-            <span
-              class="font-display text-2xl md:text-3xl tracking-[0.15em] text-off-white font-light"
-            >
-              {general.companyName}
-            </span>
-          </div>
-
-          <!-- Info Items -->
-          <div class="space-y-6">
-            <!-- Address -->
-            <div class="flex gap-4 items-start py-1">
-              <div class="w-20 md:w-24 shrink-0 flex flex-col">
-                <span
-                  class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
-                >
-                  Address
-                </span>
-                <span
-                  class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
-                >
-                  住所
-                </span>
-              </div>
-              <div>
-                <p
-                  class="font-sans text-sm font-light leading-[1.8] tracking-[0.04em] text-off-white/80"
-                >
-                  {general.zipCode}<br />
-                  {general.address}
-                </p>
-              </div>
-            </div>
-
-            <!-- Divider -->
-            <div
-              class="w-full h-px bg-gradient-to-r from-gold/10 to-transparent"
-            >
-            </div>
-
-            <!-- Phone -->
-            <div class="flex gap-4 items-start py-1">
-              <div class="w-20 md:w-24 shrink-0 flex flex-col">
-                <span
-                  class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
-                >
-                  Tel
-                </span>
-                <span
-                  class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
-                >
-                  電話番号
-                </span>
-              </div>
-              <div>
-                <a
-                  href={general.phoneNumberRaw}
-                  class="font-sans text-sm font-light tracking-[0.03em] text-off-white/80 hover:text-gold transition-colors duration-300"
-                >
-                  {general.phoneNumber}
-                </a>
-              </div>
-            </div>
-
-            <!-- Divider -->
-            <div
-              class="w-full h-px bg-gradient-to-r from-gold/10 to-transparent"
-            >
-            </div>
-
-            <!-- Hours -->
-            <div class="flex gap-4 items-start py-1">
-              <div class="w-20 md:w-24 shrink-0 flex flex-col">
-                <span
-                  class="font-display text-[10px] tracking-[0.25em] text-gold/75 uppercase leading-none mt-0.5"
-                >
-                  Hours
-                </span>
-                <span
-                  class="font-sans text-[9px] text-off-white/45 tracking-widest mt-1.5 uppercase leading-none"
-                >
-                  営業時間
-                </span>
-              </div>
-              <div>
-                <p
-                  class="font-sans text-sm font-light tracking-[0.03em] text-off-white/80"
-                >
-                  {general.hours}
-                </p>
-                <p
-                  class="font-sans text-xs font-light tracking-[0.03em] text-off-white/55 mt-1"
-                >
-                  {general.holiday}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

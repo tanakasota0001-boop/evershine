@@ -128,11 +128,11 @@ export const siteSettings = {
       /** サブ見出しの文字サイズ (Tailwindクラス) */
       subtitleSize: "text-base md:text-lg lg:text-xl",
       /** メイン文字色 (Tailwindクラス) */
-      titleColor: "text-gold",
+      titleColor: "text-off-white",
       /** 強調文字の色 (Tailwindクラス) */
       highlightColor: "text-gold-light",
       /** サブ見出しの文字色 (Tailwindクラス) */
-      subtitleColor: "text-off-white/85",
+      subtitleColor: "text-gold",
       /** 背景画像にかけるグラデーションオーバーレイの色 (Tailwindクラス) */
       gradientOverlayLeft: "from-dark/65 via-dark/35 to-transparent",
       gradientOverlayBottom: "from-dark/70 via-transparent to-transparent",
@@ -308,13 +308,19 @@ export const siteSettings = {
           title: "施工台数",
           description: "国産車から輸入車まで、\n累計15,000台以上の施工実績。\nあらゆる車種に対応いたします。",
         },
+        {
+          number: "100%",
+          unit: "Pure Water System",
+          title: "純水洗車の徹底",
+          description: "水シミやウォータースポットを防ぐため、\n不純物を極限まで除去した「純水」を使用。\n透明感あふれる最高の仕上がりを実現します。",
+        },
       ]
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-28 md:py-40 lg:py-48",
-      /** グリッド列数（2項目に合わせた2列表示） (Tailwindクラス) */
-      gridCols: "grid-cols-1 md:grid-cols-2",
+      /** グリッド列数（3項目に合わせた3列表示） (Tailwindクラス) */
+      gridCols: "grid-cols-1 md:grid-cols-3",
       /** 数字部分の大きさ調整 (Tailwindクラス) */
       numberSize: "text-[clamp(3rem,6vw,5rem)]",
     }
