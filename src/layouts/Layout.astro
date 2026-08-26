@@ -5,24 +5,174 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
+const { general, services, faq, access } = siteSettings;
+
 const {
-  title = siteSettings.general.siteTitle,
-  description = siteSettings.general.siteDescription
+  title = general.siteTitle,
+  description = general.siteDescription,
+  image = general.ogImage,
+  type = 'website'
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, general.siteUrl).href;
+const ogImageUrl = new URL(image, general.siteUrl).href;
+const logoUrl = new URL('/favicon.svg', general.siteUrl).href;
+
+// --- 構造化データ (JSON-LD) の構築 ---
+// 1. 店舗・ローカルビジネス (AutoBodyShop / LocalBusiness)
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['AutoBodyShop', 'LocalBusiness'],
+  '@id': `${general.siteUrl}/#organization`,
+  'name': general.companyName,
+  'alternateName': [general.brandName, 'エバーシャイン', 'EVERSHINE'],
+  'url': general.siteUrl,
+  'logo': logoUrl,
+  'image': ogImageUrl,
+  'telephone': general.phoneNumberIntl || general.phoneNumber,
+  'priceRange': '¥¥¥',
+  'description': general.siteDescription,
+  'foundingDate': general.foundingYear || '1974',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': general.streetAddress || '広丘堅石2146-161',
+    'addressLocality': general.addressLocality || '塩尻市',
+    'addressRegion': general.addressRegion || '長野県',
+    'postalCode': (general.zipCode || '399-0705').replace(/[^\d]/g, ''),
+    'addressCountry': 'JP'
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': general.geo?.latitude || 36.1408,
+    'longitude': general.geo?.longitude || 137.9547
+  },
+  'openingHoursSpecification': [
+    {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      'opens': '08:00',
+      'closes': '18:00'
+    }
+  ],
+  'areaServed': (general.serviceAreas || ['塩尻市', '松本市', '長野県']).map((area: string) => ({
+    '@type': 'AdministrativeArea',
+    'name': area
+  })),
+  'paymentAccepted': 'Cash',
+  'currenciesAccepted': 'JPY',
+  'hasOfferCatalog': {
+    '@type': 'OfferCatalog',
+    'name': 'カーコーティング＆ディテーリングメニュー',
+    'itemListElement': services.content.items.map((item) => ({
+      '@type': 'Offer',
+      'itemOffered': {
+        '@type': 'Service',
+        'name': item.titleJp,
+        'description': item.description.replace(/\n/g, ' ')
+      }
+    }))
+  },
+  'sameAs': [
+    access.content.googleMapsUrl
+  ]
+};
+
+// 2. FAQPage スキーマ (Google検索結果のリッチスニペット対応)
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${general.siteUrl}/#faq`,
+  'mainEntity': faq.content.items.map((item) => ({
+    '@type': 'Question',
+    'name': item.question,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': item.answer
+    }
+  }))
+};
+
+// 3. WebSite スキーマ
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${general.siteUrl}/#website`,
+  'url': general.siteUrl,
+  'name': general.brandName,
+  'alternateName': general.companyName,
+  'inLanguage': 'ja',
+  'description': general.siteDescription,
+  'publisher': {
+    '@id': `${general.siteUrl}/#organization`
+  }
+};
+
+// 4. BreadcrumbList スキーマ
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'ホーム',
+      'item': general.siteUrl
+    }
+  ]
+};
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- 基本SEOメタタグ -->
+    <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0a0a" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {general.keywords && <meta name="keywords" content={general.keywords.join(', ')} />}
+    <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Google Fonts -->
+    <!-- クローラー・インデックス制御 -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- ローカルSEO / Geoメタタグ (長野県塩尻市・松本市エリア) -->
+    <meta name="geo.region" content={general.geo?.region || 'JP-20'} />
+    <meta name="geo.placename" content={general.geo?.placename || '塩尻市'} />
+    <meta name="geo.position" content={`${general.geo?.latitude || 36.1408};${general.geo?.longitude || 137.9547}`} />
+    <meta name="ICBM" content={`${general.geo?.latitude || 36.1408}, ${general.geo?.longitude || 137.9547}`} />
+
+    <!-- OGP (Open Graph Protocol) 設定 -->
+    <meta property="og:site_name" content={general.brandName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EVERSHINE プロフェッショナルカーコーティング" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card 設定 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- モバイル・UI設定 -->
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Google Fonts 最適化 (Preconnect & Preload) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,7 +180,11 @@ const {
       rel="stylesheet"
     />
 
-    <title>{title}</title>
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </head>
   <body>
     <slot />

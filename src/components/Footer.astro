@@ -79,23 +79,23 @@ const { content, style } = footer;
 
       <!-- Info details -->
       <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[200px]">
-        <h4 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
+        <h3 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
           Information
-        </h4>
-        <p class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider">
+        </h3>
+        <address class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider not-italic">
           {general.zipCode}<br />
           {general.address}<br />
           TEL: <a href={general.phoneNumberRaw} class="hover:text-gold transition-colors duration-300 font-sans">{general.phoneNumber}</a><br />
           営業時間: {general.hours}<br />
           定休日: {general.holiday}
-        </p>
+        </address>
       </div>
 
       <!-- Menu links -->
       <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[160px]">
-        <h4 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
+        <h3 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
           Navigation
-        </h4>
+        </h3>
         <ul class="flex flex-col items-start gap-3">
           {header.content.navLinks.map((link) => (
             <li>

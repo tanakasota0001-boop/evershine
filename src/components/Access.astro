@@ -21,7 +21,7 @@ const { content, style } = access;
       <div class="text-center mb-16 md:mb-24">
         <div class="access-reveal flex items-center justify-center gap-6">
           <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
-          <div class="flex flex-col items-center gap-1.5">
+          <h2 class="flex flex-col items-center gap-1.5">
             <span
               class="font-sans text-[clamp(1.6rem,3.5vw,2.6rem)] font-light tracking-[0.05em] text-off-white leading-tight"
             >
@@ -32,7 +32,7 @@ const { content, style } = access;
             >
               {content.sectionLabel}
             </span>
-          </div>
+          </h2>
           <span class="w-10 md:w-14 h-px bg-gold/50 flex-shrink-0"></span>
         </div>
       </div>
@@ -55,7 +55,7 @@ const { content, style } = access;
             </div>
 
             <!-- Info Items -->
-            <div class="space-y-5 md:space-y-6">
+            <address class="space-y-5 md:space-y-6 not-italic">
               <!-- Address -->
               <div class="flex gap-4 items-start py-1">
                 <div class="w-20 md:w-24 shrink-0 flex flex-col">
@@ -168,7 +168,7 @@ const { content, style } = access;
                   </p>
                 </div>
               </div>
-            </div>
+            </address>
           </div>
 
           <!-- Right: Shop Exterior Photo (5 Columns) -->
@@ -179,7 +179,7 @@ const { content, style } = access;
                 alt="EVERSHINE 店舗外観"
                 width={800}
                 height={800}
-                class="w-full h-full object-cover object-[center_50%] contrast-[1.04] brightness-[0.97] saturate-[0.92]"
+                class="w-full h-full object-cover object-[center_50%]"
                 loading="lazy"
               />
             </div>
