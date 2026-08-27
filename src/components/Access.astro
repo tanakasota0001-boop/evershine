@@ -172,14 +172,12 @@ const { content, style } = access;
           </div>
 
           <!-- Right: Shop Exterior Photo (5 Columns) -->
-          <div class="access-reveal lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-md aspect-square overflow-hidden rounded-sm bg-dark shadow-xl shadow-black/30">
+          <div class="access-reveal lg:col-span-5 flex items-center justify-center">
+            <div class="relative w-full overflow-hidden rounded-sm bg-dark shadow-xl shadow-black/30">
               <Image
                 src={content.shopImage}
                 alt="EVERSHINE 店舗外観"
-                width={800}
-                height={800}
-                class="w-full h-full object-cover object-[center_50%]"
+                class="w-full h-auto object-contain block"
                 loading="lazy"
               />
             </div>
