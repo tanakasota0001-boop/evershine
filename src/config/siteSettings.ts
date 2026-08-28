@@ -10,20 +10,20 @@
 // =========================================================================
 
 // --- 1. 画像アセットのインポート ---
-import heroCar from "../images/hero_car.png";
-import shopExterior from "../images/shop-exterior.png";
-import aboutImg from "../images/about-detailing.png";
+import heroCar from "../images/hero_car.webp";
+import shopExterior from "../images/shop-exterior.webp";
+import aboutImg from "../images/about-detailing.webp";
 
 // サービス画像
-import bodyCoatingImg from "../images/service-body-coating.png";
-import ppfImg from "../images/service-ppf.png";
-import windowFilmImg from "../images/service-window-film.png";
+import bodyCoatingImg from "../images/service-body-coating.webp";
+import ppfImg from "../images/service-ppf.webp";
+import windowFilmImg from "../images/service-window-film.webp";
 
 // ギャラリー画像
-import gallery01 from "../images/gallery-01.png";
-import gallery02 from "../images/gallery-02.png";
-import gallery03 from "../images/gallery-03.png";
-import gallery04 from "../images/gallery-04.png";
+import gallery01 from "../images/gallery-01.webp";
+import gallery02 from "../images/gallery-02.webp";
+import gallery03 from "../images/gallery-03.webp";
+import gallery04 from "../images/gallery-04.webp";
 
 export const siteSettings = {
   // =========================================================================
@@ -40,7 +40,7 @@ export const siteSettings = {
     siteUrl: "https://evershine-coating.jp",
 
     /** OGP画像URL */
-    ogImage: "/og-image.png",
+    ogImage: "/og-image.webp",
 
     /** 電話番号 (ハイフンあり、表示用) */
     phoneNumber: "0263-53-2276",
