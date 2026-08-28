@@ -364,8 +364,8 @@ export const siteSettings = {
         {
           number: "100%",
           unit: "Pure Water System",
-          title: "純水洗車の徹底",
-          description: "水シミやウォータースポットを防ぐため、\n不純物を極限まで除去した「純水」を使用。\n透明感あふれる最高の仕上がりを実現します。",
+          title: "”純水”にこだわる",
+          description: "水シミやウォータースポットを防ぐため、\n当社は「純水」のみを使用。\n圧倒的な透明感と最高の仕上がりを実現します。",
         },
       ]
     },
