@@ -10,6 +10,9 @@ export default defineConfig({
   image: {
     service: passthroughImageService()
   },
+  build: {
+    assets: 'assets'
+  },
   vite: {
     plugins: [tailwindcss()]
   }
