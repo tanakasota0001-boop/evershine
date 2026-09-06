@@ -127,9 +127,11 @@ export const siteSettings = {
       },
       /** ナビゲーションメニューのリンク */
       navLinks: [
-        { label: "Services", labelJa: "施工メニュー", href: "#services" },
         { label: "About", labelJa: "私たちについて", href: "#about" },
-        // { label: "Gallery", labelJa: "ギャラリー", href: "#gallery" }, // 復元時はコメント解除
+        { label: "Services", labelJa: "施工メニュー", href: "#services" },
+        { label: "Why Us", labelJa: "選ばれる理由", href: "#why-us" },
+        { label: "Flow", labelJa: "施工の流れ", href: "#flow" },
+        { label: "FAQ", labelJa: "よくあるご質問", href: "#faq" },
         { label: "Access", labelJa: "店舗情報", href: "#access" },
       ],
       /** お問い合わせボタンのテキスト */

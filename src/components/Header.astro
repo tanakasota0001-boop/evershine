@@ -30,20 +30,25 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       </a>
 
       <!-- Nav (Desktop) -->
-      <nav class="hidden lg:flex items-center gap-10 xl:gap-12" aria-label="Main navigation">
-        {navLinks.map((link) => (
-          <a href={link.href} class="nav-link group">
-            <span class="nav-link-ja text-[17px] xl:text-[18px] font-sans tracking-wider text-white font-medium transition-colors">
-              {link.labelJa}
-            </span>
-            <span class="nav-link-en text-xs md:text-[13px] font-display tracking-[0.22em] text-white/90 uppercase mt-0.5 font-bold transition-colors">
-              {link.label}
-            </span>
-          </a>
+      <nav class="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-6" aria-label="Main navigation">
+        {navLinks.map((link, index) => (
+          <>
+            {index > 0 && (
+              <span class="nav-divider w-px h-5 xl:h-6 bg-white/25 transition-colors duration-300 pointer-events-none" aria-hidden="true"></span>
+            )}
+            <a href={link.href} class="nav-link group">
+              <span class="nav-link-ja text-[15px] xl:text-[16px] 2xl:text-[17px] font-sans tracking-wider text-white font-medium transition-colors">
+                {link.labelJa}
+              </span>
+              <span class="nav-link-en text-[11px] xl:text-xs font-display tracking-[0.2em] text-white/90 uppercase mt-0.5 font-bold transition-colors">
+                {link.label}
+              </span>
+            </a>
+          </>
         ))}
         <a
           href={general.phoneNumberRaw}
-          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-6 py-2.5 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
+          class="ml-2 xl:ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-4 xl:px-6 py-2.5 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
         >
           <!-- Metallic Shine Sweep -->
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
@@ -84,28 +89,33 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     style="min-height: 100dvh;"
   >
     <!-- Top section with clearance and navigation links -->
-    <div class="pt-28 sm:pt-32 pb-6 px-6 sm:px-10 flex flex-col items-center">
+    <div class="pt-24 sm:pt-28 pb-6 px-6 sm:px-10 flex flex-col items-center">
       <!-- "Menu" Title with decorative gold ornaments -->
-      <div class="flex items-center justify-center gap-4 mb-8 sm:mb-10">
+      <div class="flex items-center justify-center gap-4 mb-6 sm:mb-8">
         <span class="w-8 h-px bg-gold/50"></span>
         <span class="font-display text-sm sm:text-base tracking-[0.35em] text-gold-dark font-bold uppercase">Menu</span>
         <span class="w-8 h-px bg-gold/50"></span>
       </div>
 
       <!-- Navigation links -->
-      <nav class="w-full max-w-sm flex flex-col items-center gap-6 sm:gap-7" aria-label="Mobile navigation">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="mobile-nav-link group w-full flex flex-col items-center py-2.5 transition-all duration-300 active:scale-95"
-          >
-            <span class="text-2xl sm:text-[26px] font-sans font-medium tracking-wider text-[#0b1a30] group-hover:text-gold-dark transition-colors">
-              {link.labelJa}
-            </span>
-            <span class="text-xs sm:text-sm font-display tracking-[0.25em] text-[#2d456b] uppercase font-bold mt-1.5 group-hover:text-gold-dark transition-colors">
-              {link.label}
-            </span>
-          </a>
+      <nav class="w-full max-w-sm flex flex-col items-center gap-2 sm:gap-2.5" aria-label="Mobile navigation">
+        {navLinks.map((link, index) => (
+          <>
+            {index > 0 && (
+              <span class="w-12 sm:w-14 h-px bg-gold/25 my-0.5 pointer-events-none" aria-hidden="true"></span>
+            )}
+            <a
+              href={link.href}
+              class="mobile-nav-link group w-full flex flex-col items-center py-1.5 transition-all duration-300 active:scale-95"
+            >
+              <span class="text-xl sm:text-2xl font-sans font-medium tracking-wider text-[#0b1a30] group-hover:text-gold-dark transition-colors">
+                {link.labelJa}
+              </span>
+              <span class="text-xs font-display tracking-[0.22em] text-[#2d456b] uppercase font-bold mt-0.5 group-hover:text-gold-dark transition-colors">
+                {link.label}
+              </span>
+            </a>
+          </>
         ))}
       </nav>
 
@@ -210,6 +220,10 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
 
   #site-header.scrolled .nav-link-en {
     color: #2d456b;
+  }
+
+  #site-header.scrolled .nav-divider {
+    background-color: rgba(11, 26, 48, 0.18);
   }
 
   #site-header.scrolled .menu-line {
