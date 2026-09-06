@@ -7,25 +7,25 @@ const { footer, general, header } = siteSettings;
 const { content, style } = footer;
 ---
 
-<footer class="relative overflow-hidden">
+<footer class="relative overflow-hidden bg-white">
   <!-- CTA Section -->
   <section id="cta" class={`relative ${style.ctaPaddingY}`}>
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
 
     <div class="px-6 md:px-12 lg:px-20">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Classic Ornament -->
         <div class="cta-reveal flex items-center justify-center gap-4 mb-10">
-          <span class="w-12 h-px bg-gold/20"></span>
-          <span class="font-display text-[10px] text-gold/70">{content.ornamentSymbol}</span>
-          <span class="w-12 h-px bg-gold/20"></span>
+          <span class="w-12 h-px bg-gold/40"></span>
+          <span class="font-display text-sm text-gold-dark">{content.ornamentSymbol}</span>
+          <span class="w-12 h-px bg-gold/40"></span>
         </div>
 
         <!-- Heading -->
-        <h2 class={`cta-reveal font-display ${style.ctaHeadingSize} font-light tracking-[0.04em] text-off-white leading-[1.4] mb-4`}>
+        <h2 class={`cta-reveal font-display ${style.ctaHeadingSize} font-light tracking-[0.04em] text-slate-900 leading-[1.4] mb-4`}>
           {content.ctaHeading}
         </h2>
-        <p class="cta-reveal font-sans text-xs md:text-sm font-light tracking-[0.05em] text-off-white/60 mb-12">
+        <p class="cta-reveal font-sans text-sm md:text-base lg:text-[17px] font-normal leading-[2.2] tracking-[0.05em] text-slate-700 mb-12">
           {content.ctaDescription}
         </p>
 
@@ -35,17 +35,17 @@ const { content, style } = footer;
             href={general.phoneNumberRaw}
             class="group inline-flex flex-col items-center"
           >
-            <span class="font-display text-xs md:text-sm font-medium tracking-[0.3em] text-accent-red-light/80 uppercase mb-3">{content.telLabel}</span>
-            <span class="font-sans text-[clamp(2.5rem,7.5vw,5.5rem)] font-normal tracking-[0.08em] text-off-white group-hover:text-accent-red-light transition-colors duration-500 leading-none">
+            <span class="font-display text-sm md:text-base font-bold tracking-[0.3em] text-accent-red uppercase mb-3">{content.telLabel}</span>
+            <span class="font-sans text-[clamp(2.5rem,7.5vw,5.5rem)] font-normal tracking-[0.08em] text-slate-900 group-hover:text-accent-red transition-colors duration-500 leading-none">
               {general.phoneNumber}
             </span>
-            <span class="w-0 group-hover:w-full h-px bg-accent-red-light/40 transition-all duration-500 mt-4"></span>
+            <span class="w-0 group-hover:w-full h-px bg-accent-red/50 transition-all duration-500 mt-4"></span>
           </a>
         </div>
 
         <!-- Hours -->
         <div class="cta-reveal mt-8 flex items-center justify-center gap-3">
-          <span class="font-sans text-xs font-light tracking-[0.05em] text-off-white/50">
+          <span class="font-sans text-xs md:text-sm font-normal tracking-[0.05em] text-slate-600">
             {general.hours}（{general.holiday}）
           </span>
         </div>
@@ -54,23 +54,23 @@ const { content, style } = footer;
   </section>
 
   <!-- Footer Info Grid -->
-  <div class="border-t border-gold/[0.07] pt-16 pb-10 px-6 md:px-12 lg:px-20 bg-dark-surface/10">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-start md:justify-items-center">
+  <div class="border-t border-slate-200 pt-16 pb-12 px-6 md:px-12 lg:px-20 bg-[#f0f4f9]/90">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-start md:justify-items-center">
       
       <!-- Company/Shop details -->
-      <div class="flex flex-col items-start text-left gap-3 w-full md:w-auto min-w-[200px]">
+      <div class="flex flex-col items-start text-left gap-3.5 w-full md:w-auto min-w-[220px]">
         <div class="h-14 flex items-center justify-start">
           <Image
             src={logoImg}
             alt={general.companyName}
-            class="h-12 md:h-14 w-auto object-contain"
+            class="h-12 md:h-14 w-auto object-contain transition-opacity duration-300 hover:opacity-90 drop-shadow-sm"
             quality={100}
           />
         </div>
-        <p class="font-sans text-[11px] md:text-xs font-light text-gold/80 tracking-widest">
+        <p class="font-sans text-xs md:text-sm font-medium text-[#2d456b] tracking-widest">
           塩尻市のカーコーティング専門店
         </p>
-        <p class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider">
+        <p class="font-sans text-sm font-normal text-slate-700 leading-[2.1] tracking-wider">
           カーコーティング<br />
           カーフィルム施工<br />
           プロテクション施工
@@ -78,29 +78,29 @@ const { content, style } = footer;
       </div>
 
       <!-- Info details -->
-      <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[200px]">
-        <h3 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
+      <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[220px]">
+        <h3 class="font-display text-sm md:text-base tracking-[0.22em] text-[#0b1a30] font-bold uppercase h-12 flex items-center justify-start">
           Information
         </h3>
-        <address class="font-sans text-xs font-light text-off-white/60 leading-[2] tracking-wider not-italic">
+        <address class="font-sans text-sm font-normal text-slate-700 leading-[2.1] tracking-wider not-italic">
           {general.zipCode}<br />
           {general.address}<br />
-          TEL: <a href={general.phoneNumberRaw} class="hover:text-gold transition-colors duration-300 font-sans">{general.phoneNumber}</a><br />
+          TEL: <a href={general.phoneNumberRaw} class="hover:text-gold-dark transition-colors duration-300 font-sans font-medium">{general.phoneNumber}</a><br />
           営業時間: {general.hours}<br />
           定休日: {general.holiday}
         </address>
       </div>
 
       <!-- Menu links -->
-      <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[160px]">
-        <h3 class="font-display text-xs tracking-[0.2em] text-gold font-medium uppercase h-12 flex items-center justify-start">
+      <div class="flex flex-col items-start text-left gap-4 w-full md:w-auto min-w-[180px]">
+        <h3 class="font-display text-sm md:text-base tracking-[0.22em] text-[#0b1a30] font-bold uppercase h-12 flex items-center justify-start">
           Navigation
         </h3>
-        <ul class="flex flex-col items-start gap-3">
+        <ul class="flex flex-col items-start gap-3.5">
           {header.content.navLinks.map((link) => (
             <li>
-              <a href={link.href} class="font-sans text-xs font-light text-off-white/60 hover:text-gold transition-colors duration-300">
-                {link.labelJa} <span class="text-[9px] font-display tracking-widest text-off-white/30 uppercase ml-1">{link.label}</span>
+              <a href={link.href} class="font-sans text-sm font-normal text-slate-700 hover:text-slate-950 transition-colors duration-300">
+                {link.labelJa} <span class="text-xs font-display tracking-wider text-[#2d456b] font-semibold uppercase ml-1.5">{link.label}</span>
               </a>
             </li>
           ))}
@@ -110,8 +110,8 @@ const { content, style } = footer;
     </div>
 
     <!-- Copyright (Bottom Center) -->
-    <div class="mt-14 pt-8 border-t border-gold/[0.05] text-center">
-      <p class="font-display text-[10px] md:text-xs tracking-[0.18em] text-off-white/35">
+    <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+      <p class="font-display text-xs md:text-sm tracking-[0.2em] text-slate-500 font-medium">
         &copy; {new Date().getFullYear()} {content.copyright}
       </p>
     </div>

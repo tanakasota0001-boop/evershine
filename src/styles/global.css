@@ -17,14 +17,21 @@
   --color-dark-surface: #0f1013;
   --color-dark-card: #17181c;
 
-  /* Accent Mapping (Restored Gold/Yellow) */
-  --color-gold: #cca662;
-  --color-gold-light: #e0be80;
-  --color-gold-dark: #9e7b3c;
+  /* Accent Mapping (Rich Gold for Light Theme) */
+  --color-gold: #b38e44;
+  --color-gold-light: #cca662;
+  --color-gold-dark: #8c6b2d;
   --color-cream: #f8fafc;
   --color-parchment: #e2e8f0;
   --color-charcoal: #1e293b;
-  --color-warm-black: #0b0f19;
+  --color-warm-black: #f8fafc;
+
+  /* Midnight Royal Navy (New Accent Color) */
+  --color-midnight: #0b1a30;
+  --color-midnight-light: #162e54;
+  --color-midnight-muted: #2d456b;
+  --color-midnight-dark: #060e1c;
+  --color-midnight-subtle: #f0f4f9;
 
   /* Typography (Restored Serif Fonts) */
   --font-serif: "Playfair Display", "Georgia", serif;
@@ -44,14 +51,14 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-dark);
-    color: var(--color-off-white);
+    background-color: #ffffff;
+    color: #1e293b;
     overflow-x: hidden;
   }
 
   ::selection {
     background-color: var(--color-gold);
-    color: var(--color-dark);
+    color: #ffffff;
   }
 }
 

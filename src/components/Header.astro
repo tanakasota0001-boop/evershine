@@ -9,48 +9,54 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
 
 <header
   id="site-header"
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out bg-gradient-to-b from-dark/80 via-dark/40 to-transparent"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out bg-gradient-to-b from-black/80 via-black/40 to-transparent"
 >
-  <div class="px-6 md:px-12 lg:px-20">
-    <div class="max-w-[90rem] mx-auto flex items-center justify-between py-5 md:py-6">
+  <!-- Scrolled header backdrop layer (separate layer to prevent backdrop-filter containing block bug on fixed mobile menu) -->
+  <div
+    id="header-backdrop"
+    class="header-backdrop absolute inset-0 -z-10 transition-all duration-500 pointer-events-none opacity-0"
+  ></div>
+
+  <div class="px-6 md:px-12 lg:px-20 relative z-50">
+    <div class="header-inner max-w-[92rem] mx-auto flex items-center justify-between py-6 md:py-7 lg:py-8 transition-all duration-300">
       <!-- Logo -->
-      <a href="#" class="relative z-10 group" aria-label={`${general.companyName} Home`}>
+      <a href="#" class="header-logo-link relative z-50 group" aria-label={`${general.companyName} Home`}>
         <Image
           src={logoImg}
           alt={general.companyName}
-          class="h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform duration-300 group-hover:opacity-90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          class="header-logo h-12 md:h-14 lg:h-16 w-auto object-contain transition-all duration-300 group-hover:opacity-90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
           quality={100}
         />
       </a>
 
       <!-- Nav (Desktop) -->
-      <nav class="hidden lg:flex items-center gap-10" aria-label="Main navigation">
+      <nav class="hidden lg:flex items-center gap-10 xl:gap-12" aria-label="Main navigation">
         {navLinks.map((link) => (
-          <a href={link.href} class="nav-link">
-            <span class="text-[15px] font-sans tracking-wider text-off-white font-medium">
+          <a href={link.href} class="nav-link group">
+            <span class="nav-link-ja text-[17px] xl:text-[18px] font-sans tracking-wider text-white font-medium transition-colors">
               {link.labelJa}
             </span>
-            <span class="text-[10px] font-display tracking-[0.18em] text-off-white/80 uppercase mt-0.5 font-semibold">
+            <span class="nav-link-en text-xs md:text-[13px] font-display tracking-[0.22em] text-white/90 uppercase mt-0.5 font-bold transition-colors">
               {link.label}
             </span>
           </a>
         ))}
         <a
           href={general.phoneNumberRaw}
-          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-5 py-2 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
+          class="ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-6 py-2.5 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
         >
           <!-- Metallic Shine Sweep -->
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
           
           <div class="relative z-10 flex items-center gap-1.5 leading-none">
-            <svg class="w-3 h-3 text-dark fill-current" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24">
               <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
             </svg>
-            <span class="text-[9px] font-sans font-bold tracking-widest text-dark/90 uppercase">
+            <span class="text-[11px] font-sans font-bold tracking-widest text-white/95 uppercase">
               {contactLabelJa}
             </span>
           </div>
-          <span class="relative z-10 text-xs md:text-sm font-sans font-bold tracking-wide text-dark mt-1 leading-none">
+          <span class="relative z-10 text-sm md:text-[15px] font-sans font-bold tracking-wider text-white mt-1 leading-none">
             {general.phoneNumber}
           </span>
         </a>
@@ -59,12 +65,14 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-btn"
-        class="lg:hidden relative z-10 w-9 h-9 flex flex-col justify-center items-center gap-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+        class="lg:hidden relative z-50 w-11 h-11 flex items-center justify-center rounded-sm transition-all duration-300 focus:outline-none"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <span class="menu-line w-6 h-0.5 bg-off-white transition-all duration-300 origin-center"></span>
-        <span class="menu-line w-4 h-0.5 bg-off-white transition-all duration-300 ml-auto"></span>
+        <div class="menu-icon-box relative w-6 h-4 flex flex-col justify-between pointer-events-none">
+          <span class="menu-line menu-line-1 block w-6 h-[2px] bg-white rounded-full transition-all duration-300 origin-center drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"></span>
+          <span class="menu-line menu-line-2 block w-4 h-[2px] bg-white rounded-full ml-auto transition-all duration-300 origin-center drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"></span>
+        </div>
       </button>
     </div>
   </div>
@@ -72,29 +80,64 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
   <!-- Mobile Menu Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10 opacity-0 pointer-events-none transition-opacity duration-500 lg:hidden"
+    class="fixed inset-0 z-40 bg-white/98 backdrop-blur-2xl opacity-0 pointer-events-none transition-all duration-400 ease-out lg:hidden flex flex-col justify-between overflow-y-auto overscroll-contain"
+    style="min-height: 100dvh;"
   >
-    {navLinks.map((link) => (
-      <a href={link.href} class="mobile-nav-link">
-        <span class="text-2xl font-sans font-light tracking-wide text-off-white">{link.labelJa}</span>
-        <span class="text-[12px] font-display tracking-[0.2em] text-off-white/80 uppercase">{link.label}</span>
-      </a>
-    ))}
-    <a
-      href={general.phoneNumberRaw}
-      class="mt-6 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-8 py-3.5 flex flex-col items-center justify-center gap-1 text-dark hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 transition-all duration-300 rounded-[2px] group"
-    >
-      <!-- Metallic Shine Sweep -->
-      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
-      
-      <div class="relative z-10 flex items-center gap-1.5 leading-none">
-        <svg class="w-3.5 h-3.5 text-dark fill-current" viewBox="0 0 24 24">
-          <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-        </svg>
-        <span class="text-[10px] font-sans font-bold tracking-widest text-dark/85 uppercase">{contactLabelJa}</span>
+    <!-- Top section with clearance and navigation links -->
+    <div class="pt-28 sm:pt-32 pb-6 px-6 sm:px-10 flex flex-col items-center">
+      <!-- "Menu" Title with decorative gold ornaments -->
+      <div class="flex items-center justify-center gap-4 mb-8 sm:mb-10">
+        <span class="w-8 h-px bg-gold/50"></span>
+        <span class="font-display text-sm sm:text-base tracking-[0.35em] text-gold-dark font-bold uppercase">Menu</span>
+        <span class="w-8 h-px bg-gold/50"></span>
       </div>
-      <span class="relative z-10 text-base font-sans font-bold tracking-wider text-dark mt-0.5">{general.phoneNumber}</span>
-    </a>
+
+      <!-- Navigation links -->
+      <nav class="w-full max-w-sm flex flex-col items-center gap-6 sm:gap-7" aria-label="Mobile navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link group w-full flex flex-col items-center py-2.5 transition-all duration-300 active:scale-95"
+          >
+            <span class="text-2xl sm:text-[26px] font-sans font-medium tracking-wider text-[#0b1a30] group-hover:text-gold-dark transition-colors">
+              {link.labelJa}
+            </span>
+            <span class="text-xs sm:text-sm font-display tracking-[0.25em] text-[#2d456b] uppercase font-bold mt-1.5 group-hover:text-gold-dark transition-colors">
+              {link.label}
+            </span>
+          </a>
+        ))}
+      </nav>
+
+      <!-- Phone CTA Button in Mobile Menu -->
+      <div class="w-full max-w-xs mt-8 sm:mt-10 flex flex-col items-center">
+        <a
+          href={general.phoneNumberRaw}
+          class="w-full relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red py-3.5 px-6 flex flex-col items-center justify-center gap-1 text-white shadow-lg shadow-accent-red/20 hover:shadow-xl hover:shadow-accent-red/30 active:scale-[0.98] transition-all duration-300 rounded-[2px] group"
+        >
+          <!-- Metallic Shine Sweep -->
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
+
+          <div class="relative z-10 flex items-center gap-2 leading-none">
+            <svg class="w-3.5 h-3.5 text-white fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+            </svg>
+            <span class="text-[11px] font-sans font-bold tracking-widest text-white uppercase">{contactLabelJa}</span>
+          </div>
+          <span class="relative z-10 text-base sm:text-lg font-sans font-bold tracking-wider text-white mt-0.5 leading-tight">{general.phoneNumber}</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Store Info & Hours in Mobile Menu -->
+    <div class="w-full px-6 py-6 border-t border-slate-200/80 bg-slate-50/80 mt-auto text-center flex flex-col items-center gap-1.5">
+      <p class="font-sans text-xs text-slate-600 font-medium tracking-wide">
+        営業時間: {general.hours}（{general.holiday}）
+      </p>
+      <p class="font-sans text-[11px] text-slate-500 font-light tracking-wider">
+        {general.address}
+      </p>
+    </div>
   </div>
 </header>
 
@@ -104,14 +147,10 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--color-off-white);
-    opacity: 0.92;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease;
   }
 
   .nav-link:hover {
-    opacity: 1;
     transform: translateY(-1px);
   }
 
@@ -121,7 +160,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     bottom: -6px;
     left: 10%;
     width: 0;
-    height: 1.5px;
+    height: 2px;
     background: var(--color-gold);
     transition: width 0.4s ease;
   }
@@ -130,83 +169,142 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     width: 80%;
   }
 
-  .mobile-nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--color-off-white);
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+  /* Scrolled header state */
+  #site-header.scrolled:not(.menu-open) {
+    background: transparent;
   }
 
-  .mobile-nav-link:hover {
+  #site-header.scrolled .header-backdrop {
     opacity: 1;
-  }
-
-  /* Header scrolled state */
-  #site-header.scrolled {
-    background: rgba(10, 10, 10, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(245, 245, 240, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
   }
 
-  #site-header.scrolled .nav-link {
-    opacity: 0.95;
-    text-shadow: none;
+  #site-header.scrolled .header-inner {
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+
+  #site-header.scrolled .header-logo {
+    opacity: 1;
+    height: 2.75rem;
+    filter: none !important;
+  }
+
+  @media (min-width: 768px) {
+    #site-header.scrolled .header-logo {
+      height: 3.25rem;
+    }
+  }
+
+  #site-header.scrolled .nav-link-ja {
+    color: #0b1a30;
+  }
+
+  #site-header.scrolled .nav-link-ja:hover {
+    color: #000000;
+  }
+
+  #site-header.scrolled .nav-link-en {
+    color: #2d456b;
+  }
+
+  #site-header.scrolled .menu-line {
+    background-color: #0b1a30;
+    filter: none !important;
   }
 
   /* Mobile menu open state */
+  #site-header.menu-open {
+    background: transparent !important;
+  }
+
+  #site-header.menu-open .header-backdrop {
+    opacity: 0 !important;
+  }
+
+  #site-header.menu-open .header-logo {
+    filter: none !important;
+  }
+
+  #site-header.menu-open .menu-line {
+    background-color: #0b1a30 !important;
+    filter: none !important;
+  }
+
   #mobile-menu.open {
     opacity: 1;
     pointer-events: auto;
   }
 
-  #mobile-menu-btn.open .menu-line:first-child {
-    transform: rotate(45deg) translateY(4px);
+  /* Hamburger to "X" animation */
+  #mobile-menu-btn.open .menu-line-1 {
+    transform: translateY(7px) rotate(45deg);
+    width: 1.5rem; /* 24px */
   }
 
-  #mobile-menu-btn.open .menu-line:last-child {
-    transform: rotate(-45deg) translateY(-3px);
-    width: 1.5rem;
+  #mobile-menu-btn.open .menu-line-2 {
+    transform: translateY(-7px) rotate(-45deg);
+    width: 1.5rem; /* 24px */
+    margin-left: 0;
   }
 </style>
 
 <script>
   // Header scroll behavior
   const header = document.getElementById('site-header');
-  let lastScroll = 0;
 
-  window.addEventListener('scroll', () => {
+  const updateScroll = () => {
     const currentScroll = window.scrollY;
-
     if (currentScroll > 80) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
+  };
 
-    lastScroll = currentScroll;
-  });
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll();
 
   // Mobile menu toggle
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
 
+  const setMenuOpen = (open: boolean) => {
+    menuBtn?.classList.toggle('open', open);
+    mobileMenu?.classList.toggle('open', open);
+    header?.classList.toggle('menu-open', open);
+    menuBtn?.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  };
+
   menuBtn?.addEventListener('click', () => {
-    const isOpen = menuBtn.classList.toggle('open');
-    mobileMenu?.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    const willOpen = !menuBtn.classList.contains('open');
+    setMenuOpen(willOpen);
   });
 
   // Close mobile menu on link click
   mobileMenu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      menuBtn?.classList.remove('open');
-      mobileMenu?.classList.remove('open');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      setMenuOpen(false);
     });
   });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuBtn?.classList.contains('open')) {
+      setMenuOpen(false);
+    }
+  });
+
+  // Close on window resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024 && menuBtn?.classList.contains('open')) {
+      setMenuOpen(false);
+    }
+  }, { passive: true });
 </script>

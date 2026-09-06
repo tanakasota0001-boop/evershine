@@ -10,8 +10,9 @@
 // =========================================================================
 
 // --- 1. 画像アセットのインポート ---
-import heroCar from "../images/hero_car.webp";
-import shopExterior from "../images/shop-exterior.webp";
+import hero2 from "../images/hero2.png";
+import shopExterior from "../images/shop-exterior2.png";
+import ownerImg from "../images/owner.png";
 import aboutImg from "../images/about-detailing.webp";
 
 // サービス画像
@@ -34,7 +35,7 @@ export const siteSettings = {
     siteTitle: "EVERSHINE（エバーシャイン）| 長野県塩尻市のカーコーティング・ガラスコーティング専門店",
 
     /** サイトの説明文 (SEO / 検索結果スニペットに表示されます) */
-    siteDescription: "長野県塩尻市のカーコーティング・ガラスコーティング専門店EVERSHINE（エバーシャイン）。創業50年以上・累計15,000台超の実績と純水洗車で、スーパーカーから輸入車・国産車まで愛車に重厚な艶と保護を提供します。塩尻市・松本市・安曇野市対応。",
+    siteDescription: "長野県塩尻市のカーコーティング・ガラスコーティング専門店EVERSHINE（エバーシャイン）。創業50年以上・累計20,000台超の実績と純水洗車で、スーパーカーから輸入車・国産車まで愛車に重厚な艶と保護を提供します。塩尻市・松本市・安曇野市対応。",
 
     /** 本番サイトURL (Canonical / OGP / 構造化データ用) */
     siteUrl: "https://evershine-coating.jp",
@@ -53,6 +54,9 @@ export const siteSettings = {
 
     /** 住所 */
     address: "長野県塩尻市広丘堅石2146-161",
+
+    /** 道順案内・アクセス */
+    directions: "国道19号「緑ヶ丘南」交差点を南へ約200m、案内看板を目印に左折",
 
     /** 郵便番号 */
     zipCode: "〒399-0705",
@@ -79,7 +83,7 @@ export const siteSettings = {
     brandName: "EVERSHINE",
 
     /** 創業年 */
-    foundingYear: "1974",
+    foundingYear: "1972",
 
     /** 位置情報 (GeoローカルSEO / 構造化データ用) */
     geo: {
@@ -134,7 +138,7 @@ export const siteSettings = {
     },
     style: {
       /** ヘッダー全体の背景スクロール時の色 (Tailwindクラス) */
-      scrolledBg: "rgba(10, 10, 10, 0.85)",
+      scrolledBg: "rgba(255, 255, 255, 0.95)",
       /** ナビゲーション文字サイズ (Tailwindクラス) */
       fontSize: "text-xs",
     }
@@ -158,10 +162,10 @@ export const siteSettings = {
       /** 実績ミニバッジ */
       stats: [
         { number: "50+", unit: "Years", label: "Years of Experience" },
-        { number: "15,000+", unit: "Cars", label: "Vehicles Detailed" },
+        { number: "20,000+", unit: "Cars", label: "Vehicles Detailed" },
       ],
       /** メイン背景画像 */
-      image: heroCar,
+      image: hero2,
       /** 画像の代替テキスト */
       imageAlt: "ガラスコーティングが施された高級車のボディ",
       /** スクロールインジケーターの文字 */
@@ -174,21 +178,23 @@ export const siteSettings = {
       paddingBottom: "pb-12 md:pb-44 lg:pb-52",
       /** 最大幅 (Tailwindクラス。コンテンツの広がり具合を調整) */
       maxWidth: "max-w-5xl",
+      /** プレ見出しの文字サイズ (Tailwindクラス) */
+      preLabelSize: "text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.2em] md:tracking-[0.25em]",
       /** 1行目の文字サイズ (Tailwindクラス) */
       titleLine1Size: "text-[clamp(2.2rem,6vw,5.5rem)]",
       /** 2行目の文字サイズ (Tailwindクラス) */
       titleLine2Size: "text-[clamp(2.2rem,6vw,5.5rem)]",
       /** サブ見出しの文字サイズ (Tailwindクラス) */
-      subtitleSize: "text-base md:text-lg lg:text-xl",
+      subtitleSize: "text-lg sm:text-xl md:text-2xl lg:text-[1.7rem]",
       /** メイン文字色 (Tailwindクラス) */
-      titleColor: "text-off-white",
+      titleColor: "text-white",
       /** 強調文字の色 (Tailwindクラス) */
       highlightColor: "text-gold-light",
       /** サブ見出しの文字色 (Tailwindクラス) */
       subtitleColor: "text-gold",
       /** 背景画像にかけるグラデーションオーバーレイの色 (Tailwindクラス) */
-      gradientOverlayLeft: "from-dark/65 via-dark/35 to-transparent",
-      gradientOverlayBottom: "from-dark/70 via-transparent to-transparent",
+      gradientOverlayLeft: "from-black/70 via-black/35 to-transparent",
+      gradientOverlayBottom: "from-black/60 via-transparent to-transparent",
       /** 背景画像の明るさ・トーン調整 (Tailwindクラス) */
       imageFilter: "brightness-125 contrast-105 saturate-[0.80]",
       /** シルバー調の輝き・金属感オーバーレイ (Tailwindクラス) */
@@ -202,7 +208,7 @@ export const siteSettings = {
   about: {
     content: {
       /** 背景の大きな西暦テキスト */
-      backgroundYear: "1990",
+      backgroundYear: "1972",
       /** セクションラベル（英語） */
       sectionLabel: "About Us",
       /** セクションラベル（日本語） */
@@ -215,7 +221,7 @@ export const siteSettings = {
       imageAlt: "EVERSHINE プロフェッショナルカーコーティング施工スタジオ",
       /** 本文テキスト（段落ごとに配列にします） */
       paragraphs: [
-        "EVERSHINEは1974年の創業以来、50年以上にわたり、ガラスコーティング・セラミックコーティングの専門店として、数多くの車両へ施工を重ねてまいりました。",
+        "EVERSHINEは1972年の創業以来、50年以上にわたり、ガラスコーティング・セラミックコーティングの専門店として、数多くの車両へ施工を重ねてまいりました。",
         "輸入車メーカーを中心に培ってきた豊富な取引実績と確かな技術力により、スーパーカーをはじめ輸入車・国産車を問わず、あらゆる車種の特性に応じた最適な施工をご提供いたします。",
         "塗装の本質を見極め、一台一台丁寧に仕上げること。\nそれが創業以来変わらない、私たちの誇りとこだわりです。"
       ],
@@ -224,13 +230,15 @@ export const siteSettings = {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-28 md:py-40 lg:py-52",
       /** メイン見出しの文字サイズ (Tailwindクラス) */
-      headingSize: "text-[clamp(1.6rem,3.5vw,3rem)]",
+      headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
+      /** 本文段落の文字サイズ (Tailwindクラス) */
+      paragraphSize: "text-base md:text-lg lg:text-[1.15rem] leading-[2.3] tracking-[0.04em]",
       /** 通常本文の文字色 (Tailwindクラス) */
-      textColor: "text-off-white/75",
+      textColor: "text-slate-700 font-normal",
       /** 強調（最後の段落など）の文字色 (Tailwindクラス) */
-      highlightTextColor: "text-off-white/85",
+      highlightTextColor: "text-slate-900 font-medium",
       /** 背景西暦の文字サイズと色 (Tailwindクラス) */
-      bgYearStyle: "text-[clamp(8rem,22vw,20rem)] font-light text-off-white/[0.02]",
+      bgYearStyle: "text-[clamp(8rem,22vw,20rem)] font-light text-slate-900/[0.03]",
       /** レイアウトのグリッド比率 (Tailwindクラス) */
       gridCols: "grid-cols-1 lg:grid-cols-12",
       /** 左カラム（見出し側）の幅指定 (Tailwindクラス) */
@@ -293,7 +301,7 @@ export const siteSettings = {
       /** グリッド列数（3列表示） (Tailwindクラス) */
       gridCols: "grid-cols-1 md:grid-cols-3",
       /** メイン見出しのサイズ (Tailwindクラス) */
-      headingSize: "text-[clamp(1.8rem,4vw,3.5rem)]",
+      headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
       /** カード内の英語タイトルの文字サイズ (Tailwindクラス) */
       cardTitleSize: "text-xl md:text-2xl lg:text-3xl",
     }
@@ -353,21 +361,55 @@ export const siteSettings = {
           number: "50+",
           unit: "Years of Craftsmanship",
           title: "施工実績",
-          description: "1974年の創業以来、\n50年以上にわたり蓄積した技術と経験。\n確かな品質をお約束します。",
+          description: "1972年の創業以来、\n50年以上にわたり蓄積した技術と経験。\n確かな品質をお約束します。",
         },
         {
-          number: "15,000+",
+          number: "20,000+",
           unit: "Vehicles Detailed",
           title: "施工台数",
-          description: "国産車から輸入車まで、\n累計15,000台以上の施工実績。\nあらゆる車種に対応いたします。",
+          description: "国産車から輸入車まで、\n累計20,000台以上の施工実績。\nあらゆる車種に対応いたします。",
         },
         {
           number: "100%",
           unit: "Pure Water System",
           title: "”純水”にこだわる",
-          description: "水シミやウォータースポットを防ぐため、\n当社は「純水」のみを使用。\n圧倒的な透明感と最高の仕上がりを実現します。",
+          description: "当社は「純水」のみを使用。\n圧倒的な透明感と最高の仕上がりを実現します。",
+          hasModal: true,
+          modalButtonLabel: "詳しく見る＞",
         },
-      ]
+      ],
+      /** 純水の詳細ポップアップモーダルの内容（純水器の特徴と豆知識） */
+      pureWaterModal: {
+        title: "純水器の特徴と豆知識",
+        intro: "洗車の仕上がりや車の塗装への優しさを重視するなら、ミネラル分を含まない純水の方が圧倒的に良いです。",
+        comparison: {
+          sectionTitle: "純水と水道水の違い",
+          pureTitle: "純水",
+          pureDesc: "カルシウムやマグネシウムなどの不純物が取り除かれた水です。乾いてもミネラルが残らないため、白いウロコ状の水シミ (イオンデポジット)ができにくいのが特徴です。",
+          tapTitle: "水道水",
+          tapDesc: "カルシウムやマグネシウム、塩素などのミネラルが含まれています。水分が蒸発するとミネラルだけがボディや窓に残り、頑固な水シミや汚れの原因になります。",
+          summary: "車への優しさや仕上がりをとるなら純水、手軽さやコストを抑えるなら水道水(ただし素早い拭き上げが必須)となります。",
+        },
+        benefitsTitle: "自宅で純水洗車をするメリット",
+        benefitsIntro: "自宅での純水洗車は、水道水を家庭用の洗車用純水器に通してミネラル分を取り除くことで、洗車後の水シミ(イオンデポジット)の発生を防ぎ、拭き上げの手間を大幅になくすことができます。",
+        points: [
+          {
+            number: "01",
+            title: "水シミができない",
+            description: "ミネラルやカルシウムがほぼゼロ (TDS値0ppm)のため、水分が自然乾燥しても白いウロコ状の跡が残りません。",
+          },
+          {
+            number: "02",
+            title: "炎天下でも洗車可能",
+            description: "乾くのを気にせず作業できるため、時間を急がず自分のペースで洗車できます。",
+          },
+          {
+            number: "03",
+            title: "拭き上げの労力軽減",
+            description: "ざっと水を流してそのまま放置、あるいは簡単な拭き取りだけで仕上げられます。",
+          },
+        ],
+      },
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
@@ -375,7 +417,7 @@ export const siteSettings = {
       /** グリッド列数（3項目に合わせた3列表示） (Tailwindクラス) */
       gridCols: "grid-cols-1 md:grid-cols-3",
       /** 数字部分の大きさ調整 (Tailwindクラス) */
-      numberSize: "text-[clamp(3rem,6vw,5rem)]",
+      numberSize: "text-[clamp(3.5rem,6vw,5.5rem)]",
     }
   },
 
@@ -426,6 +468,8 @@ export const siteSettings = {
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-28 md:py-40 lg:py-48",
+      /** コンテンツ最大幅 (Tailwindクラス) */
+      maxWidth: "max-w-[92rem]",
       /** ステップ数に合わせたグリッド列数 (Tailwindクラス) */
       gridCols: "grid-cols-1 md:grid-cols-5",
     }
@@ -472,7 +516,7 @@ export const siteSettings = {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-28 md:py-40 lg:py-48",
       /** コンテンツ幅の制限 (Tailwindクラス) */
-      maxWidth: "max-w-4xl",
+      maxWidth: "max-w-5xl",
     }
   },
 
@@ -491,11 +535,17 @@ export const siteSettings = {
       mapTitle: "EVERSHINEの所在地",
       /** 店舗写真 */
       shopImage: shopExterior,
+      /** 代表写真 */
+      ownerImage: ownerImg,
+      /** 代表肩書き */
+      ownerRole: "代表",
+      /** 代表氏名 */
+      ownerName: "森村 秀樹",
 
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-28 md:py-40 lg:py-48",
+      paddingY: "py-16 md:py-24 lg:py-28",
       /** グリッド列数（左右カラム表示） (Tailwindクラス) */
       gridCols: "grid-cols-1 lg:grid-cols-2",
       /** 写真や地図のアスペクト比設定 (Tailwindクラス) */
@@ -526,7 +576,7 @@ export const siteSettings = {
       /** コピーライトエリアの上下余白 (Tailwindクラス) */
       barPaddingY: "py-8 md:py-10",
       /** お問い合わせ見出し文字サイズ (Tailwindクラス) */
-      ctaHeadingSize: "text-[clamp(1.5rem,3vw,2.5rem)]",
+      ctaHeadingSize: "text-[clamp(1.8rem,3.8vw,3rem)]",
     }
   }
 };

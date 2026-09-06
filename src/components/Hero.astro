@@ -31,6 +31,12 @@ const { content, style } = hero;
       class={`absolute inset-0 bg-gradient-to-t ${style.gradientOverlayBottom}`}
     >
     </div>
+    <!-- Scroll Darken Overlay (徐々に黒くフェード) -->
+    <div
+      id="hero-darken-overlay"
+      class="absolute inset-0 bg-black opacity-0 pointer-events-none"
+    >
+    </div>
   </div>
 
   <!-- Content -->
@@ -44,9 +50,9 @@ const { content, style } = hero;
       <div>
         <!-- Pre-label / Badge (①) -->
         {content.preLabel && (
-          <div id="hero-badge" class={`flex items-center gap-3 -mt-10 md:mt-0 mb-14 md:mb-9 lg:mb-11 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
-            <span class="w-6 md:w-8 h-px bg-gold/70"></span>
-            <span class="font-display text-[10px] md:text-xs tracking-[0.3em] text-gold uppercase font-light">
+          <div id="hero-badge" class={`flex items-center gap-4 -mt-10 md:mt-0 mb-14 md:mb-9 lg:mb-11 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
+            <span class="w-10 md:w-16 h-[2px] bg-gold"></span>
+            <span class={`font-display ${style.preLabelSize || "text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.2em]"} text-gold uppercase font-medium`}>
               {content.preLabel}
             </span>
           </div>
@@ -73,7 +79,7 @@ const { content, style } = hero;
         <!-- Sub Heading -->
         <p
           id="hero-sub"
-          class={`font-sans ${style.subtitleSize} font-light tracking-[0.08em] ${style.subtitleColor} max-w-lg opacity-0 ${style.textAlign === "text-center" ? "mx-auto" : style.textAlign === "text-right" ? "ml-auto" : ""}`}
+          class={`font-sans ${style.subtitleSize} font-light tracking-[0.08em] ${style.subtitleColor} max-w-2xl opacity-0 ${style.textAlign === "text-center" ? "mx-auto" : style.textAlign === "text-right" ? "ml-auto" : ""}`}
         >
           {content.subtitle}
         </p>
@@ -85,16 +91,16 @@ const { content, style } = hero;
   {content.stats && content.stats.length > 0 && (
     <div
       id="hero-stats-badge"
-      class="hidden md:flex absolute bottom-14 md:bottom-16 lg:bottom-20 right-8 lg:right-16 z-20 items-center gap-6 py-3.5 px-6 rounded-sm bg-warm-black/60 backdrop-blur-md border border-gold/20 shadow-[0_8px_30px_rgb(0,0,0,0.5)] opacity-0 transition-all duration-300 hover:border-gold/40"
+      class="hidden md:flex absolute bottom-14 md:bottom-16 lg:bottom-20 right-8 lg:right-16 z-20 items-center gap-8 py-4.5 px-8 lg:py-5 lg:px-9 rounded-sm bg-[#091426]/80 backdrop-blur-md border border-gold/30 shadow-[0_8px_30px_rgba(9,20,38,0.5)] opacity-0 transition-all duration-300 hover:border-gold/50"
     >
       {content.stats.map((stat, idx) => (
         <>
-          {idx > 0 && <div class="w-px h-7 bg-gold/20"></div>}
+          {idx > 0 && <div class="w-px h-9 bg-gold/25"></div>}
           <div class="flex flex-col">
-            <span class="font-display text-base lg:text-lg font-light text-gold tracking-tight leading-none">
+            <span class="font-display text-xl lg:text-2xl font-normal text-gold tracking-tight leading-none">
               {stat.number}
             </span>
-            <span class="font-sans text-[9px] font-light text-off-white/70 tracking-widest leading-tight mt-1">
+            <span class="font-sans text-xs md:text-[13px] font-normal text-white/90 tracking-widest leading-tight mt-1.5">
               {stat.label}
             </span>
           </div>
@@ -109,13 +115,13 @@ const { content, style } = hero;
     class="absolute bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
   >
     <span
-      class="font-display text-[9px] tracking-[0.3em] text-gold/70 uppercase"
+      class="font-display text-xs md:text-[13px] tracking-[0.35em] text-gold uppercase font-semibold"
       >{content.scrollText}</span
     >
     <div class="w-px h-10 relative overflow-hidden">
-      <div class="scroll-line absolute w-full h-full bg-off-white/20"></div>
+      <div class="scroll-line absolute w-full h-full bg-white/20"></div>
       <div
-        class="scroll-line-active absolute w-full bg-off-white/60"
+        class="scroll-line-active absolute w-full bg-white/60"
         style="height: 40%; animation: scrollDown 2s ease-in-out infinite;"
       >
       </div>
@@ -211,7 +217,7 @@ const { content, style } = hero;
       const text2 = line2.textContent || "";
       const highlight = line2.getAttribute("data-highlight") || "";
       const highlightClass =
-        line2.getAttribute("data-highlight-class") || "text-off-white/90";
+        line2.getAttribute("data-highlight-class") || "text-gold-light";
       line2.innerHTML = "";
       line2.style.opacity = "1";
       text2
@@ -330,16 +336,28 @@ const { content, style } = hero;
       },
     });
 
+    // Darken background overlay on scroll (早めのタイミングで適度な上品な暗さにトーンダウン)
+    gsap.to("#hero-darken-overlay", {
+      opacity: 0.65,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "55% top",
+        scrub: 0.3,
+      },
+    });
+
     // Fade out hero content on scroll
     gsap.to("#hero .relative.z-10", {
       opacity: 0,
-      y: -60,
+      y: -50,
       ease: "none",
       scrollTrigger: {
         trigger: "#hero",
-        start: "60% top",
-        end: "bottom top",
-        scrub: 0.5,
+        start: "25% top",
+        end: "60% top",
+        scrub: 0.3,
       },
     });
   });
