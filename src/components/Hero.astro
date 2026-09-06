@@ -45,14 +45,13 @@ const { content, style } = hero;
   >
     <!-- Main Content: Asymmetric Left-Aligned -->
     <div
-      class={`${style.maxWidth} ${style.textAlign}`}
+      class={`relative ${style.maxWidth} ${style.textAlign} before:absolute before:-inset-6 sm:before:-inset-10 before:bg-gradient-to-r before:from-black/40 before:via-black/20 before:to-transparent before:blur-2xl before:-z-10 before:rounded-3xl before:pointer-events-none`}
     >
       <div>
         <!-- Pre-label / Badge (①) -->
         {content.preLabel && (
-          <div id="hero-badge" class={`flex items-center gap-4 -mt-10 md:mt-0 mb-14 md:mb-9 lg:mb-11 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
-            <span class="w-10 md:w-16 h-[2px] bg-gold"></span>
-            <span class={`font-display ${style.preLabelSize || "text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.2em]"} text-gold uppercase font-medium`}>
+          <div id="hero-badge" class={`flex items-center -mt-12 md:-mt-6 lg:-mt-8 mb-10 md:mb-12 lg:mb-14 opacity-0 ${style.textAlign === "text-center" ? "justify-center" : style.textAlign === "text-right" ? "justify-end" : "justify-start"}`}>
+            <span class={`inline-block font-display ${style.preLabelSize || "text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.25em]"} ${style.preLabelColor || "text-gold-light"} uppercase font-bold [text-shadow:_0_1px_3px_rgba(0,0,0,0.45)] md:[text-shadow:none] drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]`}>
               {content.preLabel}
             </span>
           </div>
@@ -62,13 +61,13 @@ const { content, style } = hero;
         <h1 class="mb-6 md:mb-8">
           <span
             id="hero-line-1"
-            class={`block font-display ${style.titleLine1Size} font-light leading-[1.1] tracking-[0.02em] ${style.titleColor} opacity-0`}
+            class={`block font-display ${style.titleLine1Size} font-normal md:font-medium leading-[1.15] tracking-[0.03em] ${style.titleColor} drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] opacity-0 whitespace-nowrap`}
           >
             {content.line1}
           </span>
           <span
             id="hero-line-2"
-            class={`block font-display ${style.titleLine2Size} font-light leading-[1.05] tracking-[0.02em] ${style.titleColor} mt-1 md:mt-2 opacity-0`}
+            class={`block font-display ${style.titleLine2Size} font-normal md:font-medium leading-[1.1] tracking-[0.03em] ${style.titleColor} drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] mt-1.5 md:mt-3 opacity-0 whitespace-nowrap`}
             data-highlight={content.highlightText}
             data-highlight-class={style.highlightColor}
           >
@@ -79,7 +78,7 @@ const { content, style } = hero;
         <!-- Sub Heading -->
         <p
           id="hero-sub"
-          class={`font-sans ${style.subtitleSize} font-light tracking-[0.08em] ${style.subtitleColor} max-w-2xl opacity-0 ${style.textAlign === "text-center" ? "mx-auto" : style.textAlign === "text-right" ? "ml-auto" : ""}`}
+          class={`font-sans ${style.subtitleSize} font-medium tracking-[0.1em] ${style.subtitleColor} [text-shadow:_0_1px_3px_rgba(0,0,0,0.45)] md:[text-shadow:none] drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] max-w-2xl opacity-0 ${style.textAlign === "text-center" ? "mx-auto" : style.textAlign === "text-right" ? "ml-auto" : ""}`}
         >
           {content.subtitle}
         </p>
@@ -112,17 +111,16 @@ const { content, style } = hero;
   <!-- Scroll Indicator -->
   <div
     id="hero-scroll-indicator"
-    class="absolute bottom-24 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0"
+    class="absolute bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 opacity-0 pointer-events-none z-20"
   >
     <span
-      class="font-display text-xs md:text-[13px] tracking-[0.35em] text-gold uppercase font-semibold"
+      class="font-display text-xs sm:text-sm md:text-sm tracking-[0.35em] text-gold-light uppercase font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]"
       >{content.scrollText}</span
     >
-    <div class="w-px h-10 relative overflow-hidden">
-      <div class="scroll-line absolute w-full h-full bg-white/20"></div>
+    <div class="w-[2px] h-12 md:h-14 relative overflow-hidden rounded-full bg-white/30 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
       <div
-        class="scroll-line-active absolute w-full bg-white/60"
-        style="height: 40%; animation: scrollDown 2s ease-in-out infinite;"
+        class="scroll-line-active absolute w-full bg-gradient-to-b from-gold-light via-white to-gold-light rounded-full shadow-[0_0_8px_rgba(255,255,255,0.9)]"
+        style="height: 45%; animation: scrollDown 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;"
       >
       </div>
     </div>
@@ -137,10 +135,18 @@ const { content, style } = hero;
 
   @keyframes scrollDown {
     0% {
-      top: -40%;
+      top: -45%;
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
     }
     100% {
       top: 100%;
+      opacity: 0;
     }
   }
 </style>

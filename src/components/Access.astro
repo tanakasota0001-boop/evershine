@@ -12,8 +12,8 @@ const { content, style } = access;
 >
   <!-- Background Image with Dark Overlay -->
   <div class="absolute inset-0 z-0 bg-slate-950">
-    <!-- Image cropped significantly from top and shifted upwards (Mobile enhanced shift, PC unchanged) -->
-    <div class="absolute inset-x-0 -top-52 sm:-top-56 md:-top-44 h-[34%] sm:h-[42%] md:h-[68%] overflow-hidden">
+    <!-- Image cropped significantly from top and shifted upwards (Mobile enhanced shift, PC shifted upwards) -->
+    <div class="absolute inset-x-0 -top-52 sm:-top-56 md:-top-96 lg:-top-[28rem] xl:-top-[32rem] h-[34%] sm:h-[42%] md:h-[68%] overflow-hidden">
       <Image
         src={content.shopImage}
         alt="EVERSHINE 店舗外観"
@@ -23,16 +23,16 @@ const { content, style } = access;
         quality={85}
         loading="lazy"
       />
-      <!-- PC-only Dark Overlay (Strengthens desktop contrast while preserving mobile settings) -->
-      <div class="hidden md:block absolute inset-0 bg-black/45 pointer-events-none"></div>
-      <div class="hidden md:block absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent pointer-events-none"></div>
+      <!-- PC-only Dark Overlay (Softened for better image clarity between title and company info) -->
+      <div class="hidden md:block absolute inset-0 bg-black/20 pointer-events-none"></div>
+      <div class="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent pointer-events-none"></div>
 
       <!-- Smooth fade out at the bottom of the image container -->
       <div class="absolute inset-x-0 bottom-0 h-32 sm:h-40 md:h-48 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none"></div>
     </div>
 
-    <!-- Mobile-only Top Dark Overlay (Ensures Title Visibility on Mobile, hidden on PC) -->
-    <div class="md:hidden absolute inset-x-0 top-0 h-52 sm:h-64 bg-gradient-to-b from-black/90 via-black/60 to-transparent pointer-events-none"></div>
+    <!-- Top Dark Overlay (Title visibility focused, fades quickly on PC) -->
+    <div class="absolute inset-x-0 top-0 h-52 sm:h-64 md:h-48 lg:h-56 bg-gradient-to-b from-black/90 via-black/60 md:via-black/30 to-transparent pointer-events-none"></div>
 
     <!-- Solid Black Fill at the Bottom (Mobile: expanded black fill, PC: unchanged) -->
     <div class="absolute inset-x-0 bottom-0 h-[68%] sm:h-[60%] md:h-[45%] bg-slate-950"></div>
@@ -46,7 +46,7 @@ const { content, style } = access;
   <div class="relative z-10 px-6 md:px-12 lg:px-20">
     <div class="max-w-7xl mx-auto">
       <!-- Section Header -->
-      <div class="text-center mb-52 sm:mb-56 md:mb-72 lg:mb-80 xl:mb-96">
+      <div class="text-center mb-52 sm:mb-56 md:mb-72 lg:mb-96 xl:mb-[28rem]">
         <div class="access-reveal flex items-center justify-center gap-5">
           <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
           <h2 class="flex flex-col items-center gap-1.5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
@@ -247,7 +247,7 @@ const { content, style } = access;
 
         <!-- Bottom Row: Sleek Wide Google Map & Centered Open Button -->
         <div class="access-reveal space-y-4 sm:space-y-5">
-          <div class="relative w-full h-[200px] sm:h-[240px] md:h-[280px] overflow-hidden rounded-sm bg-slate-900 border border-white/15 shadow-2xl shadow-black/50">
+          <div class="relative w-full h-[280px] sm:h-[320px] md:h-[380px] lg:h-[420px] overflow-hidden rounded-sm bg-slate-900 border border-white/15 shadow-2xl shadow-black/50">
             <iframe
               src="https://maps.google.com/maps?q=EVERSHINE%20%E9%95%B7%E9%87%8E%E7%9C%8C%E5%A1%A9%E5%B0%BB%E5%B8%82%E5%BA%83%E4%B8%98%E5%A0%85%E7%9F%B32146-161&output=embed"
               width="100%"

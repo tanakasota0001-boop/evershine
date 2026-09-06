@@ -10,7 +10,7 @@
 // =========================================================================
 
 // --- 1. 画像アセットのインポート ---
-import hero2 from "../images/hero2.png";
+import hero3 from "../images/hero3.png";
 import shopExterior from "../images/shop-exterior2.png";
 import ownerImg from "../images/owner.png";
 import aboutImg from "../images/about-detailing.webp";
@@ -165,7 +165,7 @@ export const siteSettings = {
         { number: "20,000+", unit: "Cars", label: "Vehicles Detailed" },
       ],
       /** メイン背景画像 */
-      image: hero2,
+      image: hero3,
       /** 画像の代替テキスト */
       imageAlt: "ガラスコーティングが施された高級車のボディ",
       /** スクロールインジケーターの文字 */
@@ -180,6 +180,8 @@ export const siteSettings = {
       maxWidth: "max-w-5xl",
       /** プレ見出しの文字サイズ (Tailwindクラス) */
       preLabelSize: "text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.2em] md:tracking-[0.25em]",
+      /** プレ見出しの文字色 (Tailwindクラス) */
+      preLabelColor: "text-gold-light",
       /** 1行目の文字サイズ (Tailwindクラス) */
       titleLine1Size: "text-[clamp(2.2rem,6vw,5.5rem)]",
       /** 2行目の文字サイズ (Tailwindクラス) */
@@ -191,10 +193,10 @@ export const siteSettings = {
       /** 強調文字の色 (Tailwindクラス) */
       highlightColor: "text-gold-light",
       /** サブ見出しの文字色 (Tailwindクラス) */
-      subtitleColor: "text-gold",
+      subtitleColor: "text-gold-light",
       /** 背景画像にかけるグラデーションオーバーレイの色 (Tailwindクラス) */
-      gradientOverlayLeft: "from-black/70 via-black/35 to-transparent",
-      gradientOverlayBottom: "from-black/60 via-transparent to-transparent",
+      gradientOverlayLeft: "from-black/45 via-black/15 to-transparent",
+      gradientOverlayBottom: "from-black/30 via-transparent to-transparent",
       /** 背景画像の明るさ・トーン調整 (Tailwindクラス) */
       imageFilter: "brightness-125 contrast-105 saturate-[0.80]",
       /** シルバー調の輝き・金属感オーバーレイ (Tailwindクラス) */
@@ -228,7 +230,7 @@ export const siteSettings = {
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-28 md:py-40 lg:py-52",
+      paddingY: "py-16 md:py-24 lg:py-32",
       /** メイン見出しの文字サイズ (Tailwindクラス) */
       headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
       /** 本文段落の文字サイズ (Tailwindクラス) */
@@ -236,7 +238,7 @@ export const siteSettings = {
       /** 通常本文の文字色 (Tailwindクラス) */
       textColor: "text-slate-700 font-normal",
       /** 強調（最後の段落など）の文字色 (Tailwindクラス) */
-      highlightTextColor: "text-slate-900 font-medium",
+      highlightTextColor: "text-slate-700 font-normal",
       /** 背景西暦の文字サイズと色 (Tailwindクラス) */
       bgYearStyle: "text-[clamp(8rem,22vw,20rem)] font-light text-slate-900/[0.03]",
       /** レイアウトのグリッド比率 (Tailwindクラス) */
@@ -258,9 +260,9 @@ export const siteSettings = {
       /** セクションラベル（日本語） */
       sectionLabelJa: "施工メニュー",
       /** メイン見出しの1行目 */
-      headingLine1: "熟練の技術とこだわりで、",
+      headingLine1: "熟練の技術とこだわりで",
       /** メイン見出しの2行目 */
-      headingLine2: "愛車を美しく守る。",
+      headingLine2: "愛車を美しく守る",
       /** 見出し下の説明文 */
       description: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
       /** 各サービスカードの情報リスト */
@@ -297,7 +299,7 @@ export const siteSettings = {
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-24 md:py-36 lg:py-44",
+      paddingY: "py-16 md:py-24 lg:py-32",
       /** グリッド列数（3列表示） (Tailwindクラス) */
       gridCols: "grid-cols-1 md:grid-cols-3",
       /** メイン見出しのサイズ (Tailwindクラス) */
@@ -413,7 +415,7 @@ export const siteSettings = {
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-28 md:py-40 lg:py-48",
+      paddingY: "py-16 md:py-24 lg:py-32",
       /** グリッド列数（3項目に合わせた3列表示） (Tailwindクラス) */
       gridCols: "grid-cols-1 md:grid-cols-3",
       /** 数字部分の大きさ調整 (Tailwindクラス) */
@@ -467,7 +469,7 @@ export const siteSettings = {
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-28 md:py-40 lg:py-48",
+      paddingY: "py-16 md:py-24 lg:py-32",
       /** コンテンツ最大幅 (Tailwindクラス) */
       maxWidth: "max-w-[92rem]",
       /** ステップ数に合わせたグリッド列数 (Tailwindクラス) */
@@ -514,7 +516,7 @@ export const siteSettings = {
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
-      paddingY: "py-28 md:py-40 lg:py-48",
+      paddingY: "py-16 md:py-24 lg:py-32",
       /** コンテンツ幅の制限 (Tailwindクラス) */
       maxWidth: "max-w-5xl",
     }
@@ -538,7 +540,7 @@ export const siteSettings = {
       /** 代表写真 */
       ownerImage: ownerImg,
       /** 代表肩書き */
-      ownerRole: "代表",
+      ownerRole: "代表取締役",
       /** 代表氏名 */
       ownerName: "森村 秀樹",
 
@@ -572,7 +574,7 @@ export const siteSettings = {
     },
     style: {
       /** お問い合わせエリアの上下余白 (Tailwindクラス) */
-      ctaPaddingY: "py-24 md:py-36 lg:py-44",
+      ctaPaddingY: "py-12 sm:py-14 md:py-16 lg:py-20",
       /** コピーライトエリアの上下余白 (Tailwindクラス) */
       barPaddingY: "py-8 md:py-10",
       /** お問い合わせ見出し文字サイズ (Tailwindクラス) */

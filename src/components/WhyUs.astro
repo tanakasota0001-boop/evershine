@@ -17,7 +17,7 @@ const { content, style } = whyUs;
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
-      <div class="text-center mb-16 md:mb-24">
+      <div class="text-center mb-10 md:mb-14 lg:mb-16">
         <div class="whyus-reveal flex items-center justify-center gap-5 mb-4">
           <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
           <h2 class="flex flex-col items-center gap-1.5">
@@ -39,21 +39,21 @@ const { content, style } = whyUs;
             return (
               <div class="whyus-card relative group">
                 <!-- Monument Stage Panel -->
-                <div class="relative h-full flex flex-col justify-between overflow-hidden rounded-sm border border-[#e5decb] bg-white/95 backdrop-blur-sm p-8 sm:p-9 md:p-10 lg:p-11 text-center transition-all duration-700 hover:border-gold hover:shadow-2xl hover:shadow-gold/[0.12] group-hover:-translate-y-1.5 shadow-lg shadow-[#8c6b2d]/[0.06]">
+                <div class="relative h-full flex flex-col justify-between overflow-hidden rounded-sm border border-[#e5decb] bg-white/95 backdrop-blur-sm p-6 sm:p-7 md:p-8 lg:p-9 text-center transition-all duration-700 hover:border-gold hover:shadow-2xl hover:shadow-gold/[0.12] group-hover:-translate-y-1.5 shadow-lg shadow-[#8c6b2d]/[0.06]">
                   
                   <div>
                     <!-- Large Icon with subtle aura -->
-                    <div class="mb-6 flex justify-center">
-                      <div class="relative w-18 h-18 sm:w-20 sm:h-20 rounded-full border border-gold/30 bg-gold/[0.06] flex items-center justify-center text-gold-dark group-hover:border-gold/60 group-hover:bg-gold/[0.12] group-hover:scale-105 transition-all duration-500 shadow-md shadow-gold/5">
+                    <div class="mb-4 flex justify-center">
+                      <div class="relative w-15 h-15 sm:w-16 sm:h-16 rounded-full border border-gold/30 bg-gold/[0.06] flex items-center justify-center text-gold-dark group-hover:border-gold/60 group-hover:bg-gold/[0.12] group-hover:scale-105 transition-all duration-500 shadow-md shadow-gold/5">
                         {index === 0 ? (
                           /* 実績・クラフトマンシップ (メダル・賞状) */
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-9 h-9 sm:w-10 sm:h-10 text-gold-dark group-hover:text-gold transition-colors duration-300">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 sm:w-8.5 sm:h-8.5 text-gold-dark group-hover:text-gold transition-colors duration-300">
                             <circle cx="12" cy="8" r="6" />
                             <path d="M15.47 13.5L19 21l-7-3-7 3 3.53-7.5" />
                           </svg>
                         ) : index === 1 ? (
                           /* 施工台数 (自動車) */
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-9 h-9 sm:w-10 sm:h-10 text-gold-dark group-hover:text-gold transition-colors duration-300">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 sm:w-8.5 sm:h-8.5 text-gold-dark group-hover:text-gold transition-colors duration-300">
                             <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 12 10s-6.7.6-8.5 1.1C2.7 11.3 2 12.1 2 13v3c0 .6.4 1 1 1h2" />
                             <circle cx="7" cy="17" r="2" />
                             <circle cx="17" cy="17" r="2" />
@@ -61,7 +61,7 @@ const { content, style } = whyUs;
                           </svg>
                         ) : (
                           /* 純水システム (水滴・輝き) */
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-9 h-9 sm:w-10 sm:h-10 text-gold-dark group-hover:text-gold transition-colors duration-300">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" class="w-8 h-8 sm:w-8.5 sm:h-8.5 text-gold-dark group-hover:text-gold transition-colors duration-300">
                             <path d="M12 2.5C12 2.5 5 10.5 5 15.5C5 19.366 8.134 22.5 12 22.5C15.866 22.5 19 19.366 19 15.5C19 10.5 12 2.5 12 2.5Z" />
                             <path d="M9.5 14.5C9.5 13 11 11.2 12.5 10.2" stroke-linecap="round" />
                           </svg>
@@ -70,23 +70,23 @@ const { content, style } = whyUs;
                     </div>
 
                     <!-- Monumental Display Number -->
-                    <div class="mb-4 flex flex-col items-center">
+                    <div class="mb-3 flex flex-col items-center">
                       <span
                         class="whyus-number font-display text-[clamp(3.5rem,6vw,5.5rem)] font-light text-gold-dark leading-none tracking-tight group-hover:text-gold transition-colors duration-500 tabular-nums"
                         data-value={item.number}
                       >
                         {item.number}
                       </span>
-                      <span class="font-display text-sm md:text-base tracking-[0.22em] text-[#0b1a30] uppercase mt-3.5 block leading-none font-bold">
+                      <span class="font-display text-sm md:text-base tracking-[0.22em] text-[#0b1a30] uppercase mt-2.5 block leading-none font-bold">
                         {item.unit}
                       </span>
                     </div>
 
                     <!-- Gold Horizontal Accent Line -->
-                    <div class="w-10 h-px bg-gold/40 mx-auto my-6 group-hover:w-20 transition-all duration-500 ease-out"></div>
+                    <div class="w-10 h-px bg-gold/40 mx-auto my-4 group-hover:w-20 transition-all duration-500 ease-out"></div>
 
                     <!-- Title (Japanese) -->
-                    <h3 class="font-sans text-xl sm:text-2xl font-medium tracking-[0.08em] text-slate-900 mb-5 group-hover:text-gold-dark transition-colors duration-300">
+                    <h3 class="font-sans text-xl sm:text-2xl font-medium tracking-[0.08em] text-slate-900 mb-3 group-hover:text-gold-dark transition-colors duration-300">
                       {item.title}
                     </h3>
 
@@ -97,7 +97,7 @@ const { content, style } = whyUs;
                   </div>
 
                   <!-- Bottom Link Area (Anchored to bottom) -->
-                  <div class="mt-6 min-h-[32px] flex items-center justify-center">
+                  <div class="mt-4 min-h-[32px] flex items-center justify-center">
                     {item.hasModal && (
                       <button
                         type="button"

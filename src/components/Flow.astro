@@ -17,7 +17,7 @@ const { content, style } = flow;
     <div class={`${style.maxWidth || 'max-w-[92rem]'} mx-auto`}>
       
       <!-- Section Header -->
-      <div class="text-center mb-14 md:mb-20 lg:mb-28">
+      <div class="text-center mb-10 md:mb-14 lg:mb-16">
         <div class="flow-reveal flex items-center justify-center gap-5 mb-4">
           <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
           <h2 class="flex flex-col items-center gap-1.5">
@@ -44,22 +44,22 @@ const { content, style } = flow;
             <div class={`flow-step group relative flex flex-col items-center text-center h-full ${index === 4 ? 'md:col-span-2 md:max-w-[calc(50%-1rem)] md:mx-auto lg:col-span-1 lg:max-w-none' : ''}`}>
               
               <!-- Milestone Node Point (Desktop only - sits on the horizontal orbit line) -->
-              <div class="hidden lg:flex relative mb-6 z-10">
+              <div class="hidden lg:flex relative mb-4 z-10">
                 <div class="w-8 h-8 rounded-full border border-[#0b1a30]/20 bg-white shadow-sm flex items-center justify-center group-hover:border-gold group-hover:shadow-md group-hover:shadow-gold/20 transition-all duration-300">
                   <div class="w-2 h-2 rounded-full bg-[#0b1a30] group-hover:bg-gold group-hover:scale-150 transition-all duration-300"></div>
                 </div>
               </div>
 
               <!-- Step Card (Simple & matching other sections) -->
-              <div class="w-full flex-1 flex flex-col items-center text-center bg-white rounded-sm border border-slate-200/80 shadow-sm group-hover:border-gold/50 group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 lg:p-5 xl:p-7">
+              <div class="w-full flex-1 flex flex-col items-center text-center bg-white rounded-sm border border-slate-200/80 shadow-sm group-hover:border-gold/50 group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300 p-5 sm:p-6 lg:p-4.5 xl:p-6">
                 <!-- Big Display Number -->
-                <span class="font-display text-3xl sm:text-4xl lg:text-[42px] xl:text-5xl font-normal text-gold-dark tracking-wider group-hover:text-gold transition-colors duration-300 leading-none mb-3">
+                <span class="font-display text-3xl sm:text-4xl lg:text-[40px] xl:text-5xl font-normal text-gold-dark tracking-wider group-hover:text-gold transition-colors duration-300 leading-none mb-2">
                   {step.number}
                 </span>
 
                 <!-- Icon -->
-                <div class="mb-4 flex justify-center text-[#0b1a30] group-hover:text-gold group-hover:scale-105 transition-all duration-300">
-                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-gold/40 group-hover:bg-gold/[0.06] transition-all duration-300">
+                <div class="mb-3 flex justify-center text-[#0b1a30] group-hover:text-gold group-hover:scale-105 transition-all duration-300">
+                  <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center group-hover:border-gold/40 group-hover:bg-gold/[0.06] transition-all duration-300">
                     <span set:html={step.icon} />
                   </div>
                 </div>
@@ -70,7 +70,7 @@ const { content, style } = flow;
                 </h3>
 
                 <!-- Golden Accent Divider -->
-                <div class="w-8 h-px bg-gold/40 my-2.5 group-hover:w-14 transition-all duration-300 ease-out"></div>
+                <div class="w-8 h-px bg-gold/40 my-2 group-hover:w-14 transition-all duration-300 ease-out"></div>
 
                 <!-- Description -->
                 <p class="font-sans text-xs sm:text-sm md:text-[14px] xl:text-[14.5px] font-normal leading-[2] sm:leading-[2.1] tracking-wider text-slate-700 max-w-[260px] mx-auto whitespace-pre-line mt-1">
@@ -81,7 +81,7 @@ const { content, style } = flow;
 
               <!-- Mobile Step Flow Connector Arrow (Tip only, larger, perfectly centered) -->
               {index < content.steps.length - 1 && (
-                <div class="md:hidden flex justify-center py-4 text-gold" aria-hidden="true">
+                <div class="md:hidden flex justify-center py-2.5 text-gold" aria-hidden="true">
                   <svg class="w-6 h-6 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M6 9l6 6 6-6" />
                   </svg>

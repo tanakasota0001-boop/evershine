@@ -11,7 +11,7 @@ const { content, style } = faq;
   <div class="px-6 md:px-12 lg:px-20">
     <div class={`${style.maxWidth} mx-auto`}>
       <!-- Section Header -->
-      <div class="text-center mb-16 md:mb-24">
+      <div class="text-center mb-10 md:mb-14 lg:mb-16">
         <div class="faq-reveal flex items-center justify-center gap-5">
           <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
           <h2 class="flex flex-col items-center gap-1.5">
@@ -29,34 +29,36 @@ const { content, style } = faq;
       <!-- FAQ Accordion -->
       <div class="faq-list space-y-0">
         {content.items.map((item, index) => (
-          <div class="faq-item group border-t border-slate-200 last:border-b transition-colors duration-300 hover:border-gold/40" data-faq-index={index}>
+          <div class="faq-item group border-t border-slate-200 last:border-b" data-faq-index={index}>
             <button
-              class="faq-trigger w-full flex items-start justify-between py-7 md:py-9 text-left cursor-pointer"
+              class="faq-trigger w-full flex items-start justify-between py-5 md:py-6 text-left cursor-pointer"
               aria-expanded="false"
             >
               <div class="flex items-start gap-4 md:gap-6 pr-6">
                 {/* Number */}
-                <span class="font-display text-lg md:text-xl tracking-[0.2em] text-[#0b1a30] mt-0.5 shrink-0 font-bold group-hover:text-gold-dark transition-colors duration-300">
+                <span class="font-display text-lg md:text-xl tracking-[0.2em] text-gold-dark mt-0.5 shrink-0 font-bold group-hover:text-gold transition-colors duration-300">
                   Q.{String(index + 1).padStart(2, '0')}
                 </span>
                 {/* Question */}
-                <span class="font-sans text-base md:text-lg lg:text-[19px] font-normal tracking-[0.03em] text-slate-900 group-hover:text-[#0b1a30] transition-colors duration-300 leading-[1.6]">
+                <span class="font-sans text-base md:text-lg lg:text-[19px] font-normal tracking-[0.03em] text-slate-900 group-hover:text-gold-dark transition-colors duration-300 leading-[1.6]">
                   {item.question}
                 </span>
               </div>
-              {/* Toggle Icon */}
-              <span class="faq-icon relative w-6 h-6 md:w-7 md:h-7 shrink-0 mt-1">
-                <span class="absolute top-1/2 left-0 w-full h-[2px] bg-[#0b1a30] group-hover:bg-gold -translate-y-1/2 transition-all duration-300"></span>
-                <span class="absolute top-1/2 left-0 w-full h-[2px] bg-[#0b1a30] group-hover:bg-gold -translate-y-1/2 rotate-90 transition-all duration-300 origin-center"></span>
+              {/* Toggle Icon (+ to - with rotation) */}
+              <span class="faq-icon relative w-5 h-5 md:w-6 md:h-6 shrink-0 mt-1 flex items-center justify-center transition-transform duration-300">
+                <span class="absolute w-4 md:w-5 h-[2px] bg-[#0b1a30] transition-transform duration-300"></span>
+                <span class="faq-vertical-bar absolute w-4 md:w-5 h-[2px] bg-[#0b1a30] rotate-90 transition-all duration-300 origin-center"></span>
               </span>
             </button>
 
-            {/* Answer */}
-            <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-out">
-              <div class="pb-7 md:pb-9 pl-10 md:pl-16">
-                <p class="font-sans text-sm md:text-base lg:text-[17px] font-normal leading-[2.3] tracking-[0.03em] text-slate-700 max-w-3xl whitespace-pre-line">
-                  {item.answer}
-                </p>
+            {/* Answer (Smooth Grid Accordion) */}
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <div class="pb-5 md:pb-6 pl-10 md:pl-16">
+                  <p class="font-sans text-sm md:text-base lg:text-[17px] font-normal leading-[2.3] tracking-[0.03em] text-slate-700 max-w-3xl whitespace-pre-line">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -69,8 +71,32 @@ const { content, style } = faq;
 </section>
 
 <style>
-  .faq-trigger[aria-expanded="true"] .faq-icon span:last-child {
-    transform: translateY(-50%) rotate(0deg);
+  /* + to - morph animation */
+  .faq-trigger[aria-expanded="true"] .faq-vertical-bar {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Smooth Grid Accordion */
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out;
+    opacity: 0;
+  }
+
+  .faq-trigger[aria-expanded="true"] + .faq-answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .faq-answer-inner {
+    min-height: 0;
+    overflow: hidden;
   }
 </style>
 
@@ -83,24 +109,17 @@ const { content, style } = faq;
   // FAQ accordion logic
   document.querySelectorAll('.faq-trigger').forEach((trigger) => {
     trigger.addEventListener('click', () => {
-      const item = trigger.closest('.faq-item');
-      const answer = item?.querySelector('.faq-answer') as HTMLElement | null;
       const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
       // Close all others
       document.querySelectorAll('.faq-trigger').forEach((other) => {
         if (other !== trigger) {
           other.setAttribute('aria-expanded', 'false');
-          const otherAnswer = other.closest('.faq-item')?.querySelector('.faq-answer') as HTMLElement | null;
-          if (otherAnswer) otherAnswer.style.maxHeight = '0';
         }
       });
 
       // Toggle current
       trigger.setAttribute('aria-expanded', String(!isOpen));
-      if (answer) {
-        answer.style.maxHeight = !isOpen ? answer.scrollHeight + 'px' : '0';
-      }
     });
   });
 
