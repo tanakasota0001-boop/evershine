@@ -30,17 +30,17 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       </a>
 
       <!-- Nav (Desktop) -->
-      <nav class="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-6" aria-label="Main navigation">
+      <nav class="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-5.5" aria-label="Main navigation">
         {navLinks.map((link, index) => (
           <>
             {index > 0 && (
-              <span class="nav-divider w-px h-5 xl:h-6 bg-white/25 transition-colors duration-300 pointer-events-none" aria-hidden="true"></span>
+              <span class="nav-divider w-px h-4.5 xl:h-5.5 bg-white/25 transition-colors duration-300 pointer-events-none" aria-hidden="true"></span>
             )}
-            <a href={link.href} class="nav-link group">
-              <span class="nav-link-ja text-[15px] xl:text-[16px] 2xl:text-[17px] font-sans tracking-wider text-white font-medium transition-colors">
+            <a href={link.href} class="nav-link group px-1">
+              <span class="nav-link-ja text-[13.5px] xl:text-[15px] 2xl:text-[16px] font-sans tracking-wider text-white font-medium transition-colors whitespace-nowrap">
                 {link.labelJa}
               </span>
-              <span class="nav-link-en text-[11px] xl:text-xs font-display tracking-[0.2em] text-white/90 uppercase mt-0.5 font-bold transition-colors">
+              <span class="nav-link-en text-[10px] xl:text-[11px] font-display tracking-[0.18em] text-white/90 uppercase mt-0.5 font-bold transition-colors whitespace-nowrap">
                 {link.label}
               </span>
             </a>

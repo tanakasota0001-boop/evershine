@@ -19,6 +19,12 @@ import aboutImg from "../images/about-detailing.webp";
 import bodyCoatingImg from "../images/service-body-coating.webp";
 import ppfImg from "../images/service-ppf.webp";
 import windowFilmImg from "../images/service-window-film.webp";
+import wrappingFilmImg from "../images/service-wrapping-film.png";
+import interiorCoatingImg from "../images/service-interior-coating.png";
+import headlightProtectionImg from "../images/service-headlight-protection.png";
+import glassCoatingImg from "../images/service-glass-coating.png";
+import topWaterRepellentImg from "../images/service-top-water-repellent.png";
+import wheelCoatingImg from "../images/service-wheel-coating.png";
 
 // ギャラリー画像
 import gallery01 from "../images/gallery-01.webp";
@@ -128,6 +134,7 @@ export const siteSettings = {
       /** ナビゲーションメニューのリンク */
       navLinks: [
         { label: "About", labelJa: "私たちについて", href: "#about" },
+        { label: "Craftsmanship", labelJa: "こだわり", href: "#craftsmanship" },
         { label: "Services", labelJa: "施工メニュー", href: "#services" },
         { label: "Why Us", labelJa: "選ばれる理由", href: "#why-us" },
         { label: "Flow", labelJa: "施工の流れ", href: "#flow" },
@@ -253,6 +260,53 @@ export const siteSettings = {
   },
 
   // =========================================================================
+  // 下地処理セクションの設定 (Craftsmanship - EVERSHINE加工へのこだわり)
+  // =========================================================================
+  craftsmanship: {
+    content: {
+      /** セクションラベル（英語） */
+      sectionLabel: "Craftsmanship",
+      /** セクションラベル（日本語） */
+      sectionLabelJa: "こだわり",
+      /** メイン見出しの1行目 */
+      headingLine1: "塗装を削らず、艶を蘇生させる。",
+      /** メイン見出しの2行目 */
+      headingLine2: "半世紀の経験が生んだ「EVERSHINE加工」",
+      /** リード文 */
+      leadText: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
+      /** 3つの特徴・こだわり */
+      features: [
+        {
+          number: "01",
+          title: "最新の塗面蘇生法「EVERSHINE加工」",
+          titleEn: "Surface Restoration",
+          description: "自動車の塗装面は、微細な気孔や走行中の酸化などにより徐々に光沢を失っていきます。EVERSHINE加工は、このように傷んで艶のなくなった塗装面に特殊な下地処理を施し、塗装本来の深みある素晴らしい輝きを蘇生させます。",
+        },
+        {
+          number: "02",
+          title: "プロ仕上げによる長期間の保護効果",
+          titleEn: "Professional Finish",
+          description: "EVERSHINE加工を施した塗装面は、プロフェッショナル仕上げによってその美しい輝きを強固に保護します。施工後は普段の水洗いだけでお手入れができ、長期間にわたり極上の輝きが愛車を守り続けます。",
+        },
+        {
+          number: "03",
+          title: "新車を超える輝き（新車施工にも最適）",
+          titleEn: "Beyond Brand-New",
+          description: "新車の塗装であっても、ユズ肌（微細な凹凸）や濃色車特有のくすみにより、通常の磨きでは満足な光沢が得られないのが一般的です。新車時にEVERSHINE加工を施すことで、驚くほど素晴らしい輝きを引き出します。",
+        },
+      ],
+      /** 補足バナーメッセージ */
+      bottomMessage: "「塗装の本質を見極め、愛車の寿命を延ばす」——それが、私たちが下地処理に妥協しない理由です。",
+    },
+    style: {
+      /** セクション全体の上下余白 (Tailwindクラス) */
+      paddingY: "py-16 md:py-24 lg:py-32",
+      /** メイン見出しのサイズ (Tailwindクラス) */
+      headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
+    }
+  },
+
+  // =========================================================================
   // サービスセクションの設定 (Services - 施工内容)
   // =========================================================================
   services: {
@@ -261,16 +315,13 @@ export const siteSettings = {
       sectionLabel: "Our Services",
       /** セクションラベル（日本語） */
       sectionLabelJa: "施工メニュー",
-      /** メイン見出しの1行目 */
-      headingLine1: "熟練の技術とこだわりで",
-      /** メイン見出しの2行目 */
-      headingLine2: "愛車を美しく守る",
       /** 見出し下の説明文 */
-      description: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
+      description: "愛車への想いや美しさへのこだわりを形に。\nオーナー様の理想を具現化する、各種プロフェッショナルメニューをご用意しております。",
       /** 各サービスカードの情報リスト */
       items: [
         {
           id: "body-coating",
+          number: "01",
           title: "Body Coating",
           titleJp: "ボディーコーティング",
           description: "ガラスコーティングやセラミックプロテクションなど、\n深い艶と強固な保護被膜で愛車を長期間美しく守ります。",
@@ -278,6 +329,7 @@ export const siteSettings = {
         },
         {
           id: "protection-film",
+          number: "02",
           title: "Protection Film",
           titleJp: "プロテクションフィルム",
           description: "高透明な特殊フィルムが、飛び石や擦り傷などの外的ダメージを遮断。\n塗装面を物理的に守り、愛車の美しさと価値を保ちます。",
@@ -285,10 +337,59 @@ export const siteSettings = {
         },
         {
           id: "window-film",
+          number: "03",
           title: "Window Film",
           titleJp: "ウィンドウフィルム",
           description: "高い遮熱性能とUVカットで、車内空間を快適かつ上質に。\n紫外線による内装の劣化を防ぎ、プライバシーとクリアな視界を両立します。",
           image: windowFilmImg,
+        },
+        {
+          id: "wrapping-film",
+          number: "04",
+          title: "Wrapping Film",
+          titleJp: "ラッピングフィルム",
+          description: "ボディカラーの変更やパートラッピングなど、塗装を傷めずに愛車を自在にドレスアップ。\n剥がすことで元の状態に戻せる高い意匠性を実現します。",
+          image: wrappingFilmImg,
+        },
+        {
+          id: "interior-coating",
+          number: "05",
+          title: "Interior Coating",
+          titleJp: "インテリアコーティング",
+          description: "レザーシートや内装トリムを保護し、擦れや汚れ、紫外線による色褪せを防止。\n新車時の上質な風合いと清潔感を長くキープします。",
+          image: interiorCoatingImg,
+        },
+        {
+          id: "headlight-protection",
+          number: "06",
+          title: "Headlight Protection",
+          titleJp: "ヘッドライトプロテクション",
+          description: "紫外線による黄ばみ・白濁や飛び石キズからヘッドライトを強力ガード。\nクリアな透明感と高い光量を保ち、美しさを際立たせます。",
+          image: headlightProtectionImg,
+        },
+        {
+          id: "window-water-repellent",
+          number: "07",
+          title: "Window Water Repellent",
+          titleJp: "窓ガラス撥水加工",
+          description: "雨天時の視界をクリアに確保し、夜間や悪天候時の安全運転をサポート。\n油膜やウロコ汚れの付着を防止し、快適なドライブを実現します。",
+          image: glassCoatingImg,
+        },
+        {
+          id: "soft-top-coating",
+          number: "08",
+          title: "Soft Top Water Repellent",
+          titleJp: "幌撥水加工",
+          description: "オープンカーのファブリック製・布製幌を強力に撥水保護。\n雨水や紫外線、排気ガスによる劣化・色褪せやカビの発生を防ぎます。",
+          image: topWaterRepellentImg,
+        },
+        {
+          id: "wheel-coating",
+          number: "09",
+          title: "Wheel Coating",
+          titleJp: "アルミホイールコーティング",
+          description: "ブレーキダストや泥汚れの焼き付きを強力にガード。\n強固な保護被膜により、普段の水洗いだけで簡単に汚れが落ちるようになります。",
+          image: wheelCoatingImg,
         },
       ],
       /** 施工メニュー下部の問い合わせ案内 */

@@ -1,0 +1,146 @@
+---
+import { siteSettings } from '../config/siteSettings';
+
+const { craftsmanship } = siteSettings;
+const { content, style } = craftsmanship;
+---
+
+<section id="craftsmanship" class={`relative ${style.paddingY} overflow-hidden bg-gradient-to-b from-[#f8f5ee] via-[#faf7f2] to-[#f4eee4]`}>
+  <!-- Background Ornamental Top/Bottom Lines -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+
+  <!-- Ambient Glow in Background -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/[0.07] rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="px-6 md:px-12 lg:px-20 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="mb-12 md:mb-16 lg:mb-20">
+        <div class="craftsmanship-reveal flex items-center gap-5 mb-8 md:mb-10">
+          <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
+          <div class="flex flex-col gap-1.5">
+            <span class="font-sans text-[clamp(1.8rem,4vw,3rem)] font-light tracking-[0.05em] text-slate-900 leading-tight">
+              {content.sectionLabelJa}
+            </span>
+            <span class="font-display text-sm sm:text-base md:text-[17px] tracking-[0.3em] text-gold uppercase leading-none font-bold">
+              {content.sectionLabel}
+            </span>
+          </div>
+        </div>
+
+        <h2 class="craftsmanship-reveal">
+          <span class={`block font-display ${style.headingSize} font-light tracking-[0.02em] text-slate-900 leading-[1.25]`}>
+            {content.headingLine1}
+          </span>
+          <span class={`block font-display ${style.headingSize} font-light tracking-[0.02em] text-slate-900 leading-[1.25] mt-2`}>
+            半世紀の経験が生んだ「<span class="text-gold-dark font-normal">EVERSHINE加工</span>」
+          </span>
+        </h2>
+
+        {content.leadText && (
+          <p class="craftsmanship-reveal font-sans text-base md:text-lg lg:text-[1.15rem] font-normal leading-[2.3] tracking-[0.04em] text-slate-700 max-w-4xl mt-6 md:mt-8 whitespace-pre-line [word-break:auto-phrase]">
+            {content.leadText}
+          </p>
+        )}
+      </div>
+
+      <!-- 3 Core Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+        {content.features.map((feature, index) => (
+          <div
+            class="craftsmanship-card group relative bg-white/95 backdrop-blur-sm p-7 sm:p-8 md:p-9 rounded-sm border border-gold/30 shadow-md hover:shadow-2xl hover:shadow-gold/10 hover:border-gold transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between"
+          >
+            <!-- Top Accent Gradient Line -->
+            <div class="absolute top-0 left-0 w-16 h-[2px] bg-gradient-to-r from-gold to-gold-light group-hover:w-full transition-all duration-700 ease-out"></div>
+
+            <div>
+              <!-- Number -->
+              <div class="mb-4">
+                <span class="font-display text-3xl sm:text-4xl lg:text-[40px] font-light text-gold-dark leading-none tracking-tight group-hover:text-gold transition-colors duration-300">
+                  {feature.number}
+                </span>
+              </div>
+
+              <!-- Feature Title (Japanese) -->
+              <h3 class="font-sans text-xl sm:text-[22px] font-medium tracking-[0.04em] text-slate-900 mb-3 group-hover:text-gold-dark transition-colors duration-300 leading-snug">
+                {feature.title}
+              </h3>
+
+              <!-- Gold Divider Line -->
+              <div class="w-10 h-[2px] bg-gold/40 my-3.5 group-hover:w-20 group-hover:bg-gold transition-all duration-500 ease-out"></div>
+
+              <!-- Feature Description -->
+              <p class="font-sans text-sm sm:text-[15px] font-normal leading-[2.1] tracking-wide text-slate-700 whitespace-pre-line mt-3">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Bottom Philosophy Message Banner -->
+      {content.bottomMessage && (
+        <div class="craftsmanship-reveal relative overflow-hidden bg-white/90 border border-gold/30 rounded-sm p-6 sm:p-8 md:p-10 text-center shadow-md">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gold"></div>
+          <p class="font-display text-lg sm:text-xl md:text-2xl text-slate-900 font-light tracking-wide leading-relaxed">
+            {content.bottomMessage}
+          </p>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gold"></div>
+        </div>
+      )}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Header & lead reveal
+  gsap.utils.toArray<HTMLElement>('.craftsmanship-reveal').forEach((el) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 35 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  // Feature cards staggered reveal
+  const cards = gsap.utils.toArray<HTMLElement>('.craftsmanship-card');
+  cards.forEach((card, i) => {
+    gsap.fromTo(
+      card,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        delay: i * 0.15,
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+</script>
