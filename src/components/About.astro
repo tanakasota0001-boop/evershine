@@ -28,24 +28,8 @@ const { content, style } = about;
 
       <!-- Main Editorial Layout -->
       <div class={`grid ${style.gridCols} gap-10 lg:gap-14 xl:gap-16 items-center`}>
-        <!-- Left Column: Premium Detailing Studio Image (フレーム削除・クリーンな写真表示) -->
-        <div class={`${style.leftColSpan} about-reveal relative group overflow-hidden rounded-sm shadow-2xl shadow-slate-900/10`}>
-          <div class="relative overflow-hidden aspect-[4/5] w-full">
-            <Image
-              src={content.image}
-              alt={content.imageAlt}
-              class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
-              widths={[500, 800, 1200]}
-              sizes="(max-width: 768px) 100vw, 45vw"
-              quality={90}
-            />
-            <!-- Subtle overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/15 to-transparent pointer-events-none"></div>
-          </div>
-        </div>
-
-        <!-- Right Column: Editorial Text & Headings -->
-        <div class={`${style.rightColSpan} flex flex-col justify-center lg:pt-0`}>
+        <!-- Left Column: Editorial Text & Headings -->
+        <div class={`${style.leftColSpan} flex flex-col justify-center lg:pt-0`}>
 
           <!-- Main Heading with Gold Line -->
           <div class="about-reveal mb-6 md:mb-7">
@@ -67,6 +51,54 @@ const { content, style } = about;
               );
             })}
           </div>
+
+          <!-- Representative Name / Title (PC: inside left text column) -->
+          {(content.ownerRole || content.ownerName) && (
+            <div class="about-reveal pt-6 sm:pt-8 md:pt-10 hidden lg:flex items-baseline justify-end gap-2.5 sm:gap-3.5 text-right">
+              {content.ownerRole && (
+                <span class="font-sans text-xs sm:text-sm md:text-base font-normal tracking-widest text-gold-dark">
+                  {content.ownerRole}
+                </span>
+              )}
+              {content.ownerName && (
+                <span class="font-sans text-lg sm:text-xl md:text-2xl font-medium tracking-wider text-slate-900">
+                  {content.ownerName}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+
+        <!-- Right Column: Representative Photo -->
+        <div class={`${style.rightColSpan} about-reveal relative group`}>
+          <div class="relative overflow-hidden aspect-[4/5] w-full rounded-sm shadow-2xl shadow-slate-900/10">
+            <Image
+              src={content.image}
+              alt={content.imageAlt}
+              class="w-full h-full object-cover object-top transition-transform duration-[2s] ease-out group-hover:scale-105"
+              widths={[500, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 45vw"
+              quality={90}
+            />
+            <!-- Subtle overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/15 to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Representative Name / Title (Mobile: centered below photo) -->
+          {(content.ownerRole || content.ownerName) && (
+            <div class="pt-5 sm:pt-6 flex lg:hidden items-baseline justify-center gap-2.5 sm:gap-3 text-center">
+              {content.ownerRole && (
+                <span class="font-sans text-xs sm:text-sm font-normal tracking-widest text-gold-dark">
+                  {content.ownerRole}
+                </span>
+              )}
+              {content.ownerName && (
+                <span class="font-sans text-lg sm:text-xl font-medium tracking-wider text-slate-900">
+                  {content.ownerName}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

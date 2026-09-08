@@ -11,7 +11,7 @@
 
 // --- 1. 画像アセットのインポート ---
 import hero3 from "../images/hero3.png";
-import shopExterior from "../images/shop-exterior2.png";
+import shopExterior from "../images/shop-exterior.png";
 import ownerImg from "../images/owner.png";
 import aboutImg from "../images/about-detailing.webp";
 
@@ -25,6 +25,9 @@ import headlightProtectionImg from "../images/service-headlight-protection.png";
 import glassCoatingImg from "../images/service-glass-coating.png";
 import topWaterRepellentImg from "../images/service-top-water-repellent.png";
 import wheelCoatingImg from "../images/service-wheel-coating.png";
+
+// 下地処理・加工図
+import evershineProcessImg from "../images/evershine_process.png";
 
 // ギャラリー画像
 import gallery01 from "../images/gallery-01.webp";
@@ -227,9 +230,13 @@ export const siteSettings = {
       /** メイン見出し（改行は \n を入れます） */
       heading: "創業50年以上の\n確かな経験と実績",
       /** 画像 */
-      image: aboutImg,
+      image: ownerImg,
       /** 画像の代替テキスト */
-      imageAlt: "EVERSHINE プロフェッショナルカーコーティング施工スタジオ",
+      imageAlt: "EVERSHINE 代表取締役 森村 秀樹",
+      /** 代表肩書き */
+      ownerRole: "代表取締役",
+      /** 代表氏名 */
+      ownerName: "森村 秀樹",
       /** 本文テキスト（段落ごとに配列にします） */
       paragraphs: [
         "EVERSHINEは1972年の創業以来、50年以上にわたり、ガラスコーティング・セラミックコーティングの専門店として、数多くの車両へ施工を重ねてまいりました。",
@@ -252,10 +259,10 @@ export const siteSettings = {
       bgYearStyle: "text-[clamp(8rem,22vw,20rem)] font-light text-slate-900/[0.03]",
       /** レイアウトのグリッド比率 (Tailwindクラス) */
       gridCols: "grid-cols-1 lg:grid-cols-12",
-      /** 左カラム（見出し側）の幅指定 (Tailwindクラス) */
-      leftColSpan: "lg:col-span-5",
-      /** 右カラム（本文側）の幅指定 (Tailwindクラス) */
-      rightColSpan: "lg:col-span-7",
+      /** 左カラム（テキスト側）の幅指定 (Tailwindクラス) */
+      leftColSpan: "lg:col-span-7",
+      /** 右カラム（写真側）の幅指定 (Tailwindクラス) */
+      rightColSpan: "lg:col-span-5",
     }
   },
 
@@ -269,34 +276,65 @@ export const siteSettings = {
       /** セクションラベル（日本語） */
       sectionLabelJa: "こだわり",
       /** メイン見出しの1行目 */
-      headingLine1: "塗装を削らず、艶を蘇生させる。",
+      headingLine1: "塗装を削らず 艶を蘇生させる",
       /** メイン見出しの2行目 */
-      headingLine2: "半世紀の経験が生んだ「EVERSHINE加工」",
+      headingLine2: "半世紀の経験が生んだ",
+      /** メイン見出しの3行目 */
+      headingLine3: "「EVERSHINE加工」",
       /** リード文 */
       leadText: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
-      /** 3つの特徴・こだわり */
+      /** 特徴エリアの見出し設定 */
+      featuresTag: "Features",
+      featuresTitle: "EVERSHINE加工 6つの特徴",
+      /** EVERSHINE加工の特徴・こだわり */
       features: [
         {
           number: "01",
           title: "最新の塗面蘇生法「EVERSHINE加工」",
           titleEn: "Surface Restoration",
-          description: "自動車の塗装面は、微細な気孔や走行中の酸化などにより徐々に光沢を失っていきます。EVERSHINE加工は、このように傷んで艶のなくなった塗装面に特殊な下地処理を施し、塗装本来の深みある素晴らしい輝きを蘇生させます。",
+          description: "経年劣化や微細な酸化により艶を失った塗装面を削ることなく、独自の下地処理技術で塗装本来の深みある輝きを劇的に蘇生させます。",
         },
         {
           number: "02",
-          title: "プロ仕上げによる長期間の保護効果",
-          titleEn: "Professional Finish",
-          description: "EVERSHINE加工を施した塗装面は、プロフェッショナル仕上げによってその美しい輝きを強固に保護します。施工後は普段の水洗いだけでお手入れができ、長期間にわたり極上の輝きが愛車を守り続けます。",
+          title: "一度の施工で輝きは半永久的",
+          titleEn: "Semi-Permanent Shine",
+          description: "一度EVERSHINE加工を施せば、その重厚な深みと輝きは半永久的。プロの緻密な仕上げが強固な保護被膜となり、愛車の極上の艶を末永く保ち続けます。",
         },
         {
           number: "03",
-          title: "新車を超える輝き（新車施工にも最適）",
+          title: "抜群の水はじきと水洗いだけの簡単ケア",
+          titleEn: "Hydrophobic & Easy Care",
+          description: "圧倒的な撥水性能により汚れの固着を強力に防止。施工後のお手入れは普段の水洗いだけでサッと汚れが落ち、いつでも洗いたてのような美しさを維持できます。",
+        },
+        {
+          number: "04",
+          title: "ボディと同時に樹脂パーツも美しく復元",
+          titleEn: "Body & Plastic Restoration",
+          description: "塗装ボディはもちろん、経年劣化で白ボケしやすいバンパー等の未塗装樹脂パーツも同時にピカピカに仕上げ、お車全体を新車のように引き締めます。",
+        },
+        {
+          number: "05",
+          title: "新車を超える深みと圧倒的な光沢",
           titleEn: "Beyond Brand-New",
-          description: "新車の塗装であっても、ユズ肌（微細な凹凸）や濃色車特有のくすみにより、通常の磨きでは満足な光沢が得られないのが一般的です。新車時にEVERSHINE加工を施すことで、驚くほど素晴らしい輝きを引き出します。",
+          description: "新車の塗装特有のユズ肌（微細な凹凸）やくすみを下地から丁寧に整えることで、ディーラー納車時を遥かに超える息をのむような深みと光沢を引き出します。",
+        },
+        {
+          number: "06",
+          title: "中古車の価値・査定評価額が向上",
+          titleEn: "Value Enhancement",
+          description: "くすんだ中古車に施工することで新車同様の輝きを取り戻し、外装の美観が飛躍的にアップ。必然的に下取りや売却時の査定評価額・資産価値の向上へ繋がります。",
         },
       ],
+      /** EVERSHINE加工の仕組み図解 */
+      processDiagram: {
+        tag: "Restoration Mechanism",
+        title: "EVERSHINE加工による塗面蘇生の仕組み",
+        image: evershineProcessImg,
+        imageAlt: "異物で侵された塗装面とEVERSHINE加工された塗装面の比較図",
+        description: "微細な凹凸や酸化により艶を失った塗装面を無理に削ることなく、特殊下地処理とプロ仕上げで平滑に整え、塗装本来の深みある輝きを蘇生・保護します。",
+      },
       /** 補足バナーメッセージ */
-      bottomMessage: "「塗装の本質を見極め、愛車の寿命を延ばす」——それが、私たちが下地処理に妥協しない理由です。",
+      bottomMessage: "",
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
@@ -640,13 +678,6 @@ export const siteSettings = {
       mapTitle: "EVERSHINEの所在地",
       /** 店舗写真 */
       shopImage: shopExterior,
-      /** 代表写真 */
-      ownerImage: ownerImg,
-      /** 代表肩書き */
-      ownerRole: "代表取締役",
-      /** 代表氏名 */
-      ownerName: "森村 秀樹",
-
     },
     style: {
       /** セクション全体の上下余白 (Tailwindクラス) */
@@ -664,8 +695,8 @@ export const siteSettings = {
   // =========================================================================
   footer: {
     content: {
-      /** フッター上部の仕切り飾りマーク */
-      ornamentSymbol: "✦",
+      /** セクション英語ラベル */
+      sectionLabel: "Contact Us",
       /** お問い合わせのキャッチコピー */
       ctaHeading: "まずはお気軽にご相談ください",
       /** お問い合わせの説明文 */
