@@ -27,6 +27,7 @@ import topWaterRepellentImg from "../images/service-top-water-repellent.png";
 import wheelCoatingImg from "../images/service-wheel-coating.png";
 
 // 下地処理・加工図
+import craftsmanshipImg from "../images/Craftsmanship.png";
 import evershineProcessImg from "../images/evershine_process.png";
 
 // ギャラリー画像
@@ -34,6 +35,12 @@ import gallery01 from "../images/gallery-01.webp";
 import gallery02 from "../images/gallery-02.webp";
 import gallery03 from "../images/gallery-03.webp";
 import gallery04 from "../images/gallery-04.webp";
+
+// 四季ケア画像
+import seasonSpringImg from "../images/season-spring-clean.jpg";
+import seasonSummerImg from "../images/season-summer.jpg";
+import seasonAutumnImg from "../images/season-autumn.jpg";
+import seasonWinterImg from "../images/season-winter.jpg";
 
 export const siteSettings = {
   // =========================================================================
@@ -276,13 +283,15 @@ export const siteSettings = {
       /** セクションラベル（日本語） */
       sectionLabelJa: "こだわり",
       /** メイン見出しの1行目 */
-      headingLine1: "塗装を削らず 艶を蘇生させる",
+      headingLine1: "塗装を削らず艶を蘇生させる",
       /** メイン見出しの2行目 */
       headingLine2: "半世紀の経験が生んだ",
       /** メイン見出しの3行目 */
-      headingLine3: "「EVERSHINE加工」",
+      headingLine3: "EVERSHINE加工",
       /** リード文 */
       leadText: "美しい仕上がりは、丁寧な下地処理で決まります。\n当社のこだわりは、この下地の仕上げです。\n\nEVERSHINE加工は傷んで艶のなくなった塗装面でも、\nプロフェッショナル仕上げにより蘇生することができます。\n必要以上に磨かない、削らない。\nこうした技術は創業50年以上の確かな経験と実績の積み重ねによるものです。",
+      /** 右側に配置するイメージ画像 */
+      heroImage: craftsmanshipImg,
       /** 特徴エリアの見出し設定 */
       featuresTag: "Features",
       featuresTitle: "EVERSHINE加工 6つの特徴",
@@ -340,8 +349,173 @@ export const siteSettings = {
       /** セクション全体の上下余白 (Tailwindクラス) */
       paddingY: "py-16 md:py-24 lg:py-32",
       /** メイン見出しのサイズ (Tailwindクラス) */
-      headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
+      headingSize: "text-[clamp(1.35rem,3.4vw,3.2rem)]",
     }
+  },
+
+  // =========================================================================
+  // 四季のカーケアセクションの設定 (SeasonCare - 四季固有のトラブルと対策)
+  // =========================================================================
+  seasonCare: {
+    content: {
+      /** セクションラベル（英語） */
+      sectionLabel: "Seasonal Care",
+      /** セクションラベル（日本語） */
+      sectionLabelJa: "四季の塗装トラブルと対策",
+      /** 導入リード文 */
+      leadText: "美しい愛車を長く保つためには、日本の四季特有の環境変化を知ることが不可欠です。\n季節ごとに愛車を脅かす付着物やダメージの原因、そしてEVERSHINEならではの解決策をご紹介します。",
+      /** 四季ごとの情報 */
+      seasons: [
+        {
+          id: "spring",
+          nameJa: "春",
+          nameEn: "Spring",
+          period: "3月 〜 5月",
+          lead: "春先の車の塗装面には、飛散する花粉や黄砂、そして桜の花びらや樹液など、特有の付着物が重なり合ってダメージを与えやすくなります。",
+          issues: [
+            {
+              title: "花粉（ペクチン）",
+              desc: "雨や夜露などの水分を含むとタンパク質「ペクチン」が溶け出し、乾燥時にクリア層を引っ張って変形・侵食させ、頑固な花粉ジミや凹凸の原因になります。放置すると通常の洗車では落ちなくなります。",
+            },
+            {
+              title: "黄砂",
+              desc: "大陸から飛来する微細な鉱物粒子。硬い粒子がボディに乗った状態で乾拭きや不用意な洗車をすると、塗装表面に無数の細かな擦り傷が付きます。",
+            },
+            {
+              title: "桜の花びら・樹液",
+              desc: "雨や湿気でボディに張り付いた花びらや、気温上昇に伴い分泌される樹液は、塗装面に強力に固着するとシミや塗装剥がれの原因になります。",
+            },
+          ],
+          evershineSolution: {
+            title: "EVERSHINEの特別解決策",
+            desc: "一度クリア層に侵食してしまった花粉ジミや焼き付いた樹液は、いくら洗車しても、ただ磨いても除去できません。当社の特別な技術で除去作業を行ったあと、表面を滑らかに研磨することで元通りの輝きが蘇ります。",
+          },
+          prevention: {
+            title: "日頃のお手入れ対策",
+            desc: "【対策】雨上がり後に放置せず、たっぷりの水（純水）で花粉や黄砂を優しく洗い流すこまめな洗車をお勧めします。頑固な花粉ジミができてしまった場合は、無理に擦らずプロにご相談ください。",
+          },
+          image: seasonSpringImg,
+          imageAlt: "春の塗装ケア・桜の花びらや花粉対策",
+        },
+        {
+          id: "summer",
+          nameJa: "夏",
+          nameEn: "Summer",
+          period: "6月 〜 8月",
+          lead: "夏場の車の塗装面には、高温や強い日差し、虫の活動などによって、さまざまな汚れや物質が付着しやすくなります。",
+          issues: [
+            {
+              title: "虫の死骸",
+              desc: "夜間の走行などでフロントバンパーやボンネットに付着しやすく、強酸性成分が塗装を急速に傷めます。",
+            },
+            {
+              title: "鳥のフン",
+              desc: "木の下などに駐車すると付着しやすく、炎天下の熱で強烈な酸が塗装を素早く侵食します。",
+            },
+            {
+              title: "樹液",
+              desc: "春から夏にかけて木の成長や気温上昇に伴い分泌され、軟化してボディに強力に付着します。",
+            },
+            {
+              title: "花粉・黄砂（残り）や砂埃",
+              desc: "高温と混ざることで固着しやすくなり、雨粒と混ざってシミの原因になります。",
+            },
+            {
+              title: "イオンデポジット（水アカ・輪ジミ）",
+              desc: "洗車後の水滴や雨水が夏の強い日差しで急激に蒸発し、含まれるミネラル分が塗装面に焼き付きます。",
+            },
+          ],
+          evershineSolution: {
+            title: "EVERSHINEの特別解決策",
+            desc: "エバーシャイン加工は、いくら洗車してもただ磨いてもこの付着してしまった花粉や頑固な固着物は取れません。当社の特別な技術で除去作業を行ったあと、表面を滑らかに研磨することで元通りの輝きが蘇ります。",
+          },
+          prevention: {
+            title: "日頃のお手入れ対策",
+            desc: "塗装への焼き付きを防ぐため、定期的に洗車をすることをお勧めします。",
+          },
+          image: seasonSummerImg,
+          imageAlt: "夏の塗装ケア・虫の死骸やイオンデポジット対策",
+        },
+        {
+          id: "autumn",
+          nameJa: "秋",
+          nameEn: "Autumn",
+          period: "9月 〜 11月",
+          lead: "秋の車の塗装面に付着しやすい主なものには、落ち葉、樹液、黄砂やPM2.5、朝露と混ざった汚れなどがあります。",
+          issues: [
+            {
+              title: "落ち葉",
+              desc: "風で舞い散った落ち葉がボディに積もると、水分やタンニン、樹液が染み出し、塗装の黄ばみやシミの原因になります。",
+            },
+            {
+              title: "樹液",
+              desc: "紅葉の時期や落葉の過程で、木の下などに駐車していると粘着質な樹液がボディに付着し、放置すると塗装を傷めます。",
+            },
+            {
+              title: "黄砂・PM2.5",
+              desc: "春のイメージが強いですが秋にも飛来することがあり、朝露や雨と混ざることで固着しやすくなります。",
+            },
+            {
+              title: "花粉・粉塵",
+              desc: "秋口にも一部の植物の花粉や舞い上がった粉塵が降り積もり、日差しを浴びることでシミになりやすくなります。",
+            },
+          ],
+          evershineSolution: {
+            title: "EVERSHINEの特別解決策",
+            desc: "落ち葉から染み出したタンニン色素や、朝露と混ざって固着した汚れは、いくら洗車しても、ただ磨いても除去できません。当社の特別な技術で塗装を傷めずに不純物を除去し、表面を滑らかに研磨することで元通りの輝きが蘇ります。",
+          },
+          prevention: {
+            title: "日頃のお手入れ対策",
+            desc: "【対策】定期的に洗車をすることをお勧めします。最も適している天気は、日差しが弱い曇りの日。なるべく風が弱い日に行うと砂埃によるキズもつきにくくなります。",
+          },
+          image: seasonAutumnImg,
+          imageAlt: "秋の塗装ケア・落ち葉や樹液、秋雨と黄砂対策",
+        },
+        {
+          id: "winter",
+          nameJa: "冬",
+          nameEn: "Winter",
+          period: "12月 〜 2月",
+          lead: "冬の車の塗装面に付着しやすい主なものには、融雪剤や凍結防止剤、泥汚れ、氷や雪に含まれる不純物、そして鉄粉などがあります。",
+          issues: [
+            {
+              title: "融雪剤・凍結防止剤（塩カル）",
+              desc: "塩化ナトリウムや塩化カルシウムなどが含まれ、走行風で巻き上がって付着します。放置すると金属を腐食させ、サビや塗装劣化の原因になります。",
+            },
+            {
+              title: "泥汚れ・砂ぼこり",
+              desc: "雪解け水や融雪剤を含んだ泥がボディにはね上がり、乾くことで塗装面に強く固着してしまいます。",
+            },
+            {
+              title: "氷・雪の不純物（イオンデポジット）",
+              desc: "積もった雪に含まれる大気中の汚れや融雪剤の塩分が、雪解け水とともに乾いて固着すると、白い輪ジミ（イオンデポジット）になります。",
+            },
+            {
+              title: "硬い氷や雪・雪下ろしキズ",
+              desc: "凍結した雪や氷を無理にヘラなどで削ったり、雪下ろしや除雪の際の摩擦により、塗装表面に無数の細かい線キズがついてしまいます。",
+            },
+            {
+              title: "鉄粉の突き刺さり",
+              desc: "冬場もブレーキ痕や工業地帯などから飛来し、湿気とともに塗装面に突き刺さってザラつきやサビの原因を作ります。",
+            },
+          ],
+          evershineSolution: {
+            title: "EVERSHINEの特別解決策",
+            desc: "固着した融雪剤や焼き付いたイオンデポジット、突き刺さった鉄粉は、いくら洗車しても、ただ擦っても取れません。当社の特別な技術で不純物を安全に分解除去し、表面を滑らかに研磨することで元通りの輝きが蘇ります。",
+          },
+          prevention: {
+            title: "日頃のお手入れ対策",
+            desc: "【対策】早めの洗車が最も重要です。雪が降った後や雪解け後は、汚れや塩分を落とすために速やかに洗車をしましょう。雪下ろしの際はボディを無理に擦らないようご注意ください。",
+          },
+          image: seasonWinterImg,
+          imageAlt: "冬の塗装ケア・融雪剤や雪・凍結キズ対策",
+        },
+      ],
+    },
+    style: {
+      /** セクション全体の上下余白 (Tailwindクラス) */
+      paddingY: "py-16 md:py-24 lg:py-32",
+    },
   },
 
   // =========================================================================
@@ -364,13 +538,15 @@ export const siteSettings = {
           titleJp: "ボディーコーティング",
           description: "ガラスコーティングやセラミックプロテクションなど、\n深い艶と強固な保護被膜で愛車を長期間美しく守ります。",
           image: bodyCoatingImg,
+          hasModal: true,
+          modalButtonLabel: "詳しく見る＞",
         },
         {
           id: "protection-film",
           number: "02",
           title: "Protection Film",
           titleJp: "プロテクションフィルム",
-          description: "高透明な特殊フィルムが、飛び石や擦り傷などの外的ダメージを遮断。\n塗装面を物理的に守り、愛車の美しさと価値を保ちます。",
+          description: "透明な特殊保護フィルムが塗装面を物理的にガード。\n高速道路を頻繁に使われる方には、飛石防止フィルムがおすすめです。",
           image: ppfImg,
         },
         {
@@ -378,16 +554,20 @@ export const siteSettings = {
           number: "03",
           title: "Window Film",
           titleJp: "ウィンドウフィルム",
-          description: "高い遮熱性能とUVカットで、車内空間を快適かつ上質に。\n紫外線による内装の劣化を防ぎ、プライバシーとクリアな視界を両立します。",
+          description: "通常スモーク（透過率3%〜45%）からIRカット遮熱まで対応。\n高速道路を頻繁に使われる方には、飛石防止フィルムもおすすめです。",
           image: windowFilmImg,
+          externalLink: "https://www.ikcs.co.jp/carfilm/cs/carfilm/sylphide/",
+          externalLinkLabel: "サンプルを見る＞",
         },
         {
           id: "wrapping-film",
           number: "04",
           title: "Wrapping Film",
           titleJp: "ラッピングフィルム",
-          description: "ボディカラーの変更やパートラッピングなど、塗装を傷めずに愛車を自在にドレスアップ。\n剥がすことで元の状態に戻せる高い意匠性を実現します。",
+          description: "塗装を傷めずに愛車を自在にドレスアップ。ルーフ等へのカーボン調も人気です。\n剥がすことで元の状態に戻せるため、気軽なイメージチェンジが楽しめます。",
           image: wrappingFilmImg,
+          externalLink: "https://graphics.averydennison.com/ap-en/home/graphics-products/vehicle-wrapping-films/swf900-supreme-wrapping-film/range.html",
+          externalLinkLabel: "サンプルを見る＞",
         },
         {
           id: "interior-coating",
@@ -430,6 +610,60 @@ export const siteSettings = {
           image: wheelCoatingImg,
         },
       ],
+      /** ボディーコーティングの詳細ポップアップモーダルの内容 */
+      bodyCoatingModal: {
+        title: "ボディーコーティングの種類と\nEVERSHINEの施工品質",
+        intro: "お車の保管環境やボディーカラー、お客様のご要望に合わせたコーティングをご提案いたします。EVERSHINEではコーティングの性能をしっかりと引き出すため、下地処理から細部の施工まで丁寧に行います。",
+        typesSection: {
+          sectionTitle: "コーティングの種類と特徴",
+          items: [
+            {
+              name: "ガラスコーティング",
+              badge: "定番・高透明度",
+              description: "高密度のガラス被膜により、透明感ある深い艶と優れた防汚性を発揮。塗装を紫外線や日々の汚れから長期間しっかりと保護します。",
+              recommendation: "普段のお手入れを楽にしたい方、自然で深みのある上品な輝きを長く維持したい方におすすめです。",
+            },
+            {
+              name: "セラミックコーティング",
+              badge: "高硬度・強靭被膜",
+              description: "厚みのある強固な被膜を形成するセラミック皮膜。耐薬品性・耐スクラッチ性に優れ、重厚で濡れたような艶と高い保護性能を発揮します。",
+              recommendation: "輸入車やスーパーカー、洗車傷を抑えたい方、高い耐久性や重厚な光沢を重視される方におすすめです。",
+            },
+            {
+              name: "親水コーティング",
+              badge: "雨染み抑制・自己洗浄",
+              description: "水滴が塗装面に馴染んで膜状に流れ落ちる特性を持ちます。水滴が残りにくいため、雨染み（イオンデポジット）の発生リスクを大幅に抑えます。",
+              recommendation: "屋外駐車（青空駐車）の方、黒や濃色車にお乗りの方、雨染みや水垢の付着を抑えたい方におすすめです。",
+            },
+          ],
+        },
+        qualitySection: {
+          sectionTitle: "妥協なき施工へのこだわり",
+          intro: "コーティングの仕上がりは下地処理と細部への丁寧さが大きく影響します。EVERSHINEならではのこだわりを持って施工いたします。",
+          points: [
+            {
+              number: "01",
+              title: "徹底した養生処理（マスキング保護）",
+              description: "ゴムモールや未塗装樹脂、エンブレム、パネルのエッジ部など、コンパウンド（研磨剤）の付着や研磨時の摩擦熱から守るべき箇所を専用テープでミリ単位でマスキング。大切なお車への負担を軽減し、安全に配慮して施工します。",
+            },
+            {
+              number: "02",
+              title: "塗装を守り艶を引き出す精密研磨（磨き技術）",
+              description: "コーティングの美しさは「磨き（下地処理）」が大きな鍵を握ります。塗装の膜厚を削りすぎないよう配慮し、微細な洗車傷やクスミをポリッシング技術で平滑に整え、塗装本来の深みある光沢を引き出します。",
+            },
+            {
+              number: "03",
+              title: "未塗装樹脂パーツのコーティング・黒艶復元",
+              description: "経年劣化で白ボケしやすいフロントバンパー、ワイパーカウルトップ、フェンダーアーチなどの未塗装樹脂パーツも同時にコーティング施工可能。しっとりとした深みある黒艶を復元し、紫外線による劣化を防ぎます。",
+            },
+            {
+              number: "04",
+              title: "ドア裏・ステップ・開口部まで隅々コーティング",
+              description: "外側のボディパネルだけでなく、ドアの内側、ヒンジ周り、トランクやボンネットのフチ、サイドステップなど、普段見えにくいドア裏まで丁寧に施工。お車全体の防汚性と美観を高めます。",
+            },
+          ],
+        },
+      },
       /** 施工メニュー下部の問い合わせ案内 */
       contactPrompt: {
         heading: "施工内容の詳細・料金について",
@@ -516,7 +750,7 @@ export const siteSettings = {
           number: "100%",
           unit: "Pure Water System",
           title: "”純水”にこだわる",
-          description: "当社は「純水」のみを使用。\n圧倒的な透明感と最高の仕上がりを実現します。",
+          description: "当社は「純水」のみを使用。\n水シミを防ぎ、透明感ある上質な仕上がりを実現します。",
           hasModal: true,
           modalButtonLabel: "詳しく見る＞",
         },

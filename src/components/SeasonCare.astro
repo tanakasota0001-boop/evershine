@@ -1,0 +1,271 @@
+---
+import { Image } from 'astro:assets';
+import { siteSettings } from '../config/siteSettings';
+
+// Season Care component (all 4 seasons fully updated with text & images)
+const { seasonCare } = siteSettings;
+const { content, style } = seasonCare;
+const { seasons } = content;
+---
+
+<section id="season-care" class={`relative ${style.paddingY || 'py-16 md:py-24 lg:py-32'} overflow-hidden bg-white`}>
+  <!-- Top & Bottom Ornamental Lines -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></div>
+
+  <div class="px-6 md:px-12 lg:px-20 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="season-reveal flex items-center gap-5 mb-6 md:mb-8">
+        <span class="w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
+        <div class="flex flex-col gap-1.5">
+          <h2 class="font-sans text-[clamp(1.8rem,4vw,3rem)] font-light tracking-[0.05em] text-slate-900 leading-tight">
+            {content.sectionLabelJa}
+          </h2>
+          <span class="font-display text-sm sm:text-base md:text-[17px] tracking-[0.3em] text-gold uppercase leading-none font-bold">
+            {content.sectionLabel}
+          </span>
+        </div>
+      </div>
+
+      <!-- Lead Description -->
+      {content.leadText && (
+        <div class="season-reveal mb-10 md:mb-14 max-w-3xl">
+          <p class="font-sans text-sm sm:text-base md:text-[1.05rem] font-normal leading-[2.2] tracking-[0.04em] text-slate-600 whitespace-pre-line">
+            {content.leadText}
+          </p>
+        </div>
+      )}
+
+      <!-- Refined Minimal Navigation Tabs (数字なし・大きめ文字のシーズン名タブ) -->
+      <div class="season-reveal mb-12 md:mb-16">
+        <div 
+          class="grid grid-cols-4 border-b border-slate-200/80 w-full" 
+          role="tablist" 
+          aria-label="四季の選択"
+        >
+          {seasons.map((season, index) => (
+            <button
+              type="button"
+              role="tab"
+              id={`tab-${season.id}`}
+              data-season-tab={season.id}
+              aria-controls={`panel-${season.id}`}
+              aria-selected={index === 0 ? "true" : "false"}
+              class="season-tab-btn relative pb-4 sm:pb-5 pt-3 sm:pt-4 text-center transition-all duration-300 group cursor-pointer focus:outline-none"
+            >
+              <!-- Season Name (Japanese & English) -->
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5">
+                <span class={`season-tab-ja font-sans text-base sm:text-lg md:text-xl ${index === 0 ? 'text-slate-900 font-bold' : 'text-slate-500 font-medium'} tracking-widest transition-colors duration-300`}>
+                  {season.nameJa}
+                </span>
+                <span class={`season-tab-en hidden sm:inline-block font-display text-xs sm:text-[13px] tracking-[0.2em] ${index === 0 ? 'text-gold font-semibold' : 'text-slate-400 font-normal'} uppercase transition-colors duration-300`}>
+                  {season.nameEn}
+                </span>
+              </div>
+
+              <!-- Active Indicator Line (ゴールドの細線) -->
+              <span class={`season-tab-line absolute bottom-0 left-0 w-full h-[2.5px] bg-gold ${index === 0 ? 'scale-x-100' : 'scale-x-0'} transition-transform duration-300 ease-out group-hover:scale-x-100`}></span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Season Content Panels Container -->
+      <div class="relative min-h-[460px]">
+        {seasons.map((season, index) => (
+          <div
+            id={`panel-${season.id}`}
+            data-season-panel={season.id}
+            role="tabpanel"
+            aria-labelledby={`tab-${season.id}`}
+            class={`season-panel transition-all duration-500 ${index === 0 ? 'block opacity-100' : 'hidden opacity-0'}`}
+          >
+            <!-- Top Header: Large Season Name with side lines, Period beneath it & Lead Text (中央寄せ配置) -->
+            <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+              <!-- Large English Season Name with Side Lines -->
+              <div class="inline-flex items-center justify-center gap-4 sm:gap-6 mb-2.5">
+                <span class="w-8 sm:w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
+                <h3 class="font-display text-3xl sm:text-4xl md:text-5xl font-light tracking-[0.18em] text-gold-dark uppercase leading-none">
+                  {season.nameEn}
+                </h3>
+                <span class="w-8 sm:w-12 md:w-16 h-px bg-gold/60 flex-shrink-0"></span>
+              </div>
+              <!-- Period beneath it -->
+              <p class="font-sans text-xs sm:text-sm md:text-[15px] text-slate-500 tracking-[0.18em] font-normal mb-5">
+                {season.period}
+              </p>
+              <!-- Lead Text -->
+              <p class="font-sans text-base sm:text-lg md:text-[1.2rem] font-medium leading-[2.1] tracking-[0.03em] text-slate-900">
+                {season.lead}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-16 items-stretch">
+              
+              <!-- Left Column: Pure Clean Photo Frame (右カラムの高さに合わせて下まで伸ばす) -->
+              <div class="lg:col-span-5 h-full flex flex-col">
+                <div class="relative overflow-hidden rounded-sm border border-slate-200/80 shadow-md shadow-slate-900/[0.03] bg-slate-50 group w-full h-full min-h-[340px] sm:min-h-[420px] lg:min-h-full">
+                  <Image
+                    src={season.image}
+                    alt={season.imageAlt}
+                    class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    widths={[500, 800, 1200]}
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    quality={90}
+                    loading="lazy"
+                  />
+                  <!-- Subtle Overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+
+              <!-- Right Column: 職人の視点で誠実に伝えるエディトリアル組版（メリハリと十分な文字サイズ） -->
+              <div class="lg:col-span-7 flex flex-col justify-between pt-1">
+
+                <!-- 塗装を傷める主な付着物と要因 -->
+                <div class="space-y-4 sm:space-y-5 mb-8">
+                  {season.issues.map((issue) => (
+                    <div class="pb-3.5 border-b border-slate-100 last:border-b-0">
+                      <div class="font-sans text-[15px] sm:text-[17px] font-bold text-slate-900 tracking-wide mb-1.5">
+                        {issue.title}
+                      </div>
+                      <p class="font-sans text-[13.5px] sm:text-[15px] font-normal leading-[1.95] text-slate-700">
+                        {issue.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- EVERSHINEの特別解決策と日常ケア -->
+                <div class="mt-8 pt-7 border-t border-gold/30 space-y-6">
+
+                  <!-- EVERSHINEの特別解決策 -->
+                  <div>
+                    <h4 class="font-sans text-base sm:text-lg md:text-[19px] font-semibold tracking-[0.03em] text-gold-dark leading-snug mb-2.5">
+                      {season.evershineSolution.title}
+                    </h4>
+                    <p class="font-sans text-sm sm:text-[15px] md:text-base font-normal leading-[2.2] tracking-wide text-slate-700 whitespace-pre-line">
+                      {season.evershineSolution.desc}
+                    </p>
+                  </div>
+
+                  <!-- 日頃のお手入れ対策（Craftsmanship / WhyUs と同一のシャンパンアイボリーパネル＆ゴールド細線） -->
+                  <div class="relative overflow-hidden bg-[#faf8f4] border border-[#e5decb] rounded-sm p-5 sm:p-6 shadow-sm shadow-[#8c6b2d]/[0.05]">
+                    <!-- Top subtle gold accent line -->
+                    <div class="absolute top-0 left-0 w-16 h-px bg-gold"></div>
+
+                    <h5 class="font-sans text-xs sm:text-sm font-semibold tracking-wider text-gold-dark mb-2">
+                      {season.prevention.title}
+                    </h5>
+                    <p class="font-sans text-sm sm:text-[14.5px] md:text-[15px] font-normal leading-[2.0] tracking-wide text-slate-700">
+                      {season.prevention.desc.replace(/^【対策】/, '')}
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Section Scroll Reveal
+  gsap.utils.toArray<HTMLElement>('.season-reveal').forEach((el, i) => {
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 25 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: i * 0.08,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  // Season Tabs Interaction
+  const tabButtons = document.querySelectorAll<HTMLButtonElement>('.season-tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.season-panel');
+
+  function getInitialSeason(): string {
+    const currentMonth = new Date().getMonth() + 1; // 1〜12
+    if (currentMonth >= 3 && currentMonth <= 5) return 'spring';
+    if (currentMonth >= 6 && currentMonth <= 8) return 'summer';
+    if (currentMonth >= 9 && currentMonth <= 11) return 'autumn';
+    return 'winter';
+  }
+
+  function setActiveSeason(seasonId: string) {
+    tabButtons.forEach((btn) => {
+      const isTarget = btn.getAttribute('data-season-tab') === seasonId;
+      btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+      
+      const jaText = btn.querySelector('.season-tab-ja');
+      const enText = btn.querySelector('.season-tab-en');
+      const underline = btn.querySelector('.season-tab-line');
+
+      if (isTarget) {
+        jaText?.classList.add('text-slate-900', 'font-bold');
+        jaText?.classList.remove('text-slate-500', 'font-medium');
+        enText?.classList.add('text-gold', 'font-semibold');
+        enText?.classList.remove('text-slate-400', 'font-normal');
+        underline?.classList.remove('scale-x-0');
+        underline?.classList.add('scale-x-100');
+      } else {
+        jaText?.classList.remove('text-slate-900', 'font-bold');
+        jaText?.classList.add('text-slate-500', 'font-medium');
+        enText?.classList.remove('text-gold', 'font-semibold');
+        enText?.classList.add('text-slate-400', 'font-normal');
+        underline?.classList.remove('scale-x-100');
+        underline?.classList.add('scale-x-0');
+      }
+    });
+
+    panels.forEach((panel) => {
+      const isTarget = panel.getAttribute('data-season-panel') === seasonId;
+      if (isTarget) {
+        panel.classList.remove('hidden');
+        panel.classList.add('block');
+        // Smooth minimal fade
+        gsap.fromTo(panel, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+      } else {
+        panel.classList.add('hidden');
+        panel.classList.remove('block');
+        panel.style.opacity = '0';
+      }
+    });
+  }
+
+  // Bind click events
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const seasonId = btn.getAttribute('data-season-tab');
+      if (seasonId) {
+        setActiveSeason(seasonId);
+      }
+    });
+  });
+
+  // Initialize: 春をデフォルト表示
+  setActiveSeason('spring');
+</script>

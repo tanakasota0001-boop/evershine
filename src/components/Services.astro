@@ -76,6 +76,42 @@ const { content, style } = services;
                 <p class="font-sans text-xs sm:text-[13px] md:text-sm font-normal leading-relaxed text-slate-200 transition-colors duration-500 group-hover:text-white group-[.touched]:text-white whitespace-pre-line drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
                   {service.description}
                 </p>
+                {service.hasModal && (
+                  <div class="mt-2.5 pt-1">
+                    <button
+                      type="button"
+                      id={`open-modal-${service.id}`}
+                      class="open-service-modal group/btn inline-flex items-center gap-1 text-xs sm:text-[13px] font-sans font-medium tracking-wider text-gold-light hover:text-white transition-all duration-300 cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+                      data-modal-target={service.id}
+                      aria-haspopup="dialog"
+                      aria-controls={`modal-${service.id}`}
+                    >
+                      <span class="border-b border-gold-light/60 group-hover/btn:border-white pb-0.5 transition-colors duration-300">
+                        {service.modalButtonLabel ? service.modalButtonLabel.replace(/＞$/, '') : '詳しく見る'}
+                      </span>
+                      <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-1 text-gold-light group-hover/btn:text-white font-normal text-xs">
+                        ＞
+                      </span>
+                    </button>
+                  </div>
+                )}
+                {service.externalLink && (
+                  <div class="mt-2.5 pt-1">
+                    <a
+                      href={service.externalLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="service-external-link group/btn inline-flex items-center gap-1 text-xs sm:text-[13px] font-sans font-medium tracking-wider text-gold-light hover:text-white transition-all duration-300 cursor-pointer drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+                    >
+                      <span class="border-b border-gold-light/60 group-hover/btn:border-white pb-0.5 transition-colors duration-300">
+                        {service.externalLinkLabel ? service.externalLinkLabel.replace(/＞$/, '') : 'サンプルを見る'}
+                      </span>
+                      <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-1 text-gold-light group-hover/btn:text-white font-normal text-xs">
+                        ＞
+                      </span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -86,6 +122,137 @@ const { content, style } = services;
       </div>
     </div>
   </div>
+
+  <!-- Body Coating Detail Modal -->
+  {content.bodyCoatingModal && (
+    <div
+      id="modal-body-coating"
+      class="service-modal-dialog fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="body-coating-modal-title"
+    >
+      <!-- Backdrop Overlay -->
+      <div
+        class="service-modal-backdrop absolute inset-0 bg-slate-950/75 backdrop-blur-sm transition-opacity duration-300 cursor-pointer"
+        data-modal-id="body-coating"
+      ></div>
+
+      <!-- Modal Dialog Card -->
+      <div
+        class="service-modal-panel relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-sm border border-gold/40 shadow-2xl shadow-slate-950/40 p-6 sm:p-8 md:p-10 transform scale-95 transition-transform duration-300"
+      >
+        <!-- Close Button -->
+        <button
+          type="button"
+          class="close-service-modal absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-gold/15 text-slate-500 hover:text-slate-900 border border-slate-200/80 hover:border-gold/50 flex items-center justify-center transition-all duration-300 cursor-pointer"
+          data-modal-id="body-coating"
+          aria-label="閉じる"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <!-- Header -->
+        <div class="mb-6 pr-8 pb-5 border-b border-slate-100">
+          <h3 id="body-coating-modal-title" class="font-sans text-xl sm:text-2xl md:text-[1.65rem] font-medium text-slate-900 tracking-[0.03em] leading-[1.4] whitespace-pre-line">
+            {content.bodyCoatingModal.title}
+          </h3>
+          <div class="w-12 h-[2px] bg-gold mt-3.5 mb-3"></div>
+          <p class="font-sans text-sm sm:text-[15px] font-normal text-slate-600 leading-[2] tracking-wide">
+            {content.bodyCoatingModal.intro}
+          </p>
+        </div>
+
+        <!-- Section 1: コーティングの種類と特徴 -->
+        {content.bodyCoatingModal.typesSection && (
+          <div>
+            <h4 class="font-sans text-base sm:text-[17px] font-bold text-slate-900 tracking-wide mb-3.5 pl-3 border-l-2 border-gold py-0.5">
+              {content.bodyCoatingModal.typesSection.sectionTitle}
+            </h4>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-stretch">
+              {content.bodyCoatingModal.typesSection.items.map((type) => (
+                <div class="p-4 sm:p-5 rounded-sm bg-gradient-to-br from-[#faf7f2] to-[#f4eee4] border border-gold/40 shadow-sm flex flex-col justify-between h-full">
+                  <div class="flex-1 flex flex-col">
+                    {type.badge && (
+                      <div class="mb-2.5">
+                        <span class="inline-block text-[11px] font-sans font-medium px-2.5 py-0.5 rounded-full bg-gold/15 text-gold-dark border border-gold/30">
+                          {type.badge}
+                        </span>
+                      </div>
+                    )}
+                    <h5 class="font-sans text-sm sm:text-[15px] lg:text-base font-bold text-slate-900 tracking-tight mb-2 whitespace-nowrap">
+                      {type.name}
+                    </h5>
+                    <p class="text-xs sm:text-[13px] text-slate-700 leading-[1.85] font-normal mb-3.5 flex-1">
+                      {type.description}
+                    </p>
+                  </div>
+                  <div class="pt-3 border-t border-gold/20 mt-auto">
+                    <div class="bg-white/75 p-2.5 rounded-sm border border-gold/15 min-h-[72px] sm:min-h-[76px] flex items-center">
+                      <p class="text-[11px] sm:text-xs text-slate-600 font-normal leading-[1.65]">
+                        <strong class="text-gold-dark font-medium">おすすめ：</strong>{type.recommendation}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- 2つの小見出し間の区切り線 -->
+        <div class="w-full h-px bg-slate-200 my-7 sm:my-8" aria-hidden="true"></div>
+
+        <!-- Section 2: 妥協なき施工へのこだわり -->
+        {content.bodyCoatingModal.qualitySection && (
+          <div class="mb-2">
+            <h4 class="font-sans text-base sm:text-[17px] font-bold text-slate-900 tracking-wide mb-2 pl-3 border-l-2 border-gold py-0.5">
+              {content.bodyCoatingModal.qualitySection.sectionTitle}
+            </h4>
+
+            {content.bodyCoatingModal.qualitySection.intro && (
+              <p class="font-sans text-xs sm:text-[13.5px] text-slate-600 leading-[2] tracking-wide mb-4">
+                {content.bodyCoatingModal.qualitySection.intro}
+              </p>
+            )}
+
+            <div class="divide-y divide-slate-100">
+              {content.bodyCoatingModal.qualitySection.points.map((point) => (
+                <div class="py-4 first:pt-2 last:pb-0 flex gap-4 sm:gap-5 items-start">
+                  <span class="font-display text-2xl sm:text-3xl text-gold-dark font-light leading-none shrink-0 mt-0.5 tabular-nums">
+                    {point.number}
+                  </span>
+                  <div>
+                    <h5 class="font-sans text-sm sm:text-base font-bold text-slate-900 mb-1 tracking-wide leading-snug">
+                      {point.title}
+                    </h5>
+                    <p class="font-sans text-xs sm:text-sm font-normal text-slate-600 leading-[2] tracking-wide">
+                      {point.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Footer Note -->
+        {content.bodyCoatingModal.footerNote && (
+          <div class="pt-4 border-t border-slate-100 mt-6">
+            <div class="bg-[#faf8f5] rounded-sm py-3 px-4 border border-gold/20 text-center">
+              <p class="font-sans text-xs sm:text-[13px] text-slate-600 font-normal leading-relaxed tracking-wide">
+                {content.bodyCoatingModal.footerNote}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
 
   <!-- Contact / Inquiry Prompt at the end of Services -->
   {content.contactPrompt && (
@@ -127,7 +294,7 @@ const { content, style } = services;
 <style>
   /* Mobile layout: always visible, clean text block */
   .service-desc-container {
-    max-height: 120px;
+    max-height: 180px;
     opacity: 1;
     margin-top: 0.5rem;
     transition: all 0.5s ease-out;
@@ -143,7 +310,7 @@ const { content, style } = services;
 
     .service-card:hover .service-desc-container,
     .service-card.touched .service-desc-container {
-      max-height: 120px;
+      max-height: 180px;
       opacity: 1;
       margin-top: 0.75rem;
     }
@@ -212,5 +379,84 @@ const { content, style } = services;
     card.addEventListener('touchcancel', () => {
       card.classList.remove('touched');
     }, { passive: true });
+  });
+
+  // Service Modal Interactions
+  const openModalBtns = document.querySelectorAll<HTMLElement>('.open-service-modal');
+  const closeModalBtns = document.querySelectorAll<HTMLElement>('.close-service-modal');
+  const modalBackdrops = document.querySelectorAll<HTMLElement>('.service-modal-backdrop');
+
+  function openServiceModal(modalId: string) {
+    const modal = document.getElementById(`modal-${modalId}`);
+    const panel = modal?.querySelector<HTMLElement>('.service-modal-panel');
+    if (!modal || !panel) return;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100');
+    panel.classList.remove('scale-95');
+    panel.classList.add('scale-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeServiceModal(modalId: string) {
+    const modal = document.getElementById(`modal-${modalId}`);
+    const panel = modal?.querySelector<HTMLElement>('.service-modal-panel');
+    if (!modal || !panel) return;
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.classList.remove('opacity-100');
+    panel.classList.add('scale-95');
+    panel.classList.remove('scale-100');
+    document.body.style.overflow = '';
+  }
+
+  openModalBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = btn.getAttribute('data-modal-target');
+      if (targetId) openServiceModal(targetId);
+    });
+  });
+
+  // カード全体のクリックでもモーダルまたは外部リンクがある場合は開く（ユーザビリティ向上）
+  cards.forEach((card) => {
+    const modalBtn = card.querySelector<HTMLElement>('.open-service-modal');
+    const extLink = card.querySelector<HTMLAnchorElement>('.service-external-link');
+    if (modalBtn) {
+      card.addEventListener('click', (e) => {
+        // もしクリックされた要素が既にボタン自身であればイベントの重複を防ぐ
+        if ((e.target as HTMLElement).closest('.open-service-modal')) return;
+        const targetId = modalBtn.getAttribute('data-modal-target');
+        if (targetId) openServiceModal(targetId);
+      });
+    } else if (extLink) {
+      card.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('.service-external-link')) return;
+        window.open(extLink.href, '_blank', 'noopener,noreferrer');
+      });
+    }
+  });
+
+  closeModalBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const modalId = btn.getAttribute('data-modal-id');
+      if (modalId) closeServiceModal(modalId);
+    });
+  });
+
+  modalBackdrops.forEach((backdrop) => {
+    backdrop.addEventListener('click', () => {
+      const modalId = backdrop.getAttribute('data-modal-id');
+      if (modalId) closeServiceModal(modalId);
+    });
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const openModals = document.querySelectorAll<HTMLElement>('.service-modal-dialog:not(.pointer-events-none)');
+      openModals.forEach((modal) => {
+        const modalId = modal.id.replace('modal-', '');
+        closeServiceModal(modalId);
+      });
+    }
   });
 </script>
