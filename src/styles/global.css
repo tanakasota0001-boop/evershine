@@ -92,4 +92,14 @@
     writing-mode: vertical-rl;
     text-orientation: mixed;
   }
+
+  .section-border-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(179, 142, 68, 0.3), transparent);
+    pointer-events: none;
+    z-index: 10;
+  }
 }

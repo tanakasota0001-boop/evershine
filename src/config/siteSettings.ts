@@ -145,6 +145,7 @@ export const siteSettings = {
       navLinks: [
         { label: "About", labelJa: "私たちについて", href: "#about" },
         { label: "Craftsmanship", labelJa: "こだわり", href: "#craftsmanship" },
+        { label: "Seasonal Care", labelJa: "四季のケア", href: "#season-care" },
         { label: "Services", labelJa: "施工メニュー", href: "#services" },
         { label: "Why Us", labelJa: "選ばれる理由", href: "#why-us" },
         { label: "Flow", labelJa: "施工の流れ", href: "#flow" },

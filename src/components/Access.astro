@@ -11,10 +11,7 @@ const { content, style } = access;
   class="relative pb-16 md:pb-24 lg:pb-32 overflow-hidden bg-white text-slate-900"
 >
   <!-- Background Ornamental Elements -->
-  <div
-    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent z-10"
-  >
-  </div>
+  <div class="section-border-line top-0"></div>
 
   <!-- Full-width Shop Exterior Image at Top of Section with Subtle Bottom-only Dissolve -->
   <div class="access-reveal w-full relative overflow-hidden aspect-[21/9] sm:aspect-[24/9] md:aspect-[28/9] max-h-[500px] min-h-[240px] mb-8 sm:mb-12 md:mb-16 [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]">
@@ -66,6 +63,7 @@ const { content, style } = access;
               >
                 {general.companyName}
               </span>
+              <div class="w-20 sm:w-24 h-px bg-gold mt-3"></div>
             </div>
 
             <!-- Info Items -->
@@ -237,7 +235,7 @@ const { content, style } = access;
           href={content.googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2.5 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full border border-gold bg-white hover:bg-gold hover:text-white text-slate-800 transition-all duration-300 group shadow-md hover:shadow-lg text-sm sm:text-base font-sans tracking-widest font-medium"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full border border-gold/60 bg-white hover:bg-gold hover:text-white text-slate-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group shadow-md hover:shadow-xl hover:shadow-gold/[0.12] text-sm sm:text-base font-sans tracking-widest font-medium"
         >
           <!-- Map Pin Icon -->
           <svg class="w-4 h-4 text-gold group-hover:text-white transition-colors duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -263,10 +261,7 @@ const { content, style } = access;
     </div>
   </div>
 
-  <div
-    class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent z-10"
-  >
-  </div>
+  <div class="section-border-line bottom-0"></div>
 </section>
 
 <script>

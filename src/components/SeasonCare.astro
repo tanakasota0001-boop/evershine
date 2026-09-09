@@ -10,8 +10,8 @@ const { seasons } = content;
 
 <section id="season-care" class={`relative ${style.paddingY || 'py-16 md:py-24 lg:py-32'} overflow-hidden bg-white`}>
   <!-- Top & Bottom Ornamental Lines -->
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></div>
-  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></div>
+  <div class="section-border-line top-0"></div>
+  <div class="section-border-line bottom-0"></div>
 
   <div class="px-6 md:px-12 lg:px-20 relative z-10">
     <div class="max-w-7xl mx-auto">
@@ -32,7 +32,7 @@ const { seasons } = content;
       <!-- Lead Description -->
       {content.leadText && (
         <div class="season-reveal mb-10 md:mb-14 max-w-3xl">
-          <p class="font-sans text-sm sm:text-base md:text-[1.05rem] font-normal leading-[2.2] tracking-[0.04em] text-slate-600 whitespace-pre-line">
+          <p class="font-sans text-sm sm:text-base md:text-[1.05rem] font-normal leading-[2.2] tracking-[0.04em] text-slate-700 whitespace-pre-line">
             {content.leadText}
           </p>
         </div>
@@ -154,7 +154,7 @@ const { seasons } = content;
                   <!-- 日頃のお手入れ対策（Craftsmanship / WhyUs と同一のシャンパンアイボリーパネル＆ゴールド細線） -->
                   <div class="relative overflow-hidden bg-[#faf8f4] border border-[#e5decb] rounded-sm p-5 sm:p-6 shadow-sm shadow-[#8c6b2d]/[0.05]">
                     <!-- Top subtle gold accent line -->
-                    <div class="absolute top-0 left-0 w-16 h-px bg-gold"></div>
+                    <div class="absolute top-0 left-0 w-20 sm:w-24 h-px bg-gold"></div>
 
                     <h5 class="font-sans text-xs sm:text-sm font-semibold tracking-wider text-gold-dark mb-2">
                       {season.prevention.title}

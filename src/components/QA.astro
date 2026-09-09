@@ -6,7 +6,9 @@ const { content, style } = faq;
 ---
 
 <section id="faq" class={`relative ${style.paddingY} overflow-hidden bg-white`}>
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
+  <!-- Background Ornamental Top/Bottom Lines -->
+  <div class="section-border-line top-0"></div>
+  <div class="section-border-line bottom-0"></div>
 
   <div class="px-6 md:px-12 lg:px-20">
     <div class={`${style.maxWidth} mx-auto`}>
@@ -66,8 +68,6 @@ const { content, style } = faq;
       </div>
     </div>
   </div>
-
-  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
 </section>
 
 <style>

@@ -30,17 +30,17 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       </a>
 
       <!-- Nav (Desktop) -->
-      <nav class="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-5.5" aria-label="Main navigation">
+      <nav class="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-4.5" aria-label="Main navigation">
         {navLinks.map((link, index) => (
           <>
             {index > 0 && (
-              <span class="nav-divider w-px h-4.5 xl:h-5.5 bg-white/25 transition-colors duration-300 pointer-events-none" aria-hidden="true"></span>
+              <span class="nav-divider w-px h-4 xl:h-5 bg-white/25 transition-colors duration-300 pointer-events-none shrink-0" aria-hidden="true"></span>
             )}
-            <a href={link.href} class="nav-link group px-1">
-              <span class="nav-link-ja text-[13.5px] xl:text-[15px] 2xl:text-[16px] font-sans tracking-wider text-white font-medium transition-colors whitespace-nowrap">
+            <a href={link.href} class="nav-link group px-0.5 xl:px-1">
+              <span class="nav-link-ja text-[12.5px] xl:text-[14px] 2xl:text-[15.5px] font-sans tracking-wide text-white font-medium transition-colors whitespace-nowrap">
                 {link.labelJa}
               </span>
-              <span class="nav-link-en text-[10px] xl:text-[11px] font-display tracking-[0.18em] text-white/90 uppercase mt-0.5 font-bold transition-colors whitespace-nowrap">
+              <span class="nav-link-en text-[9.5px] xl:text-[10.5px] font-display tracking-[0.16em] text-white/90 uppercase mt-0.5 font-bold transition-colors whitespace-nowrap">
                 {link.label}
               </span>
             </a>
@@ -48,7 +48,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
         ))}
         <a
           href={general.phoneNumberRaw}
-          class="ml-2 xl:ml-4 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-4 xl:px-6 py-2.5 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px]"
+          class="ml-1.5 xl:ml-3 relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red px-3.5 xl:px-5 py-2.5 flex flex-col items-center justify-center group hover:-translate-y-[1px] hover:shadow-lg hover:shadow-accent-red/25 active:translate-y-0 transition-all duration-300 rounded-[2px] shrink-0"
         >
           <!-- Metallic Shine Sweep -->
           <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.2s] ease-out"></span>
@@ -89,29 +89,29 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     style="min-height: 100dvh;"
   >
     <!-- Top section with clearance and navigation links -->
-    <div class="pt-24 sm:pt-28 pb-6 px-6 sm:px-10 flex flex-col items-center">
+    <div class="pt-20 sm:pt-24 pb-6 px-6 sm:px-10 flex flex-col items-center">
       <!-- "Menu" Title with decorative gold ornaments -->
-      <div class="flex items-center justify-center gap-4 mb-6 sm:mb-8">
-        <span class="w-8 h-px bg-gold/50"></span>
+      <div class="flex items-center justify-center gap-4 mb-4 sm:mb-6">
+        <span class="w-10 sm:w-12 h-px bg-gold/60"></span>
         <span class="font-display text-sm sm:text-base tracking-[0.35em] text-gold-dark font-bold uppercase">Menu</span>
-        <span class="w-8 h-px bg-gold/50"></span>
+        <span class="w-10 sm:w-12 h-px bg-gold/60"></span>
       </div>
 
       <!-- Navigation links -->
-      <nav class="w-full max-w-sm flex flex-col items-center gap-2 sm:gap-2.5" aria-label="Mobile navigation">
+      <nav class="w-full max-w-sm flex flex-col items-center gap-1.5 sm:gap-2" aria-label="Mobile navigation">
         {navLinks.map((link, index) => (
           <>
             {index > 0 && (
-              <span class="w-12 sm:w-14 h-px bg-gold/25 my-0.5 pointer-events-none" aria-hidden="true"></span>
+              <span class="w-10 sm:w-12 h-px bg-gold/25 my-0.5 pointer-events-none" aria-hidden="true"></span>
             )}
             <a
               href={link.href}
-              class="mobile-nav-link group w-full flex flex-col items-center py-1.5 transition-all duration-300 active:scale-95"
+              class="mobile-nav-link group w-full flex flex-col items-center py-1 sm:py-1.5 transition-all duration-300 active:scale-95"
             >
-              <span class="text-xl sm:text-2xl font-sans font-medium tracking-wider text-[#0b1a30] group-hover:text-gold-dark transition-colors">
+              <span class="text-lg sm:text-xl font-sans font-medium tracking-wider text-[#0b1a30] group-hover:text-gold-dark transition-colors">
                 {link.labelJa}
               </span>
-              <span class="text-xs font-display tracking-[0.22em] text-[#2d456b] uppercase font-bold mt-0.5 group-hover:text-gold-dark transition-colors">
+              <span class="text-[11px] font-display tracking-[0.2em] text-[#2d456b] uppercase font-bold mt-0.5 group-hover:text-gold-dark transition-colors">
                 {link.label}
               </span>
             </a>
@@ -120,7 +120,7 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
       </nav>
 
       <!-- Phone CTA Button in Mobile Menu -->
-      <div class="w-full max-w-xs mt-8 sm:mt-10 flex flex-col items-center">
+      <div class="w-full max-w-xs mt-6 sm:mt-8 flex flex-col items-center">
         <a
           href={general.phoneNumberRaw}
           class="w-full relative overflow-hidden bg-gradient-to-r from-accent-red via-accent-red-light to-accent-red py-3.5 px-6 flex flex-col items-center justify-center gap-1 text-white shadow-lg shadow-accent-red/20 hover:shadow-xl hover:shadow-accent-red/30 active:scale-[0.98] transition-all duration-300 rounded-[2px] group"
