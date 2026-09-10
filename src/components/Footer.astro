@@ -124,11 +124,24 @@ const { content, style } = footer;
 
     </div>
 
-    <!-- Copyright (Bottom Center) -->
-    <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+    <!-- Copyright & Production Credit -->
+    <div class="mt-16 pt-8 border-t border-slate-200 text-center flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3">
       <p class="font-display text-xs sm:text-sm md:text-base tracking-[0.2em] text-slate-500 font-medium">
         &copy; {new Date().getFullYear()} {content.copyright}
       </p>
+      {content.creditLabel && content.creditUrl && (
+        <div class="flex items-center gap-2">
+          <span class="hidden sm:inline text-slate-300">/</span>
+          <a
+            href={content.creditUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-display text-xs tracking-wider text-slate-400 hover:text-gold-dark transition-colors duration-300"
+          >
+            {content.creditLabel}
+          </a>
+        </div>
+      )}
     </div>
   </div>
 </footer>

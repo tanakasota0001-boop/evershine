@@ -940,6 +940,10 @@ export const siteSettings = {
       telLabel: "Tel",
       /** コピーライトテキスト */
       copyright: "EVERSHINE. All rights reserved.",
+      /** 制作会社クレジット表記 */
+      creditLabel: "Produced by HaveASite.",
+      /** 制作会社リンクURL */
+      creditUrl: "https://haveasite.com/",
     },
     style: {
       /** お問い合わせエリアの上下余白 (Tailwindクラス) */
