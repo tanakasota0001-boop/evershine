@@ -1,15 +1,12 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://evershine-coating.jp',
+  site: 'https://evershine1972.com',
   integrations: [sitemap()],
-  image: {
-    service: passthroughImageService()
-  },
   build: {
     assets: 'assets'
   },

@@ -37,6 +37,19 @@ const businessSchema = {
   'priceRange': '¥¥¥',
   'description': general.siteDescription,
   'foundingDate': general.foundingYear || '1972',
+  'knowsAbout': [
+    'カーコーティング',
+    'ガラスコーティング',
+    'セラミックコーティング',
+    'ボディ研磨・下地処理技術',
+    '純水手洗い洗車',
+    'ペイントプロテクションフィルム (PPF)',
+    'ウィンドウフィルム施工',
+    'カーラッピング',
+    '車内インテリアコーティング',
+    'ヘッドライトリファイン・黄ばみ除去',
+    'アルミホイールコーティング'
+  ],
   'address': {
     '@type': 'PostalAddress',
     'streetAddress': general.streetAddress || '広丘堅石2146-161',
@@ -58,12 +71,35 @@ const businessSchema = {
       'closes': '18:00'
     }
   ],
-  'areaServed': (general.serviceAreas || ['塩尻市', '松本市', '長野県']).map((area: string) => ({
+  'contactPoint': {
+    '@type': 'ContactPoint',
+    'telephone': general.phoneNumberIntl || general.phoneNumber,
+    'contactType': 'customer service',
+    'areaServed': 'JP',
+    'availableLanguage': 'Japanese'
+  },
+  'areaServed': (general.serviceAreas || ['塩尻市', '松本市', '安曇野市', '岡谷市', '諏訪市', '長野県']).map((area: string) => ({
     '@type': 'AdministrativeArea',
     'name': area
   })),
-  'paymentAccepted': 'Cash',
+  'paymentAccepted': 'Cash, Credit Card, Electronic Money',
   'currenciesAccepted': 'JPY',
+  'potentialAction': {
+    '@type': 'ReserveAction',
+    'target': {
+      '@type': 'EntryPoint',
+      'urlTemplate': `${general.siteUrl}/#access`,
+      'inLanguage': 'ja',
+      'actionPlatform': [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform'
+      ]
+    },
+    'result': {
+      '@type': 'Reservation',
+      'name': 'カーコーティング無料見積・施工予約'
+    }
+  },
   'hasOfferCatalog': {
     '@type': 'OfferCatalog',
     'name': 'カーコーティング＆ディテーリングメニュー',
@@ -72,13 +108,16 @@ const businessSchema = {
       'itemOffered': {
         '@type': 'Service',
         'name': item.titleJp,
-        'description': item.description.replace(/\n/g, ' ')
+        'description': item.description.replace(/\n/g, ' '),
+        'provider': {
+          '@id': `${general.siteUrl}/#organization`
+        }
       }
     }))
   },
   'sameAs': [
     access.content.googleMapsUrl
-  ]
+  ].filter(Boolean)
 };
 
 // 2. FAQPage スキーマ (Google検索結果のリッチスニペット対応)
@@ -136,6 +175,8 @@ const breadcrumbSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {general.keywords && <meta name="keywords" content={general.keywords.join(', ')} />}
+    <meta name="author" content={general.companyName} />
+    <meta name="copyright" content={general.companyName} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- クローラー・インデックス制御 -->

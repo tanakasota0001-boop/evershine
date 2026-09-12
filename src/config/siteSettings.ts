@@ -54,7 +54,7 @@ export const siteSettings = {
     siteDescription: "長野県塩尻市のカーコーティング・ガラスコーティング専門店EVERSHINE（エバーシャイン）。創業50年以上・累計20,000台超の実績と純水洗車で、スーパーカーから輸入車・国産車まで愛車に重厚な艶と保護を提供します。塩尻市・松本市・安曇野市対応。",
 
     /** 本番サイトURL (Canonical / OGP / 構造化データ用) */
-    siteUrl: "https://evershine-coating.jp",
+    siteUrl: "https://evershine1972.com",
 
     /** OGP画像URL */
     ogImage: "/og-image.webp",
