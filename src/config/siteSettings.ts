@@ -680,8 +680,8 @@ export const siteSettings = {
       gridCols: "grid-cols-1 md:grid-cols-3",
       /** メイン見出しのサイズ (Tailwindクラス) */
       headingSize: "text-[clamp(1.9rem,4vw,3.5rem)]",
-      /** カード内の英語タイトルの文字サイズ (Tailwindクラス) */
-      cardTitleSize: "text-xl md:text-2xl lg:text-3xl",
+      /** カード内の日本語タイトルの文字サイズ (Tailwindクラス) */
+      cardTitleSize: "text-lg sm:text-xl md:text-[clamp(0.82rem,1.25vw,1.35rem)]",
     }
   },
 
