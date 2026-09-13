@@ -301,10 +301,41 @@ const { logoText, navLinks, contactLabel, contactLabelJa } = header.content;
     setMenuOpen(willOpen);
   });
 
-  // Close mobile menu on link click
+  // Close mobile menu on link click and smoothly scroll to target
   mobileMenu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+
+      // 電話番号リンク (tel:) や外部リンク等の場合はメニューを閉じるのみ
+      if (!href || !href.startsWith('#')) {
+        setMenuOpen(false);
+        return;
+      }
+
+      e.preventDefault();
       setMenuOpen(false);
+
+      if (href === '#' || href === '#hero') {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 120);
+        return;
+      }
+
+      const target = document.querySelector(href);
+      if (target) {
+        setTimeout(() => {
+          const headerEl = document.getElementById('site-header');
+          const headerOffset = headerEl ? headerEl.offsetHeight : 70;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 120);
+      }
     });
   });
 
